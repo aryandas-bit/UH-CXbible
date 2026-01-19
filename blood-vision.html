@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Vision | CodeX</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">CODEX</h1>
+            <p class="header-subtitle">Ultrahuman Customer Support Documentation</p>
+            <div class="theme-toggle-container">
+                <button id="themeToggle" class="theme-toggle" aria-pressed="false">
+                    <span class="theme-toggle__icon" aria-hidden="true">??</span>
+                    <span class="theme-toggle__label">Dark Mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-container">
+<section id="blood-vision" class="section active">
+                <div class="section-meta pill-row">
+                    <a class="home-pill" href="index.html" aria-label="Go to home page">
+                        <svg viewBox="0 0 24 24" class="home-pill__icon" aria-hidden="true" focusable="false">
+                            <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5.5v-4.5h-3V21H5a1 1 0 0 1-1-1v-9.5Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a class="back-pill" href="index.html" aria-label="Back to overview">
+                        <span class="back-pill__icon" aria-hidden="true">&#8592;</span>
+                        <span class="back-pill__label">Back</span>
+                    </a>
+                </div>
+                <h2>Blood Vision</h2>
+                <p class="section-support-level">Support Level: L2</p>
+                <div id="blood-vision-content" class="document-content">
+                    <div class="tab-buttons blood-vision-tabs" role="tablist" aria-label="Blood Vision Sections">
+                        <button type="button" class="tab-button active" data-tab="overview" role="tab" aria-controls="overview-tab" aria-selected="true">Overview</button>
+                        <button type="button" class="tab-button" data-tab="region" role="tab" aria-controls="region-tab" aria-selected="false">Region Based SOP</button>
+                        <button type="button" class="tab-button" data-tab="refunds" role="tab" aria-controls="refunds-tab" aria-selected="false">Refunds</button>
+                    </div>
+                    <div class="tab-content active" id="overview-tab">
+                        <div class="blood-vision-body">
+                            <h3>Blood Vision Overview</h3>
+                            <p>Blood Vision by Ultrahuman introduces a new approach to preventive blood testing through its UltraTrace™ technology. This advancement is not just another blood test; it marks a significant step forward in health and wellness monitoring.</p>
+                            <p>UltraTrace™ technology innovatively links changes in sleep patterns, resting heart rate, heart rate variability, and physical activity with key blood markers, based on decades of comprehensive research.</p>
+                            <p>For instance, UltraTrace™ can analyze the impact of improved sleep quality on a blood marker such as LDL, giving users a probability score. This functionality provides a clearer understanding of how lifestyle habits directly influence blood markers.</p>
+                            <p>By enabling users to track their health markers over time, Blood Vision provides personalized insights through advanced algorithms. This approach prioritizes longevity and proactive well-being, marking a departure from traditional disease-centric metrics and emphasizing preventive healthcare.</p>
+                            <p>Below, we'll explore the markers measured to deliver a full spectrum of insights into your health:</p>
+
+                            <h3>Your Data, Your Rules</h3>
+                            <h4>1. We never sell your data — period.</h4>
+                            <p>Your trust means everything to us. That’s why we will never sell your personal information, including blood or genetic data, to third parties for advertising or commercial gain.</p>
+
+                            <h4>2. HIPAA-compliant protection</h4>
+                            <p>Although Ultrahuman operates globally, our blood testing service is run through a US-based entity that complies with <strong>HIPAA</strong> — the gold standard for protecting your health data in the United States.</p>
+
+                            <h4>3. You’re in control</h4>
+                            <p>Your data belongs to you. You can access it, download it, or ask us to delete it at any time. We believe in full transparency and complete user control.</p>
+
+                            <h3>Who performs the Blood Vision test?</h3>
+                            <p>When it comes to blood testing, trust starts with transparency. At Ultrahuman, we don’t just focus on cutting-edge insights — we ensure that the lab work behind those insights meets the highest standards of quality, reliability, and clinical rigor.</p>
+
+                            <h4>Trusted Lab Partners, Globally Recognized</h4>
+                            <p>Ultrahuman works exclusively with accredited, highly vetted lab partners in every region where we operate.</p>
+                            <ul>
+                                <li><strong>In the United States</strong>, all tests are processed by <strong>Quest Diagnostics</strong>, one of the largest and most respected diagnostic labs in the country. Quest operates under <strong>CLIA certification</strong> and adheres to <strong>CAP (College of American Pathologists)</strong> standards, ensuring strict quality control and reliable turnaround times. Whether you choose at-home collection or visit a local Quest lab, you can expect clinical-grade accuracy with end-to-end tracking.</li>
+                                <li><strong>In India</strong>, testing is handled by <strong>Orange Health Labs</strong>, a NABL-accredited lab network with a reputation for speed, reliability, and precision. Samples are collected and processed under stringent cold-chain logistics and laboratory best practices. Every phlebotomist is trained, certified, and monitored to ensure safe, sterile, and seamless collection — often within hours of booking.</li>
+                            </ul>
+
+                            <h4>Why We Chose These Labs</h4>
+                            <p>We evaluated dozens of lab networks before partnering with Quest and Orange Health Labs. Our selection criteria included:</p>
+                            <ul>
+                                <li><strong>Accreditation &amp; compliance:</strong> Only labs that meet or exceed national regulatory standards are considered.</li>
+                                <li><strong>Sample integrity &amp; logistics:</strong> From vein to vial to lab bench — every step is monitored.</li>
+                                <li><strong>Turnaround time:</strong> Fast partial reporting, with final results delivered promptly — without cutting corners.</li>
+                                <li><strong>Tech stack integration:</strong> Our labs offer smooth API-based reporting that feeds directly into your Ultrahuman app for near-real-time insights.</li>
+                                <li><strong>Scalability:</strong> Whether you're booking a single test or tracking biomarkers over years, the infrastructure must support it.</li>
+                            </ul>
+
+                            <h4>Zero Tolerance for Compromise</h4>
+                            <p>We don’t operate our own lab — and that’s intentional. Instead, we’ve built an ecosystem that integrates best-in-class lab infrastructure with our proprietary UltraTrace™ algorithm and personalized insights. This separation ensures that each part of the process — from collection to analysis to interpretation — is optimized by experts in that domain.</p>
+                            <p>If something ever falls short (a missed sample, a delayed report, or an unprofessional lab experience), we take full ownership and resolve it directly with the lab on your behalf. We maintain strict SLAs with our partners and continually monitor their performance.</p>
+
+                            <h4>Always Transparent, Always Accountable</h4>
+                            <p>You can view full details of where your test is processed — and even the lab ID and timestamp — inside the Ultrahuman app. We believe in medical-grade transparency, not just consumer convenience.</p>
+                            <p>Your data is also fully protected: In the US, our lab operations are <strong>HIPAA-compliant</strong>. In India, we follow <strong>ISO and NABL protocols</strong>. Across both regions, we never sell or share your data without explicit consent.</p>
+
+                            <h3>What are blood markers?</h3>
+                            <p>Blood markers, or biomarkers, are essential indicators in your blood that offer insights into your health. They come in various forms, such as cells, enzymes, hormones, or molecules, each shedding light on your health status, signaling potential diseases, or tracking the effectiveness of treatments. Doctors rely on them in the same way as blood pressure or cholesterol checks, providing a snapshot of your overall well-being and identifying any health issues before symptoms appear.</p>
+                            <p>Our bodies are a complex network of systems, including the cardiovascular, metabolic, and immune systems. During a health check-up, doctors assess a variety of blood markers, such as heart rate, blood pressure, cholesterol, blood sugar, and even weight. These are comprehensive checks to help identify any risk factors for serious conditions like heart disease or diabetes, allowing for early action and better health management.</p>
+
+                            <h3>How Do Blood Markers Give You an Understanding of Your Body?</h3>
+                            <p>Blood markers, or biomarkers, are essential indicators in your blood that offer insights into your health. They come in various forms, such as cells, enzymes, hormones, or molecules, each shedding light on your health status, signaling potential diseases, or tracking the effectiveness of treatments. Doctors rely on them in the same way as blood pressure or cholesterol checks, providing a snapshot of your overall well-being and identifying any health issues before symptoms appear.</p>
+                            <p>Our bodies are a complex network of systems, including the cardiovascular, metabolic, and immune systems. During a health check-up, doctors assess a variety of blood markers, such as heart rate, blood pressure, cholesterol, blood sugar, and even weight. These are comprehensive checks to help identify any risk factors for serious conditions like heart disease or diabetes, allowing for early action and better health management.</p>
+
+                            <h4>Warning signs</h4>
+                            <p>Blood markers are critical early warning signs for your health, altering you about underlying issues before they snowball into more serious conditions. These markers comprise a wide range of substances including proteins, lipids (fats), individual cells, and small molecules, each providing valuable insights into the state of your health and the functioning of your body.</p>
+                            <p>For achieving peak performance, whether in athletic performance, mental acuity, or general wellness, blood markers can pinpoint areas for improvement, track progress towards health goals, and identify any underlying issues that may be hindering performance. Here are some ways blood markers can specifically help you understand your body:</p>
+                            <ul>
+                                <li><strong>Identifying Health Issues:</strong> A lot of blood markers are directly linked to specific health conditions. For example, elevated troponin levels, a protein that is found in your heart muscles, could point to heart damage. Similarly, high alanine aminotransferase (ALT) and aspartate aminotransferase (AST) levels, which are enzymes found in the liver, can indicate liver problems. Catching health issues early on gives you a chance to get ahead of your disease, long before it has caused any lasting damage to your body.</li>
+                                <li><strong>Monitoring Progress:</strong> Blood markers are crucial tools for tracking your health, whether you're managing an illness or adhering to a treatment regimen. For instance, keeping an eye on HDL ("good") and LDL ("bad") cholesterol levels is vital for those at risk of cardiovascular diseases. Cholesterol, a type of lipoprotein, plays a significant role in the body, including the formation of cell membranes and hormones.</li>
+                            </ul>
+
+                            <h4>Why take a Blood Vision test</h4>
+                            <p>However, imbalances in its levels can impact your heart, brain, and even gut health. Monitoring these markers provides a clear picture of your current health and the effectiveness of any treatment plans. By regularly checking these levels, adjustments can be made promptly, tailoring the approach to how your body is responding.</p>
+                            <ul>
+                                <li><strong>Predicting Future Risks:</strong> Understanding your blood markers, like the levels of LDL cholesterol, is more than just a health check—it's a forward-looking strategy deeply intertwined with longevity. Recognizing these markers early allows you to anticipate potential health challenges, particularly the risk of cardiovascular diseases. This insight empowers you to take preemptive steps, adjusting your lifestyle and diet accordingly. It's about making informed choices today to positively influence your health tomorrow. By adopting such a proactive approach, you're not just avoiding disease; you're actively shaping a future where your healthspan matches your lifespan, ensuring your years are as vibrant as they are long.</li>
+                                <li><strong>Understanding Organ Function:</strong> Understanding organ function through blood markers provides crucial insights into your health, revealing how well your organs are performing. For instance, evaluating thyroid function through markers such as Thyroid Stimulating Hormone (TSH) and thyroxine levels can highlight disorders affecting your metabolism, energy, and overall mood. This early detection is invaluable, allowing for timely interventions that can prevent minor issues from escalating into more serious health problems. By keeping a close eye on these markers, you're not just monitoring your health; you're actively taking steps to maintain and improve it, emphasizing the role of regular blood analysis in comprehensive health management.</li>
+                            </ul>
+                            <p>Keeping track of these markers over time paints a detailed picture of your health trends. This continuous insight empowers you to make informed decisions regarding your lifestyle, diet, and healthcare, keeping you engaged and proactive about your well-being.</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-content bv-pane" id="region-tab" hidden>
+                        <div class="bv-region-bar">
+                            <div class="bv-pill-tabs bv-region-tabs" role="tablist" aria-label="Blood Vision Regions">
+                                <button type="button" class="bv-pill-button active" data-region-target="bv-india" aria-selected="true">India</button>
+                                <button type="button" class="bv-pill-button" data-region-target="bv-usa" aria-selected="false">USA</button>
+                                <button type="button" class="bv-pill-button" data-region-target="bv-uae" aria-selected="false">UAE</button>
+                            </div>
+                        </div>
+
+                        <div class="bv-region-pane active" id="bv-india">
+                            <div class="blood-vision-body">
+                                <h3>Related Tags</h3>
+                                <ul>
+                                    <li><code>BV_Refund</code> - Refund cases</li>
+                                    <li><code>BV_Report</code> - for any report related discrepancies in the pdf report or the app</li>
+                                    <li><code>BV_Reschedule</code> - Where they want us to reschedule their blood test appointment to another date</li>
+                                    <li><code>BV_ETA</code> - ETA for reports</li>
+                                    <li><code>BV_FAQ</code> - Queries for what is BV</li>
+                                    <li><code>BV_readings_deep_dive</code> - Queries about BV data</li>
+                                </ul>
+
+                                <h3>Overview</h3>
+                                <p>Our two partners in India are <strong>Orange Health</strong> and <strong>TATA 1MG</strong>.</p>
+                                <figure>
+                                    <img src="e06b910b-f1af-49b2-bd72-d2af615e67ee.png" alt="Blood Test Purchase details showing request and partner" loading="lazy">
+                                </figure>
+                                <p>We can identify these orders on <a href="https://ops.ultrahuman.com/admin/blood_test_purchases" target="_blank" rel="noopener noreferrer">Blood Test Purchases</a> by searching for the purchase email ID (image attached). In case we have any users reaching out about any issues with the app/booking, please flag these on <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a> and tag Gaurav Bhatia.</p>
+                                <p>In case a user has any last-minute rescheduling requirements, please highlight this to an SME/Lead so we can take this up with TATA 1MG directly on the WhatsApp group.</p>
+                                <p>Blood Vision is now available in 60 cities across 2000 PIN codes.</p>
+                                <p><em>To check if we serve your pin code, head over to the Ultrahuman app &gt; Vision tab &gt; Book Now &gt; Add your address here to check!</em></p>
+                                <p>All BV orders are available under <a href="https://ops.ultrahuman.com/admin/blood_test_purchases" target="_blank" rel="noopener noreferrer">blood test purchases</a>. Order IDs start with UHB or PO1.</p>
+                                <ul>
+                                    <li>For partial reports, you can download them from the Orange Health dashboard for Orange Health orders.</li>
+                                    <li>For all cases that we flag on the <strong>Orange Health</strong> WhatsApp group, take the request number as a reference and share it with them. Request number, depending on the city it was booked for, will start with MUM/BLR/DEL/etc.</li>
+                                    <li>For all cases that we flag on the <strong>TATA 1MG</strong> WhatsApp group, take the request number as a reference and share it with them.</li>
+                                </ul>
+                                <figure>
+                                    <img src="f10d7e18-8dff-4f9d-a486-0026f22bbba1.png" alt="Blood Test Purchases table showing partner and testing modality" loading="lazy">
+                                </figure>
+                                <figure>
+                                    <img src="image.png" alt="Blood Test Purchase details showing request and partner" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li>A PDF of the final report will be sent via email once all the reports are ready.</li>
+                                    <li>Flag ETA/rescheduling related cases on the WhatsApp group.</li>
+                                    <li>Flag tech related cases on <a href="https://ultrahumanworkspace.slack.com/archives/C069YK98D16" target="_blank" rel="noopener noreferrer">#orangehealth-ultrahuman-support</a>.</li>
+                                </ul>
+
+                                <h3>Common Queries/Cases</h3>
+                                <ol>
+                                    <li>
+                                        <p>My location is not serviceable, how do I book a BV test?</p>
+                                        <p>To check if we serve your pin code, head over to the Ultrahuman app &gt; Vision tab &gt; Book Now &gt; Add your address here to check!</p>
+                                        <p>Tag: <code>BV_FAQ</code></p>
+                                    </li>
+                                    <li>
+                                        <p>Why can’t I see all my parameters on the app? (Missing/incomplete parameters)</p>
+                                        <p><a href="https://ops.ultrahuman.com/admin/blood_test_purchases" target="_blank" rel="noopener noreferrer">Check the dashboard</a> to verify when the user’s test was completed. The full blood markers report is expected to populate within 21 days. If there’s any delay beyond this timeframe, please flag it to the team in <a href="https://ultrahumanworkspace.slack.com/archives/C069YK98D16" target="_blank" rel="noopener noreferrer">#orangehealth-ultrahuman-support</a> and tag Harsh R, Omprakash Sahu.</p>
+                                        <p>PS: The ETA for results is up to 21 days; however, it may take fewer days depending on the package selected.</p>
+                                        <p><strong>You can find the TAT for 1MG orders <a href="https://docs.google.com/spreadsheets/d/1Dq536hwMpig-QJ9bqUi8eo1cjTBMIkLTdtQcFPnKh30/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">here</a>.</strong></p>
+                                        <p>Tag: <code>BV_ETA</code></p>
+                                    </li>
+                                    <li>
+                                        <p>User has booked the test but wants to re-schedule</p>
+                                        <p>Tell the user to: Open the Ultrahuman app &gt; Profile &gt; Blood Vision &gt; Test &gt; Reschedule</p>
+                                        <p>Tag: <code>BV_Reschedule</code></p>
+                                    </li>
+                                    <li>
+                                        <p>Pending markers/missing parameters on the UH app, but available in the email report pdf</p>
+                                        <p>Flag on <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a>, tag @tech-oncall.</p>
+                                        <p>Tag: <code>BV_Report</code></p>
+                                    </li>
+                                    <li>
+                                        <p>Discrepancy in the parameter range and or recorded values of the parameters (Report vs UH app)</p>
+                                        <p>Tag tech-oncall on the <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a> slack group.</p>
+                                        <p>Tag: <code>BV_Report</code></p>
+                                    </li>
+                                    <li>
+                                        <p>User has received the reports and wants insights on the parameters.</p>
+                                        <p>Ask them to check this with their doctors. In case they want dietary suggestions based on these markers, connect them to the Coaches OR ask them to Open UH app &gt; Profile &gt; Connect with Performance coaches.</p>
+                                        <p>Tag: <code>BV_Readings_Deepdive</code></p>
+                                    </li>
+                                    <li>
+                                        <p>User has booked the tests from a different ID (from the UH app login ID)</p>
+                                        <p>Flag to tech-oncall on slack <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a>.</p>
+                                        <p>Tag: <code>BV_Report</code></p>
+                                    </li>
+                                    <li>
+                                        <p>User tried to book a BV test, payment went through but order didn’t get confirmed // User is trying to check if the order is confirmed</p>
+                                        <p>Go to Blood Test Purchases → check if Order Status = Failed OR Accepted by Vendor = False. Then, check with the team members who have access to RazorPay to verify if the payment has come through.</p>
+                                        <p>If the payment has been received, flag this on the <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a> slack channel to confirm whether we need to refund and reinitiate the transaction.</p>
+                                        <p><a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1759516949970919" target="_blank" rel="noopener noreferrer">Reference thread</a>.</p>
+                                        <p>Tag: <code>BV_Refund</code></p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="bv-region-pane" id="bv-usa" hidden>
+                            <div class="blood-vision-body">
+                                            <h3 id="usa-overview">BV USA - SOPs for CX team</h3>
+                                <h4>Related Tags</h4>
+                                <ul>
+                                    <li><code>BVUS_faq</code></li>
+                                    <li><code>BVUS_refund_request</code></li>
+                                    <li><code>BVUS_app_tech_error</code></li>
+                                    <li><code>BVUS_app_usage</code></li>
+                                    <li><code>BVUS_delayed_results</code></li>
+                                    <li><code>BVUS_emergency</code></li>
+                                    <li><code>BUS_enquiry</code></li>
+                                    <li><code>BVUS_rescheduling_request</code></li>
+                                    <li><code>BVUS_results</code></li>
+                                </ul>
+
+                                <p>Blood Vision allows users to test 100+ biomarkers, allowing seamless correlation to changes in their sleep, resting HR, HRV, and movement trends.</p>
+
+                                <h4>Subscription Structure</h4>
+                                <ol>
+                                    <li><strong>Membership-based subscription structure</strong> with a focus on annual commitment. One annual fee grants a year's worth of proactive health monitoring (two major rounds of testing).</li>
+                                </ol>
+                                <p><em>Rest of the US (ROTUS) - $499</em></p>
+                                <p><em>NY/NJ - $799</em></p>
+
+                                <h4>BV Essential/Lite/Half-yearly</h4>
+                                <p><em>Rest of the US (ROTUS) - $99</em></p>
+                                <p><em>NY/NJ - $149</em></p>
+
+                                <h4>Core Operations &amp; Tools</h4>
+                                <ul>
+                                    <li><strong>Support Email</strong>: support@ultrahuman.com</li>
+                                    <li><strong>Knowledge Resources</strong>: FAQ/KB articles available.</li>
+                                    <li><strong>Ops Dashboard Key Tabs</strong>: Subscriptions; Blood Test Orders (purchases + results); edits to user biodata (flag to backend). BV US subscriptions also show up on <a href="https://ops.ultrahuman.com/admin/subscriptions" target="_blank" rel="noopener noreferrer">Subscriptions dashboard</a>.</li>
+                                    <li><strong>Support Tags for Issues</strong>: Tech errors, reschedules, refunds, delays, emergencies, FAQs. Tag <a href="https://ultrahumanworkspace.slack.com/admin/user_groups" target="_blank" rel="noopener noreferrer">@tech-on-call</a> on <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a> for any tech related issues.</li>
+                                </ul>
+
+                                <h4>Pre-Test Support</h4>
+                                <ul>
+                                    <li><strong>Phlebotomist No-Show</strong>: Apologize, escalate to Junction, reschedule within 24-48 hours, document issue.</li>
+                                    <li><strong>Phlebotomist Late</strong>: Apologize, assess severity, escalate if significant, possible fee waivers.</li>
+                                    <li><strong>User Rescheduling</strong>: Possible through the app, if not, escalate to a lead.</li>
+                                    <li><strong>User Anxiety/Fear</strong>: Empathise, prep tips (hydration, rest), lie-down option, document if needed.</li>
+                                    <li><strong>Medical Concerns</strong>: Reiterate Blood Vision is not a medical provider. Encourage doctor consultation.</li>
+                                </ul>
+
+                                <h4>During Test Issues</h4>
+                                <ul>
+                                    <li><strong>Excessive Bleeding</strong>: Phlebotomist applies first aid; call 911 if severe. Support documents and escalates.</li>
+                                    <li><strong>Fainting/Anxiety</strong>: Standard phlebotomist protocols; support reassures, advises rest or medical follow-up.</li>
+                                    <li><strong>Multiple Pricks</strong>: Apologize, suggest hydration, offer redraws with experienced staff.</li>
+                                    <li><strong>Unprofessional Conduct</strong>:
+                                        <ul>
+                                            <li>Phlebotomist misbehavior: document &amp; escalate.</li>
+                                            <li>Abusive user: phlebotomist may refuse service; CX to stay professional and log.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h4>Post-Test Issues</h4>
+                                <ul>
+                                    <li><strong>Bruising/Pain</strong>: Normalize, provide care tips (cold/heat), advise doctor if severe.</li>
+                                    <li><strong>Secondary Bleeding</strong>: Apply pressure, elevate arm, seek care if persistent.</li>
+                                    <li><strong>Delayed/Missing Reports</strong>:
+                                        <ul>
+                                            <li>TAT: 5-10 business days, up to 2+ weeks (advanced).</li>
+                                            <li>Internally check for IT/lab delays, update user, escalate for redraw if needed.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <p><a href="https://www.notion.so/Blood-Vision-CX-Training-202755317a9180b08c8dfafd74fe6713?pvs=21" target="_blank" rel="noopener noreferrer">This doc</a> is comprehensive and contains:</p>
+                                <ol>
+                                    <li>The Operational Workflow</li>
+                                    <li>Detailed Processes</li>
+                                    <li><a href="https://docs.google.com/document/d/1UIu3yDSvDnCYyHwoDm2grOO5qnH9nd0NI_Y81PNJWio/edit?tab=t.0" target="_blank" rel="noopener noreferrer">CX Team SOPs</a></li>
+                                </ol>
+
+                                <h4>Important Channels</h4>
+                                <p>For flagging cases to our diagnostic partners/labs, we can use <a href="https://ultrahumanworkspace.slack.com/archives/C090093PNU8" target="_blank" rel="noopener noreferrer">#junction-x-ultrahuman-cs</a>.</p>
+                                <p>We can use <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF" target="_blank" rel="noopener noreferrer">#support-tech-oncall-requests</a> to post general queries and tech issues.</p>
+                            </div>
+                        </div>
+
+                        <div class="bv-region-pane" id="bv-uae" hidden>
+                              <div class="blood-vision-body">
+                                                      <h3 id="uae-overview">Blood Vision Pilot (UAE)</h3>
+                            <p>Blood Vision is now live in all seven emirates of the UAE. We offer at-home collection for an 80+ biomarker test.</p>
+
+                            <h4>Quick Facts</h4>
+                            <table>
+                                <tr><td><strong>Coverage</strong></td><td>All seven emirates across the UAE.</td></tr>
+                                <tr><td><strong>Partner</strong></td><td>Valeo.</td></tr>
+                                <tr><td><strong>Collection</strong></td><td>At-home collection only; no clinic draws.</td></tr>
+                                <tr><td><strong>Subscription Flow</strong></td><td>None.</td></tr>
+                                <tr><td><strong>Order Status Dashboard</strong></td><td>No internal dash for checking order status.</td></tr>
+                            </table>
+
+                            <h4>Related Tags</h4>
+                            <ul>
+                                <li><code>BV_Refund</code> - Refund cases.</li>
+                                <li><code>BV_Report</code> - Report-related discrepancies in the PDF report or the app.</li>
+                                <li><code>BV_Reschedule</code> - Reschedule blood test appointment to another date.</li>
+                                <li><code>BV_ETA</code> - ETA for reports.</li>
+                                <li><code>BV_FAQ</code> - Queries for what is BV.</li>
+                                <li><code>BV_readings_deep_dive</code> - Queries about BV data.</li>
+                            </ul>
+
+                            <div class="hero-callout">
+                                <h4>WhatsApp Support Group</h4>
+                                <p>Support group is on WhatsApp - Ultrahuman &amp; Valeo.</p>
+                                <p>Join the Ultrahuman x Valeo WhatsApp Support Group: <a href="https://chat.whatsapp.com/H1zrVI5IxRZCJZ26j5XiYA" target="_blank" rel="noopener noreferrer">https://chat.whatsapp.com/H1zrVI5IxRZCJZ26j5XiYA</a></p>
+                                <p>For all cases flagged on the Valeo WhatsApp group, take the numeric request number (for example, 99508) as the reference and share it with them.</p>
+                            </div>
+
+                              <h4>Availability</h4>
+                            <p>The UAE program is currently live across all seven emirates, including Dubai, Abu Dhabi, and Sharjah. Collections are executed through our Valeo partnership.</p>
+                            <p>Slots are surfaced in the Ultrahuman app within the Vision tab. If a user cannot see slots, capture their PIN and escalate to the BV ops group for manual scheduling.</p>
+
+                            <h4>Packages</h4>
+                            <p>The UAE beta mirrors the India Foundational and Advanced panels with localized ranges. Hormone and Menstrual panels are coming soon and should not be promised until communicated.</p>
+
+                            <h4>Logistics</h4>
+                            <ul>
+                                <li>Collections are at-home with mobile phlebotomists who travel in marked cars.</li>
+                                <li>Users receive WhatsApp coordination 12 hours before pickup.</li>
+                                <li>Phlebotomists carry bilingual consent/aftercare leaflets; remind users to request Arabic if required.</li>
+                            </ul>
+
+                            <h4>Escalations</h4>
+                            <p>Escalate to #blood-vision-uae-ops with the order ID for:</p>
+                            <ul>
+                                <li>Address changes inside 24 hours of slot start.</li>
+                                <li>Requests for clinic draws instead of home visits (currently not supported).</li>
+                                <li>Re-collections or sample integrity concerns.</li>
+                            </ul>
+
+                            <h4>Reporting</h4>
+                            <p>Partial reports take up to 48 hours, and final panels can take 4 business days due to cross-border lab review. Communicate the longer turnaround and log user expectations in the CRM.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="refunds-tab" hidden>
+                        <div class="blood-vision-body">
+                            <h3>Overview</h3>
+
+                            <h4>Refund/Cancellation Process for Blood Vision India, UAE</h4>
+                            <ul>
+                                <li>Ask folks with Payment Gateway access to refund the user via Razorpay.</li>
+                                <li>Fill up the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">refund sheet</a>.</li>
+                            </ul>
+
+                            <h4>Refund/Cancellation Process for Blood Vision US</h4>
+                            <p>For US users, please check with an SME/Lead.</p>
+                            <ul>
+                                <li>Refunds will be processed on Stripe USA.</li>
+                                <li>Fill up the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">refund sheet</a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
