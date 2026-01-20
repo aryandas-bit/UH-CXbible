@@ -488,31 +488,317 @@
                             </div>
                             <div class="ts-panel" id="ts-unable-scan" hidden>
                                 <h4>Unable to Scan</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> India primarily (some Libre 2 users outside India as well, since NFC is required for the first scan).</p>
+                                <p><strong>Related tags:</strong> <code>sensor_scan_not_working</code>, <code>Sensor_scan_not_working_replacement</code></p>
+                                <h5>Overview</h5>
+                                <p>This issue occurs when a user is unable to scan the sensor and the phone or app shows no response during scanning. This is commonly related to NFC issues on the phone.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>No response from the phone or app while scanning the sensor.</li>
+                                    <li>Sensor not detected despite multiple scan attempts.</li>
+                                </ul>
+                                <h5>Agent diagnosis steps</h5>
+                                <h6>If on iOS</h6>
+                                <ul>
+                                    <li>Copy the user&#39;s External ID or Email ID.</li>
+                                    <li>Search for it on Slack, usually in the <strong>#M1-Notifications</strong> channel.</li>
+                                    <li>Review the logged errors.</li>
+                                    <li>Refer to this <a href="https://ultrahumanworkspace.slack.com/archives/C04KLKN14V8/p1674128508738509" target="_blank" rel="noopener noreferrer">Slack message</a> for error mapping.</li>
+                                    <li>If the error is <strong>System resource unavailable</strong>, it indicates an NFC issue.</li>
+                                    <li>Ask the user to restart the phone.</li>
+                                </ul>
+                                <h6>If on Android</h6>
+                                <ul>
+                                    <li>Ask the user to toggle NFC off and on.</li>
+                                    <li>Ask them to restart the phone.</li>
+                                </ul>
+                                <h6>For both iOS and Android</h6>
+                                <ul>
+                                    <li>Ensure there is no phone cover interfering with NFC scanning.</li>
+                                    <li>Ask the user to try scanning again post troubleshooting.</li>
+                                    <li>Check <a href="https://ops.ultrahuman.com/admin/sensor_states" target="_blank" rel="noopener noreferrer">Sensor States</a> on OMS to ensure there are no hits.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <p>If the sensor remains unresponsive after all troubleshooting steps and there are no hits in Sensor States, replace the sensor.</p>
+                                <p>Before issuing a replacement, always run these two checks:</p>
+                                <ol>
+                                    <li>Confirm whether it is an internal sensor.
+                                        <ul>
+                                            <li>Check via <strong>CGM Stints</strong>.</li>
+                                            <li>Can also verify in <a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a> on OMS.</li>
+                                            <li>Or confirm using the invoice.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Ensure that replacements issued are not more than 50% of the total sensors purchased by the user.
+                                        <ul>
+                                            <li>Exceptions can be made after consulting with an SME/Lead and after their approval.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>sensor_scan_not_working</code>, <code>Sensor_scan_not_working_replacement</code>.</li>
+                                    <li>Macro: <code>non_nfc_phone</code>.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-live-missing-data" hidden>
                                 <h4>M1 Live Missing Data / Frequent Disconnection</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>m1_live_missing_data</code></p>
+                                <h5>Overview</h5>
+                                <p>Users with Bluetooth enabled sensors such as <strong>Vixxa</strong> or <strong>Freestyle Libre 2 Plus</strong> may report frequent disconnections from the app or the need to manually scan to view readings. There is limited troubleshooting that can be done from our end for these cases.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>Sensor disconnecting frequently.</li>
+                                    <li>Missing live glucose data.</li>
+                                    <li>Needing to manually scan to view readings.</li>
+                                </ul>
+                                <h5>Agent diagnosis steps</h5>
+                                <p>Run the following checks with the user:</p>
+                                <ul>
+                                    <li>Ensure <strong>Bluetooth</strong> is turned on at all times.</li>
+                                    <li>Ensure the <strong>Ultrahuman app</strong> is open in the background.</li>
+                                    <li>Confirm <strong>battery optimisation</strong> is turned off for the app.</li>
+                                    <li>Verify all required <strong>permissions</strong> are granted.</li>
+                                    <li>Ensure the phone is kept <strong>close to the sensor</strong>.</li>
+                                    <li>Confirm <strong>location services</strong> are enabled.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>Once all checks are completed, ask the user to observe the sensor behaviour moving forward.</li>
+                                    <li>No immediate replacement is required unless additional issues are observed.</li>
+                                </ul>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>m1_live_missing_data</code>.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-non-live-missing-data" hidden>
                                 <h4>Non-Live Sensor Missing Data</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> India (specifically applicable to <strong>Freestyle Libre 1</strong>).</p>
+                                <p><strong>Related tags:</strong> <code>sensor_scan_over_8_hours</code>, <code>sensor_how_many_times_to_scan</code></p>
+                                <h5>Overview</h5>
+                                <p>Users in India using non-live sensors like <strong>Freestyle Libre 1</strong> may reach out saying they are seeing gaps in their glucose data. This typically happens when the sensor has not been scanned within the required time window.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>Missing data or gaps in the glucose graph.</li>
+                                    <li>Data available only for the last few hours.</li>
+                                    <li>No historical readings for earlier hours.</li>
+                                </ul>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Check <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                    <li>Check <a href="https://ops.ultrahuman.com/admin/sensor_states" target="_blank" rel="noopener noreferrer">Sensor States</a>.</li>
+                                    <li>If stints look fine, note that brief invalid readings can sometimes cause small gaps.</li>
+                                    <li>If gaps persist, check scan timestamps in Sensor States.</li>
+                                    <li>Inform the user that for non-live sensors, they must scan the sensor <strong>at least once every 8 hours</strong>.</li>
+                                    <li>This rule does <strong>not</strong> apply to live sensors unless they get disconnected.</li>
+                                </ul>
+                                <h5>Examples</h5>
+                                <p>A. The sensor has been scanned every 1-2 hours so no data gaps.</p>
+                                <figure class="ts-figure">
+                                    <img src="missingdata1.png" alt="Non-live sensor scan every 1-2 hours with no data gaps" loading="lazy">
+                                </figure>
+                                <p>B. There is a gap of more than 8 hours.</p>
+                                <figure class="ts-figure">
+                                    <img src="missingdata2.png" alt="Non-live sensor data showing a gap over 8 hours" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li>Last scan was at <strong>9:36 pm</strong>.</li>
+                                    <li>Next scan was at <strong>7:02 am</strong>.</li>
+                                    <li>This creates a <strong>10-hour gap</strong>.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="missingdata3.png" alt="Non-live sensor scan timestamps showing a 10-hour gap" loading="lazy">
+                                </figure>
+                                <p>Because non-live sensors only store data for <strong>8 hours</strong>, the user will see data for the last 8 hours but will miss the first 2 hours after the earlier scan.</p>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>Educate the user about scanning the sensor <strong>at least once every 8 hours</strong>.</li>
+                                    <li>No replacement is required in such cases.</li>
+                                </ul>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>sensor_scan_over_8_hours</code>, <code>sensor_how_many_times_to_scan</code>.</li>
+                                    <li>Macro: <code>Sensor_Scanning</code>.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-whitelisting" hidden>
                                 <h4>Whitelisting</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>m1_lite_int_whitelist_stint</code></p>
+                                <h5>Overview</h5>
+                                <p>In some cases, users may see an M1 <strong>Lite blocker</strong> even though they have purchased sensors directly from Ultrahuman. This issue is most commonly observed with users in Europe.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>Lite subscription blocker shown in the app similar to the screenshot attached below.</li>
+                                    <li>Inability to access M1 Live features despite purchasing sensors directly from us.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="whitelisting.png" alt="M1 Lite blocker screen requiring whitelisting" loading="lazy">
+                                </figure>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Ask the user for the <strong>purchase email ID</strong>.</li>
+                                    <li>Identify the user&#39;s region using the <strong>timezone</strong> shown.</li>
+                                    <li>If the user is from EU/UK, verify the purchase on Shopify EU/UK or using the <a href="https://docs.google.com/spreadsheets/d/10bV-76kmfIQ68E0_T3R-WCZGhPnUKakQz9edMXSMxO8/edit" target="_blank" rel="noopener noreferrer">Europe Orders Sheet</a>.</li>
+                                    <li>Confirm that the sensor was directly purchased from Ultrahuman.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>Once the purchase is verified, whitelist the stint.</li>
+                                    <li>Go to <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                    <li>Search using the user&#39;s email or external ID.</li>
+                                    <li>Mark the sensor as <strong>M1 Live</strong>.</li>
+                                    <li>Ask the user to <strong>kill and reopen</strong> the app.</li>
+                                    <li>Here&#39;s <a href="https://drive.google.com/file/d/1iwQFsrfNLljLMIYoGWKIkDJA7wYKUY-r/view" target="_blank" rel="noopener noreferrer">a visual walkthrough</a> for the same.</li>
+                                </ul>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>m1_lite_int_whitelist_stint</code>.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-libre-us" hidden>
                                 <h4>Libre 1, 2, or Pro in the US</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> US.</p>
+                                <h5>Overview</h5>
+                                <p>This applies to cases where users have purchased sensors in India and are using them in the US. Ultrahuman officially supports only <strong>Libre 3 Plus</strong> in the US, which cannot be scanned directly using the Ultrahuman app.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>No <strong>Scan</strong> button visible in the app.</li>
+                                    <li>Unable to scan their sensor in the US.</li>
+                                    <li>Sensor appears unsupported.</li>
+                                </ul>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Confirm that the user is currently located in the <strong>US</strong>.</li>
+                                    <li>Identify whether the user is using <strong>Libre 1, Libre 2, or Libre Pro</strong> purchased in India.</li>
+                                    <li>Explain that the Scan button is hidden because the app assumes the sensor is <strong>Libre 3 Plus</strong>.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <p>Create a manual stint to inform the app that the user is using a non-Libre 3 Plus sensor.</p>
+                                <p><strong>Steps:</strong></p>
+                                <ol>
+                                    <li>Copy the user&#39;s <strong>email ID</strong>.</li>
+                                    <li>Go to <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                    <li>Click <strong>New CGM Stint</strong>.</li>
+                                    <li>Paste the email ID.</li>
+                                    <li>Set <strong>Sensor Type</strong> to <strong>Libre 1 / Libre 2 / Libre Pro</strong>.</li>
+                                    <li>Enable <strong>Algo</strong>.</li>
+                                </ol>
+                                <p>Once completed, the user should start seeing the <strong>Scan</strong> button in the app.</p>
+                                <p>Here&#39;s <a href="https://drive.google.com/file/d/1z2fy6F0TLmvtQYYfsKCz8-CmapM9kLb5/view" target="_blank" rel="noopener noreferrer">a visual walkthrough</a> for the same.</p>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: None.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-us-sync" hidden>
                                 <h4>US M1 Sync Issues</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> US.</p>
+                                <p><strong>Related tags:</strong> <code>Libre3_integrationerror</code></p>
+                                <h5>Overview</h5>
+                                <p>In the US, Ultrahuman uses the <strong>Abbott Freestyle Libre 3 Plus</strong> sensor. The Libre 3 Plus does not connect directly with the Ultrahuman app. Instead, data flows through the Libre 3 Plus app and is then pulled into Ultrahuman via the integration provider <strong>Terra</strong>.</p>
+                                <p><strong>Data flow:</strong> Libre 3 Plus sensor &rarr; Libre 3 Plus app &rarr; Terra &rarr; Ultrahuman app.</p>
+                                <p>Users usually understand the connection flow. Most queries are related to data sync delays or missing data.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>Delay in glucose data syncing.</li>
+                                    <li>Missing readings in the Ultrahuman app.</li>
+                                    <li>Recent data not visible.</li>
+                                </ul>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Check if the integration is switched on: <a href="https://ops.ultrahuman.com/admin/integrations_users" target="_blank" rel="noopener noreferrer">Integrations Users</a>.</li>
+                                    <li>Confirm the <strong>Libre 3 Plus</strong> app is running in the background at all times.</li>
+                                    <li>Ensure the phone and sensor are in close proximity.</li>
+                                    <li>Check if the user&#39;s data is visible on the <a href="https://www.libreview.com/" target="_blank" rel="noopener noreferrer">LibreView dashboard</a>. <strong>This step is critical.</strong></li>
+                                    <li>Try a manual sync via <a href="https://ops.ultrahuman.com/admin/integrations_users" target="_blank" rel="noopener noreferrer">Integrations Users</a>.</li>
+                                    <li>Check <strong>CGM Stints</strong> on the Ultrahuman dashboard (a <strong>20 minute lag</strong> is expected in the US).</li>
+                                </ul>
+                                <h5>Credentials</h5>
+                                <p><strong>LibreView Dashboard</strong></p>
+                                <ul>
+                                    <li>Email: <a href="mailto:cyborg@ultrahuman.com">cyborg@ultrahuman.com</a></li>
+                                    <li>Password: <code>Ultra@human#25</code></li>
+                                </ul>
+                                <h5>Walkthroughs</h5>
+                                <ul>
+                                    <li><strong>Manual data sync:</strong> <a href="https://drive.google.com/file/d/1QatcbdFkK1gSgVmb5JzpK4_0HWFcHL7G/view" target="_blank" rel="noopener noreferrer">Link</a></li>
+                                    <li><strong>Checking data on LibreView:</strong> <a href="https://drive.google.com/file/d/1QQeGTEHSieF5e4UIMea6CgBuTrTmEkop/view" target="_blank" rel="noopener noreferrer">Link</a></li>
+                                </ul>
+                                <h5>Escalation</h5>
+                                <ul>
+                                    <li>If no data appears on LibreView, ensure the sensor is connected to the Libre 3 Plus app and the app is open in the background.</li>
+                                    <li>If the patient dashboard does not appear or the patient name is missing, flag the issue to <strong>Terra</strong>.</li>
+                                </ul>
+                                <h5>How to flag to Terra</h5>
+                                <ol>
+                                    <li>Visit <a href="https://dashboard.tryterra.co/" target="_blank" rel="noopener noreferrer">Terra Dashboard</a>.</li>
+                                    <li>Login using:
+                                        <ul>
+                                            <li>Email: <code>terrasuport@ultrahuman.com</code></li>
+                                            <li>Password: <code>@CXTeam2025</code></li>
+                                        </ul>
+                                    </li>
+                                    <li>Click on <strong>Support</strong> and create a ticket.</li>
+                                </ol>
+                                <h5>US tech issues - helpful notes</h5>
+                                <ul>
+                                    <li>If a user is not able to see readings in the app, glance at stints and see what time the last reading came in WRT the user&#39;s timezone. Check the LibreView dashboard.</li>
+                                    <li>The data on stints is shown as per the user&#39;s local time.</li>
+                                    <li>The calibration process remains the same. The only difference is that the user will have to compare the readings after <strong>40 minutes</strong> (20-minute interstitial lag + 20-minute lag for the data to flow in from the Libre app to our app).</li>
+                                    <li>There will be no States seen for Libre 3 Plus sensors, as these need not be scanned directly with our app.</li>
+                                    <li>Users can use externally procured Libre 3 Plus sensors with our app, no Lite subscription needed.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>If all checks are completed and everything looks correct, escalate the case to <strong>Terra</strong>.</li>
+                                    <li>Do <strong>not</strong> troubleshoot expired or near-expiry sensors for replacement under this flow.</li>
+                                </ul>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>Libre3_integrationerror</code>.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-multiple-accounts" hidden>
                                 <h4>Multiple Accounts Scan</h4>
-                                <p>Content coming soon.</p>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>sensor_multiple_accounts_scan</code></p>
+                                <h5>Overview</h5>
+                                <p>This issue occurs when a user attempts to scan a sensor using an email ID different from the one on which the sensor was originally activated.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>An error message shown on the app while scanning.</li>
+                                    <li>Scan appears to go through but no data is visible in the app.</li>
+                                    <li>Sensor age starting from a value other than 0.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="MultipleAccountScan.png" alt="Multiple accounts scan error message in the app" loading="lazy">
+                                </figure>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Check <strong>Sensor States</strong> and look for multiple email IDs associated with the same sensor.</li>
+                                    <li>If the sensor age has started from a number other than <strong>0</strong>, it indicates a multiple accounts scan issue.</li>
+                                    <li>Refer to this <a href="https://drive.google.com/file/d/1ZESvZ39t6BiP5V1B_ZeCMmTG4wzaoyS6/view" target="_blank" rel="noopener noreferrer">video</a> to identify the issue clearly.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>Identify the correct email ID the user wants to continue with.</li>
+                                    <li>Migrate the sensor to the user&#39;s preferred email ID.</li>
+                                </ul>
+                                <h5>How to identify all linked accounts</h5>
+                                <p>Since the <strong>sensor UID</strong> is the common denominator, filter using the UID to view all email IDs that have been used to scan the sensor.</p>
+                                <p>Here&#39;s <a href="https://drive.google.com/file/d/1XRs9z45YqHiVdF6fuUZwVcgZ3RFBimbQ/view" target="_blank" rel="noopener noreferrer">a step-by-step walkthrough</a>.</p>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>sensor_multiple_accounts_scan</code>.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                             <div class="ts-panel" id="ts-misc" hidden>
                                 <h4>Misc</h4>
