@@ -1790,12 +1790,12 @@ body.dark-mode .section::after {
 }
 
 .ts-panel {
-    padding: 1.1rem 1.25rem;
-    border-radius: 16px;
-    border: 1px solid rgba(148, 163, 184, 0.25);
-    background: #ffffff;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    background: transparent;
     color: #0f172a;
-    box-shadow: 0 18px 32px rgba(15, 23, 42, 0.08);
+    box-shadow: none;
 }
 
 .ts-figure {
@@ -2821,10 +2821,12 @@ body.dark-mode .ts-block.active {
 }
 
 body.dark-mode .ts-panel {
-    background: rgba(16, 20, 26, 0.88);
-    border-color: rgba(120, 130, 150, 0.18);
-    color: rgba(228, 232, 238, 0.92);
-    box-shadow: 0 18px 32px rgba(5, 7, 10, 0.55);
+    padding: 1.1rem 1.25rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0d0d0d;
+    color: rgba(235, 238, 244, 0.92);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.6);
 }
 
 body.dark-mode .ts-title {

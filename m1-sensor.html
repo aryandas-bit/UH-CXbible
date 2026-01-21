@@ -817,16 +817,131 @@
                         </ul>
                     </div>
 
-                    <div class="tab-content" id="m1-returns-tab" hidden>
-                        <h3>Replacements</h3>
-                        <ul>
-                            <li>Applicator fail: sensor doesn't release or pin missing. Request photos and replace.</li>
-                            <li>Sensor discomfort: rate pain 1-10. Replace for severe cases (7-10).</li>
-                            <li>Sensor knock-off cases: replace if user has UHX; non-UHX users are not eligible.</li>
-                        </ul>
+                    <div class="tab-content bv-pane" id="m1-returns-tab" hidden>
+                        <div class="bv-region-bar">
+                            <div class="bv-pill-tabs bv-region-tabs" role="tablist" aria-label="M1 Sensor Regions">
+                                <button type="button" class="bv-pill-button active" data-region-target="m1-returns-india" aria-selected="true">India</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-returns-uae" aria-selected="false">UAE</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-returns-europe-uk" aria-selected="false">Europe/UK</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-returns-usa" aria-selected="false">USA</button>
+                            </div>
+                        </div>
 
-                        <h3>Returns &amp; Refunds</h3>
-                        <p>Follow regional SOPs for eligibility checks, approvals, and payment method routing. Confirm whether a physical return is required before issuing a return label.</p>
+                        <div class="bv-region-pane active" id="m1-returns-india">
+                            <h3>Replacements</h3>
+                            <p>For Indian M1 sensors, <strong>replacement via OMS is not supported</strong>. All replacements must be processed manually.</p>
+                            <h4>Mandatory checks before replacement</h4>
+                            <p>Before proceeding, <strong>always complete both checks below</strong>:</p>
+                            <h5>1. Verify it is an internal sensor</h5>
+                            <p>Confirm the sensor was purchased as part of an <strong>Ultrahuman M1 plan</strong>.</p>
+                            <p>You can verify this via:</p>
+                            <ul>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a> (OMS).</li>
+                                <li>Invoice verification.
+                                    <ul>
+                                        <li>Invoice can be from Ultrahuman or authorized partners selling the <strong>Ultrahuman M1 plan</strong>.</li>
+                                        <li>The invoice <strong>must explicitly mention</strong> &ldquo;Ultrahuman M1&rdquo; or &ldquo;M1 Live plan&rdquo;.</li>
+                                        <li>If the invoice only shows <strong>Libre</strong> or <strong>Vixxa</strong>, it means the sensor was purchased externally and is <strong>not eligible</strong>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h5>2. Replacement quantity check</h5>
+                            <ul>
+                                <li>Ensure replacements issued are <strong>not more than 50%</strong> of the total sensors purchased by the user.</li>
+                                <li>If there are more than 50% replacements issued, we can process a refund for the user.</li>
+                                <li>Exceptions can be made <strong>only after SME or Lead approval</strong>.</li>
+                            </ul>
+                            <h4>Replacement process</h4>
+                            <p>Once both checks are cleared, fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=1214104749#gid=1214104749" target="_blank" rel="noopener noreferrer">India M1 Replacement Sheet</a> with accurate details:</p>
+                            <p><strong>Fields to be filled carefully:</strong></p>
+                            <ul>
+                                <li>Date - Date the request was raised.</li>
+                                <li>Email - User's purchase email.</li>
+                                <li>Comments - Address change for Shopify orders or address for Amazon or retail purchases.</li>
+                                <li>Purchased From - Source of purchase.</li>
+                                <li>Replacement Reason - Reason for replacement.</li>
+                                <li>Sensor to be Sent - Libre 1 or Vixxa.</li>
+                                <li>Faulty Sensor Type - Libre 1 or Vixxa.</li>
+                                <li>Sensor Age - Number of days the sensor worked.</li>
+                                <li>Sensor Count - Total sensors used (confirm via stints).</li>
+                                <li>Touchpoint - Chat, Email, Social, or Central Request.</li>
+                                <li>Quantity - Number of sensors to be sent.</li>
+                                <li>Old Order ID - Shopify order ID or retail store order ID and name.</li>
+                                <li>New Order ID - To be filled by Ops team (this can be later used to track the replacement status).</li>
+                                <li>RTO Status - Yes or No.</li>
+                            </ul>
+                            <p><strong>Ensure all fields are complete and accurate.</strong></p>
+                            <p>Aman Qureshi manually creates these orders on Shopify later.</p>
+                            <p>Tags: Relevant replacement tag subject to the case to be added.</p>
+
+                            <h3>Returns</h3>
+                            <h4>Replacement related returns</h4>
+                            <ul>
+                                <li><strong>Only Libre 1 sensors are RTO&#39;d.</strong></li>
+                                <li><strong>Libre Pro sensors are NOT RTO&#39;d.</strong></li>
+                                <li>For replacement related RTOs, no additional steps are required.</li>
+                                <li>Mark <strong>RTO: Yes or No</strong> directly in the <strong>India M1 Replacement Sheet</strong>.</li>
+                            </ul>
+                            <h4>Cancellation or refund related returns</h4>
+                            <ul>
+                                <li>Ask the user for a <strong>weekday RTO date</strong>.</li>
+                                <li>Post a request on <a href="https://ultrahumanworkspace.slack.com/archives/C034NJWKAVD" target="_blank" rel="noopener noreferrer">#cx-ops</a> Slack channel.</li>
+                                <li>Tag <strong>Aman Qureshi</strong>.</li>
+                                <li>Mention that it is an <strong>India M1 cancellation or refund related RTO</strong>.</li>
+                            </ul>
+                            <p>Tags: In case of RTOs please use <code>logistics_reverse_pick_up</code>.</p>
+
+                            <h3>Refunds</h3>
+                            <h4>Website one time purchases</h4>
+                            <ul>
+                                <li>Refunds can be processed via <strong>Shopify</strong>.</li>
+                                <li>Tag the <strong>SMEs</strong> to process the refund.</li>
+                                <li>Once done, fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">Refund Sheet</a>.</li>
+                            </ul>
+                            <h4>Outside or retail purchases</h4>
+                            <p>For purchases made via:</p>
+                            <ul>
+                                <li>Amazon</li>
+                                <li>Tata 1mg</li>
+                                <li>Other retail partners</li>
+                            </ul>
+                            <p>Steps:</p>
+                            <ul>
+                                <li>Verify the invoice.</li>
+                                <li>Raise a <strong>manual refund request</strong> on the <a href="https://ultrahumanworkspace.slack.com/archives/C03NG01PN3H" target="_blank" rel="noopener noreferrer">#cx-finance</a> channel.</li>
+                                <li>Fill the <em>eu-row-in-uae-bank-refund-form</em> form.</li>
+                            </ul>
+                            <h4>Subscription refunds</h4>
+                            <ul>
+                                <li>If a user requests a refund for a <strong>previous charge</strong> and we are stopping shipments or getting sensors RTO&#39;d, confirm whether cancelling the subscription allows a refund of the last charge.</li>
+                            </ul>
+                            <p>Tags: <code>sensor_refund</code> in cases where the refund is processed. <code>sensor_subscription_cancel</code> in cases where we are cancelling the subscription.</p>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-returns-uae" hidden>
+                            <h3>Replacements</h3>
+                            <p>Content coming soon.</p>
+
+                            <h3>Returns &amp; Refunds</h3>
+                            <p>Content coming soon.</p>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-returns-europe-uk" hidden>
+                            <h3>Replacements</h3>
+                            <p>Content coming soon.</p>
+
+                            <h3>Returns &amp; Refunds</h3>
+                            <p>Content coming soon.</p>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-returns-usa" hidden>
+                            <h3>Replacements</h3>
+                            <p>Content coming soon.</p>
+
+                            <h3>Returns &amp; Refunds</h3>
+                            <p>Content coming soon.</p>
+                        </div>
                     </div>
                 </div>
             </section>
