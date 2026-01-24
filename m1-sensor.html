@@ -159,11 +159,11 @@
                     </div>
 
                     <div class="tab-content" id="m1-troubleshooting-tab" hidden>
-                        <div class="ts-shell">
-                            <div class="ts-showcase">
-                                <h3 class="ts-title">Explore Troubleshooting</h3>
-                                <div class="ts-divider" aria-hidden="true"></div>
-                            </div>
+                        <div class="ts-showcase">
+                            <h3 class="ts-title">Explore Troubleshooting</h3>
+                            <div class="ts-divider" aria-hidden="true"></div>
+                        </div>
+                        <div class="ts-bubble">
                             <div class="ts-blocks" role="list" aria-label="Troubleshooting topics">
                                 <button type="button" class="ts-block active" data-ts-target="ts-applicator-fail" role="listitem">Applicator Fail</button>
                                 <button type="button" class="ts-block" data-ts-target="ts-sensor-discomfort" role="listitem">Sensor Discomfort</button>
@@ -182,7 +182,8 @@
                                 <button type="button" class="ts-block" data-ts-target="ts-multiple-accounts" role="listitem">Multiple Accounts Scan</button>
                                 <button type="button" class="ts-block" data-ts-target="ts-misc" role="listitem">Misc</button>
                             </div>
-                            <div class="ts-panels">
+                        </div>
+                        <div class="ts-panels">
                             <div class="ts-panel active" id="ts-applicator-fail">
                                 <h4>Applicator Fail</h4>
                                 <p>Users may report that the applicator pin is missing or that the applicator was triggered before placement. In both cases, the sensor cannot be applied after this happens.</p>
@@ -802,19 +803,687 @@
                             </div>
                             <div class="ts-panel" id="ts-misc" hidden>
                                 <h4>Misc</h4>
-                                <p>Content coming soon.</p>
-                            </div>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>sensor_app_usage_Q</code></p>
+                                <h5>Overview</h5>
+                                <p>The Ultrahuman app displays a disclaimer stating that CGM readings are <strong>not intended for diabetes management</strong>. Users can proceed with scanning the sensor only after accepting the <strong>Terms and Conditions</strong>.</p>
+                                <h5>What the user might see</h5>
+                                <ul>
+                                    <li>A disclaimer screen before scanning.</li>
+                                    <li>Unable to proceed without accepting T&amp;Cs.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="Misc.png" alt="Disclaimer screen requiring Terms and Conditions acceptance before scanning" loading="lazy">
+                                </figure>
+                                <h5>Agent diagnosis steps</h5>
+                                <ul>
+                                    <li>Confirm whether the user has accepted the <strong>Terms and Conditions</strong> in the app.</li>
+                                    <li>Inform the user that acceptance is mandatory to continue scanning the sensor.</li>
+                                </ul>
+                                <h5>Resolution</h5>
+                                <ul>
+                                    <li>Ask the user to accept the disclaimer and T&amp;Cs to proceed. Reference this <a href="https://drive.google.com/file/d/1n_XmLdxXks2tmST7hnAA-F9m860448ND/view" target="_blank" rel="noopener noreferrer">video</a>.</li>
+                                    <li>No further troubleshooting is required.</li>
+                                </ul>
+                                <h5>Tags &amp; macros</h5>
+                                <ul>
+                                    <li>Yellow tags: <code>sensor_app_usage_Q</code>.</li>
+                                    <li>Macro: None.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab-content" id="m1-logistics-tab" hidden>
-                        <h3>Logistics</h3>
-                        <ul>
-                            <li>Use the Ops dashboard for order status, shipment tracking, and delivery exceptions.</li>
-                            <li>Confirm region-specific SLAs and inventory updates with the local lead/SME.</li>
-                            <li>Address changes and reship requests require validation before actioning.</li>
-                        </ul>
+                    <div class="tab-content bv-pane" id="m1-logistics-tab" hidden>
+                        <div class="bv-region-bar">
+                            <div class="bv-pill-tabs bv-region-tabs" role="tablist" aria-label="M1 Logistics Regions">
+                                <button type="button" class="bv-pill-button active" data-region-target="m1-logistics-india" aria-selected="true">India</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-logistics-uae" aria-selected="false">UAE</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-logistics-europe-uk" aria-selected="false">Europe/UK</button>
+                                <button type="button" class="bv-pill-button" data-region-target="m1-logistics-usa" aria-selected="false">USA</button>
+                            </div>
+                        </div>
+
+                        <div class="bv-region-pane active" id="m1-logistics-india">
+                            <h3>Logistics</h3>
+                            <p><strong>Applicable regions:</strong> India.</p>
+                            <p><strong>Related tags:</strong> <code>M1_logistics_ETA</code></p>
+
+                            <h4>Sensors shipped in India</h4>
+                            <p>We ship two types of sensor plans in India:</p>
+                            <ol>
+                                <li>
+                                    <strong>M1 Plan</strong><br>
+                                    Freestyle Libre 1 (NFC enabled)
+                                </li>
+                                <li>
+                                    <strong>M1 Live Plan</strong><br>
+                                    GlucoRx's Vixxa 2 sensors - new launch (Bluetooth enabled)
+                                </li>
+                            </ol>
+
+                            <h4>Order flow</h4>
+                            <p>Sensors in India can be purchased through:</p>
+                            <ul>
+                                <li>One time purchase</li>
+                                <li>Subscription</li>
+                            </ul>
+
+                            <h4>One time purchases</h4>
+                            <h5>Plans available</h5>
+                            <p>One time purchases are standard Shopify orders. Available plans include:</p>
+                            <ul>
+                                <li><strong>2 weeks plan</strong> - 1 CGM delivered on purchase.</li>
+                                <li><strong>12 weeks plan</strong> - 6 CGMs delivered on purchase.</li>
+                                <li><strong>24 weeks plan</strong> - 12 CGMs delivered in batches or as per user demand to manage expiry.</li>
+                                <li><strong>52 weeks plan</strong> - 26 CGMs delivered in batches or as per user demand to manage expiry.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log1.png" alt="India one-time plan options for M1 orders" loading="lazy">
+                            </figure>
+
+                            <h5>Where to find one time purchase orders</h5>
+                            <p>You can locate one time purchases using:</p>
+                            <ul>
+                                <li><a href="https://admin.shopify.com/store/ultrahumanstore/" target="_blank" rel="noopener noreferrer">Shopify India</a> search using purchase email or order number.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> using email ID to fetch UHM reference number and tracking details.</li>
+                            </ul>
+                            <p>UHM is a reference number similar to UHR.</p>
+
+                            <h5>Order tracking</h5>
+                            <p>Tracking flow on Shopify:</p>
+                            <ul>
+                                <li>Open <a href="https://admin.shopify.com/store/ultrahumanstore/" target="_blank" rel="noopener noreferrer">Shopify for India</a>.</li>
+                                <li>Enter order number/purchase email ID.</li>
+                                <li>Click on the highlighted order number to open the tracking link.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log2.png" alt="Shopify India order tracking entry point" loading="lazy">
+                            </figure>
+                            <p>Tracking flow on OMS:</p>
+                            <ul>
+                                <li>Open <a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> on OMS.</li>
+                                <li>Enter the purchase email ID/order number.</li>
+                                <li>Click on <em>view</em> to review full order details or click on <em>track</em> to get the tracking details directly.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log3.png" alt="OMS M1 orders tracking and view options" loading="lazy">
+                            </figure>
+
+                            <h4>Subscription orders</h4>
+                            <h5>Plans available</h5>
+                            <ul>
+                                <li><strong>2 weeks plan</strong> - 1 CGM per month.</li>
+                                <li><strong>Full month plan</strong> - 2 CGMs per month.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log4.png" alt="India M1 subscription plan options" loading="lazy">
+                            </figure>
+
+                            <h5>Where to find India M1 subscriptions</h5>
+                            <p><a href="https://admin.shopify.com/store/ultrahumanstore/apps/recurpaydevelopment/subscriptions?pagination=1" target="_blank" rel="noopener noreferrer">Here’s the link to all India M1 Subscriptions</a>.</p>
+                            <p>Navigation path: Shopify India → Apps → Recurpay Subscriptions App → Subscriptions.</p>
+
+                            <h5>Order tracking</h5>
+                            <p>Each shipment in the subscription will be created as a separate order on Shopify on a monthly basis. It will appear as the <strong>Ultrahuman M1 Monthly</strong> product.</p>
+                            <figure class="ts-figure">
+                                <img src="log5.png" alt="Shopify monthly subscription order entry for M1" loading="lazy">
+                            </figure>
+
+                            <h4>Subscription management</h4>
+                            <h5>1. View subscription</h5>
+                            <ul>
+                                <li>Head to <a href="https://ultrahumanstore-1.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">India M1 Subscriptions</a>.</li>
+                                <li>Enter the user&#39;s email.</li>
+                            </ul>
+
+                            <h5>2. Pause or cancel subscription</h5>
+                            <ul>
+                                <li><a href="https://ultrahumanstore-1.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">India M1 Subscriptions</a> → enter email ID.</li>
+                                <li>Click Cancel or Pause.</li>
+                                <li>Put a check on the notification checkbox.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log6.png" alt="Recurpay cancel or pause subscription view" loading="lazy">
+                            </figure>
+                            <ul>
+                                <li>Click Cancel Subscription accordingly.</li>
+                            </ul>
+
+                            <h5>3. Change next order date</h5>
+                            <p>Used when a user has enough sensors and wants delivery later.</p>
+                            <ul>
+                                <li><a href="https://ultrahumanstore-1.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">India M1 Subscriptions</a> → enter email ID.</li>
+                                <li>Click &ldquo;Change&rdquo; beside &ldquo;Next Order Date&rdquo;.</li>
+                                <li>Select date → Update Next Order Date.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log7.png" alt="Change next order date in Recurpay subscription" loading="lazy">
+                            </figure>
+
+                            <h5>4. Important RBI guideline note</h5>
+                            <p>Due to RBI guidelines, if the renewal date is within 24 hours of pause or cancellation, the order might still be placed.</p>
+                            <p>We handle this by:</p>
+                            <ul>
+                                <li>Informing the user while pausing or cancelling.</li>
+                                <li>Letting them know we can cancel and refund if the order still goes through.</li>
+                            </ul>
+
+                            <h5>5. Important subscription change note</h5>
+                            <p>Any changes made inside the subscription tab like shipping address or contact information will apply to the entire subscription and carry forward to <strong>future orders</strong>.</p>
+
+                            <h5>6. Address change for current month only</h5>
+                            <p>If the user wants the current month delivered to a different address:</p>
+                            <ul>
+                                <li>Find the order ID for that month.</li>
+                                <li>Make the address change on that order only.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="log8.png" alt="Editing address on the current month's order only" loading="lazy">
+                            </figure>
+
+                            <h5>7. Avoid editing address and contact on subscription ID</h5>
+                            <p>Avoid making changes to contact details and address on the subscription ID itself.</p>
+                            <figure class="ts-figure">
+                                <img src="log9.png" alt="Subscription ID address/contact fields to avoid editing" loading="lazy">
+                            </figure>
+
+                            <h5>8. Cancellation handling guidance</h5>
+                            <ul>
+                                <li>Suggest skipping or changing the next order date first.</li>
+                                <li>Push for pause over cancellation since it is easier for the user to restart later.</li>
+                                <li>Cancellation or pause does not stop an order already placed; it stops future orders only.</li>
+                                <li>If an order is placed and the user cancels after, that already placed order will still remain.</li>
+                            </ul>
+                            <p>Ops communication: inform Ops if shipment should not be sent or needs to be picked up.</p>
+
+                            <h4>Ops POC</h4>
+                            <p><strong>Aman Qureshi</strong> from UH Ops handles all M1 related ops in India including shipping, order tracking, replacements, and RTO.</p>
+                            <p>All communication with Aman Qureshi can be handled through the <a href="https://ultrahumanworkspace.slack.com/archives/C034NJWKAVD" target="_blank" rel="noopener noreferrer">#cx-ops</a> Slack channel.</p>
+
+                            <h4>Courier partner</h4>
+                            <p>BlueDart handles most Indian M1 orders. Exceptions may apply for remote locations. Aman Qureshi coordinates with the courier in case of issues.</p>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-logistics-uae" hidden>
+                            <h3>Logistics</h3>
+                            <p><strong>Related tags:</strong> <code>M1_logistics_ETA</code></p>
+
+                            <h4>Sensors shipped in UAE</h4>
+                            <p>We currently ship:</p>
+                            <ul>
+                                <li><strong>Freestyle Libre 2 Plus</strong> sensors.</li>
+                                <li>Some older users may still have <strong>Libre 2</strong>.</li>
+                            </ul>
+
+                            <h4>Order flow</h4>
+                            <p>Sensors in UAE can be purchased through:</p>
+                            <ul>
+                                <li>One time purchase</li>
+                                <li>Subscription</li>
+                            </ul>
+
+                            <h4>One time purchases</h4>
+                            <h5>Plans available</h5>
+                            <p>One time purchases are standard Shopify orders. Available plans include:</p>
+                            <ul>
+                                <li><strong>1 month plan</strong> - 2 CGMs delivered on purchase.</li>
+                                <li><strong>3 months plan</strong> - 6 CGMs delivered on purchase.</li>
+                                <li><strong>6 months plan</strong> - 13 CGMs delivered in batches to manage expiry.</li>
+                                <li><strong>1 year plan</strong> - 26 CGMs delivered in batches to manage expiry.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu.png" alt="UAE one-time plan options for M1 orders" loading="lazy">
+                            </figure>
+
+                            <h5>Where to find one time orders</h5>
+                            <p>You can locate one time purchases using:</p>
+                            <ul>
+                                <li><a href="https://admin.shopify.com/store/ultrahuman-mena/" target="_blank" rel="noopener noreferrer">UAE Shopify</a> search using purchase email or order number.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> using email ID to fetch UHM reference number and tracking details.</li>
+                            </ul>
+                            <p>UHM is a reference number similar to UHR.</p>
+
+                            <h5>Order tracking</h5>
+                            <p>Tracking flow for Shopify:</p>
+                            <ul>
+                                <li>Open <a href="https://admin.shopify.com/store/ultrahuman-mena" target="_blank" rel="noopener noreferrer">Shopify for UAE</a>.</li>
+                                <li>Enter order number/purchase email ID.</li>
+                                <li>Click the highlighted order number to open the tracking link.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu1.png" alt="UAE Shopify order tracking entry point" loading="lazy">
+                            </figure>
+                            <p>Tracking flow on OMS:</p>
+                            <ul>
+                                <li>Open <a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> on OMS.</li>
+                                <li>Enter the purchase email ID/order number.</li>
+                                <li>Click on <em>view</em> to review full order details or click on <em>track</em> to get the tracking details directly.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu2.png" alt="OMS M1 orders tracking and view options for UAE" loading="lazy">
+                            </figure>
+
+                            <h4>Subscription orders</h4>
+                            <h5>Plans available</h5>
+                            <ul>
+                                <li>Subscription: <strong>2 CGMs per month</strong>.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu3.png" alt="UAE M1 subscription plan view" loading="lazy">
+                            </figure>
+
+                            <h5>Where to find UAE M1 subscriptions</h5>
+                            <p><a href="https://ultrahuman-mena.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">Here’s the link to all UAE M1 Subscriptions</a>.</p>
+                            <p>Navigation path: UAE Shopify → Apps → Recurpay Subscriptions App → Subscriptions.</p>
+
+                            <h5>Order tracking</h5>
+                            <p>Each shipment in the subscription will be created as a separate order on Shopify on a monthly basis. It will appear as the <strong>Ultrahuman M1 Monthly</strong> product.</p>
+                            <figure class="ts-figure">
+                                <img src="logu4.png" alt="UAE subscription order entry for M1 monthly" loading="lazy">
+                            </figure>
+
+                            <h4>Subscription management</h4>
+                            <h5>1. View subscription</h5>
+                            <ul>
+                                <li>Head to <a href="https://ultrahuman-mena.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">UAE M1 Live Subscriptions</a>.</li>
+                                <li>Enter the user&#39;s email.</li>
+                            </ul>
+
+                            <h5>2. Pause or cancel subscription</h5>
+                            <ul>
+                                <li><a href="https://ultrahuman-mena.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">UAE M1 Live Subscriptions</a> → enter email ID.</li>
+                                <li>Click Cancel or Pause.</li>
+                                <li>Put a check on the notification checkbox.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu5.png" alt="UAE Recurpay cancel or pause subscription view" loading="lazy">
+                            </figure>
+                            <ul>
+                                <li>Click Cancel Subscription accordingly.</li>
+                            </ul>
+
+                            <h5>3. Change next order date</h5>
+                            <p>Used when a user has enough sensors and wants delivery later.</p>
+                            <ul>
+                                <li><a href="https://ultrahuman-mena.recurpay.com/subscriptions" target="_blank" rel="noopener noreferrer">UAE M1 Live Subscriptions</a> → enter email ID.</li>
+                                <li>Click &ldquo;Change&rdquo; beside &ldquo;Next Order Date&rdquo;.</li>
+                                <li>Select date → Update Next Order Date.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu6.png" alt="Change next order date in UAE Recurpay subscription" loading="lazy">
+                            </figure>
+
+                            <h5>4. Important RBI guideline note</h5>
+                            <p>Due to RBI guidelines, if the renewal date is within 24 hours of pause or cancellation, the order might still be placed.</p>
+                            <p>We handle this by:</p>
+                            <ul>
+                                <li>Informing the user while pausing or cancelling.</li>
+                                <li>Letting them know we can cancel and refund if the order still goes through.</li>
+                            </ul>
+
+                            <h5>5. Important subscription change note</h5>
+                            <p>Any changes made inside the subscription tab like shipping address or contact information will apply to the entire subscription and carry forward to <strong>future orders</strong>.</p>
+
+                            <h5>6. Address change for current month only</h5>
+                            <p>If the user wants the current month delivered to a different address:</p>
+                            <ul>
+                                <li>Find the order ID for that month.</li>
+                                <li>Make the address change on that order only.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logu7.png" alt="Editing address on the current month's order for UAE" loading="lazy">
+                            </figure>
+
+                            <h5>7. Avoid editing address and contact on subscription ID</h5>
+                            <p>Avoid making changes to contact details and address on the subscription ID itself.</p>
+                            <figure class="ts-figure">
+                                <img src="logu8.png" alt="Subscription ID address/contact fields to avoid editing for UAE" loading="lazy">
+                            </figure>
+
+                            <h5>8. Cancellation handling guidance</h5>
+                            <ul>
+                                <li>Suggest skipping or changing the next order date first.</li>
+                                <li>Push for pause over cancellation since it is easier for the user to restart later.</li>
+                                <li>Cancellation or pause does not stop an order already placed; it stops future orders only.</li>
+                                <li>If an order is placed and the user cancels after, that already placed order will still remain.</li>
+                            </ul>
+                            <p>Ops communication: inform Ops if shipment should not be sent or needs to be picked up.</p>
+
+                            <h4>Ops POC</h4>
+                            <p><strong>Violet George</strong>, from the IQF team, is the POC for all UAE orders shipped within UAE.</p>
+                            <p>All communication with Violet George can be handled through the <a href="https://ultrahumanworkspace.slack.com/archives/C07A90YV2BV" target="_blank" rel="noopener noreferrer">#cx_iqf_ops_support</a> Slack channel.</p>
+
+                            <h4>Fulfilment notes</h4>
+                            <ul>
+                                <li>M1 Live CGM sensors are shipped to users directly from the UAE warehouse via IQF.</li>
+                                <li>Sensors are shipped from India to UAE and then to users.</li>
+                                <li>For shipping from India to UAE, we can loop in <strong>Deepti S</strong> or <strong>Aman Qureshi</strong>.</li>
+                            </ul>
+
+                            <h4>Courier partner</h4>
+                            <p><strong>IQF</strong> handles logistics for everything in UAE.</p>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-logistics-europe-uk" hidden>
+                            <h3>Logistics</h3>
+                            <p><strong>Related tags:</strong> <code>M1_logistics_ETA</code></p>
+
+                            <h4>Sensors shipped in EU / UK</h4>
+                            <p>We currently ship:</p>
+                            <ul>
+                                <li><strong>Freestyle Libre 2 Plus</strong> sensors (Bluetooth enabled).</li>
+                                <li>Some older users may still have <strong>Libre 2</strong>.</li>
+                            </ul>
+
+                            <h4>Order flow</h4>
+                            <ul>
+                                <li>EU / UK currently supports <strong>one time purchases only</strong>.</li>
+                                <li>No subscription flow for these regions.</li>
+                            </ul>
+
+                            <h4>One time purchases</h4>
+                            <h5>Plans available</h5>
+                            <h6>UK plans</h6>
+                            <ul>
+                                <li><strong>2 weeks trial</strong> - 1 CGM.</li>
+                                <li><strong>4 weeks</strong> - 2 CGMs.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="loge.png" alt="UK one-time M1 plan options" loading="lazy">
+                            </figure>
+                            <h6>EU plans</h6>
+                            <ul>
+                                <li><strong>4 weeks</strong> - 2 CGMs.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="loge1.png" alt="EU one-time M1 plan options" loading="lazy">
+                            </figure>
+                            <p>Please note: United Kingdom (UK) is in Europe but not a part of European Union.</p>
+
+                            <h4>Finding orders</h4>
+                            <p>Orders can be purchased:</p>
+                            <ul>
+                                <li>Via website as a standard order.</li>
+                                <li>Or via in app purchase or Apple Pay, which gets captured on Stripe and does not appear on Shopify.</li>
+                            </ul>
+
+                            <h4>Flow 1: Website purchases</h4>
+                            <p>These orders show up on Shopify and OMS.</p>
+                            <h5>Where to find the order</h5>
+                            <p>You can locate orders using:</p>
+                            <ul>
+                                <li><a href="https://admin.shopify.com/store/ultrahuman-eu-uk/" target="_blank" rel="noopener noreferrer">EU / UK Shopify</a> search using purchase email or order number.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> using email ID to fetch UHM reference number and tracking details.</li>
+                            </ul>
+                            <p>UHM is a reference number similar to UHR.</p>
+
+                            <h5>Order tracking</h5>
+                            <p>Tracking flow for Shopify:</p>
+                            <ul>
+                                <li>Open <a href="https://admin.shopify.com/store/ultrahuman-eu-uk/" target="_blank" rel="noopener noreferrer">EU / UK Shopify</a>.</li>
+                                <li>Enter order number/purchase email ID.</li>
+                                <li>Click the highlighted order number to open the tracking link.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="loge2.png" alt="EU/UK Shopify order tracking entry point" loading="lazy">
+                            </figure>
+                            <p>Tracking flow on OMS:</p>
+                            <ul>
+                                <li>Open <a href="https://ops.ultrahuman.com/admin/cgm_orders" target="_blank" rel="noopener noreferrer">M1 Orders (Non USA)</a> on OMS.</li>
+                                <li>Enter the purchase email ID/order number.</li>
+                                <li>Click on <em>view</em> to review full order details or click on <em>track</em> to get the tracking details directly.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="loge3.png" alt="OMS tracking and view options for EU/UK orders" loading="lazy">
+                            </figure>
+
+                            <h4>Flow 2: In app purchase or Apple Pay</h4>
+                            <p>These payments are captured directly on Stripe and may not appear on Shopify.</p>
+                            <h5>Steps</h5>
+                            <ol>
+                                <li>Ask the user for:
+                                    <ul>
+                                        <li>Purchase email ID</li>
+                                        <li>Full name</li>
+                                        <li>Contact number</li>
+                                    </ul>
+                                </li>
+                                <li>Use these sheets to search the order:
+                                    <ul>
+                                        <li><a href="https://docs.google.com/spreadsheets/d/1cWuHZWEkW0RwG_c38hDWsu41D5FhZuzJTLI5gr7fjzc/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">UK, Ireland, Switzerland orders with Arrowedge sheet</a></li>
+                                        <li><a href="https://docs.google.com/spreadsheets/d/10bV-76kmfIQ68E0_T3R-WCZGhPnUKakQz9edMXSMxO8/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Europe Orders sheet</a></li>
+                                    </ul>
+                                </li>
+                                <li>If the order is on the sheet, we can get the order status or tracking link to share with the user.</li>
+                                <li>If the order is not on the sheet:
+                                    <ul>
+                                        <li>It means we either have not received the order or Deepti S has not processed it yet.</li>
+                                        <li>Check with the folks who have access to Stripe.</li>
+                                        <li>They will confirm if we have received the order.</li>
+                                        <li>If yes, tag Deepti S on Slack in <a href="https://ultrahumanworkspace.slack.com/archives/C01N57P1DD0" target="_blank" rel="noopener noreferrer">#uk-europe-stripe-payments</a> for the particular transaction.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <figure class="ts-figure">
+                                <img src="loge4.png" alt="Example Stripe payment reference for EU/UK orders" loading="lazy">
+                            </figure>
+                            <p>Alternatively, create a new thread on <a href="https://ultrahumanworkspace.slack.com/archives/C034NJWKAVD" target="_blank" rel="noopener noreferrer">#cx-ops</a> and tag Deepti S for help. Example thread attached <a href="https://ultrahumanworkspace.slack.com/archives/C034NJWKAVD/p1758466900783009" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                            <p><strong>ETA:</strong> 5 to 7 days.</p>
+                            <p>The tracking link will be updated on Shopify, OMS, or the relevant sheet depending on the order source.</p>
+                            <p>As a basic check, please review all possible locations for the tracking link for the order. If it is not found anywhere, then it can be flagged as mentioned above.</p>
+
+                            <h4>Ops POC</h4>
+                            <p>Deepti S handles shipping and tracking related queries for EU / UK.</p>
+
+                            <h4>Courier partner</h4>
+                            <p>Courier varies by location:</p>
+                            <ul>
+                                <li>FedEx</li>
+                                <li>Royal Mail</li>
+                                <li>Others depending on region</li>
+                            </ul>
+                        </div>
+
+                        <div class="bv-region-pane" id="m1-logistics-usa" hidden>
+                            <h3>Logistics</h3>
+                            <p><strong>Related tags:</strong> Use these tags for US cases:</p>
+                            <ul>
+                                <li><code>M1_US_Prescription</code> for prescription request questions.</li>
+                                <li><code>M1_US_Techissue</code> for tech issues, app not working, unable to link sensor.</li>
+                                <li><code>M1_US_Faq</code> for US specific enquiries.</li>
+                            </ul>
+
+                            <h4>Sensors shipped in USA</h4>
+                            <p>We currently ship:</p>
+                            <ul>
+                                <li><strong>Freestyle Libre 3 Plus</strong> sensors.</li>
+                                <li>Some older users may still have <strong>Libre 3</strong>.</li>
+                            </ul>
+
+                            <h4>Order flow</h4>
+                            <p>Sensors in USA can be purchased through:</p>
+                            <ul>
+                                <li>One time purchase</li>
+                                <li>Subscription</li>
+                            </ul>
+
+                            <h4>Purchase plans</h4>
+                            <h5>One time purchase plans</h5>
+                            <ul>
+                                <li><strong>1 month</strong> - 2 CGMs.</li>
+                                <li><strong>3 months</strong> - 6 CGMs.</li>
+                                <li><strong>1 year</strong> - 26 CGMs.</li>
+                            </ul>
+                            <h5>Subscription plan</h5>
+                            <ul>
+                                <li><strong>Subscription</strong> - 2 CGMs per month.</li>
+                            </ul>
+                            <p>Please note: Both plans are traceable on <a href="https://ops.ultrahuman.com/admin/foundation_health_requests" target="_blank" rel="noopener noreferrer">Foundation Health Requests</a> (OMS).</p>
+                            <p>For both purchase types:</p>
+                            <ul>
+                                <li>Payments are managed via <strong>Stripe UAE</strong>.</li>
+                                <li>Subscription management is also handled via <strong>Stripe UAE</strong>.</li>
+                            </ul>
+
+                            <h4>Where to find US orders</h4>
+                            <p>All M1 US orders are available under <a href="https://ops.ultrahuman.com/admin/foundation_health_requests" target="_blank" rel="noopener noreferrer">Foundation Health Requests</a> on OMS.</p>
+                            <p>Internal Order IDs start with <strong>UHM</strong>.</p>
+
+                            <h4>Order flow</h4>
+                            <p>Payment received &rarr; Medical form submitted &rarr; Telehealth review &rarr; Rejected or consultation created &rarr; Shipped and delivered &rarr; Request completed.</p>
+                            <p>Notes:</p>
+                            <ul>
+                                <li>TAT for acceptance or rejection is usually 24 hours.</li>
+                                <li>FHS number is created only once the medical form has been accepted.</li>
+                            </ul>
+
+                            <h4>Foundation Health Slack support</h4>
+                            <p>Slack channel: <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H" target="_blank" rel="noopener noreferrer">#ultrahuman-cx-foundation-health</a></p>
+                            <p>Team members:</p>
+                            <ul>
+                                <li>Abdul Akhtar: project POC for non technical queries.</li>
+                                <li>Rachel Ho: FH team member.</li>
+                            </ul>
+                            <h5>What to flag in #ultrahuman-cx-foundation-health</h5>
+                            <ol>
+                                <li>Expediting orders or replacements.</li>
+                                <li>Telehealth review stuck.</li>
+                                <li>Prescriptions - these are sent via email by default, but if user has not received it, we can ask Rachel.</li>
+                                <li>Order stuck in Prescription requested state.</li>
+                                <li>Address update (flag to keep them in the loop).</li>
+                            </ol>
+                            <p>Important: Always share the <strong>FHS number (Shipment ID)</strong> with Rachel or FH team. UHM is an internal reference and they will not be able to map it.</p>
+                            <p>Additional reference:</p>
+                            <ul>
+                                <li>FHS is created only after the medical consult form is accepted. Slack reference <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1708942675887649?thread_ts=1708918577.228329&cid=C06JHEUS43H" target="_blank" rel="noopener noreferrer">here</a>.</li>
+                                <li>FHS can be located by following these steps: <a href="https://ops.ultrahuman.com/admin/foundation_health_requests" target="_blank" rel="noopener noreferrer">Foundation Health Requests</a> → enter email → view → shipments → shipment ID.</li>
+                            </ul>
+
+                            <h4>What to flag to our tech team</h4>
+                            <ul>
+                                <li>Payment has come in and shows up on Stripe, but no order is created on the dashboard. Example thread <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1722427822303279" target="_blank" rel="noopener noreferrer">here</a>.</li>
+                                <li>For address update, always flag using the <strong>UHM</strong>. Example thread <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1723027202072999" target="_blank" rel="noopener noreferrer">here</a>.</li>
+                                <li>For a change in the user&#39;s next order date/batch shipping.</li>
+                            </ul>
+
+                            <h4>Subscription management</h4>
+                            <p>Subscription management is handled via Stripe.</p>
+                            <h5>Steps</h5>
+                            <ul>
+                                <li>Go to Stripe UAE and enter user email or name.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logus.png" alt="Stripe UAE search for US M1 subscriptions" loading="lazy">
+                            </figure>
+                            <ul>
+                                <li>Open the user subscription.</li>
+                                <li>Click Actions in the top right corner.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logus1.png" alt="Stripe subscription actions menu" loading="lazy">
+                            </figure>
+                            <ul>
+                                <li>Based on request:
+                                    <ul>
+                                        <li>Pause payment subscription or delay till specific date. Click on Pause payment collection &rarr; Indefinite if that is the ask, or &ldquo;Custom date&rdquo; and enter the date till it is to be paused.</li>
+                                        <li>We can also click on &ldquo;Cancel subscription&rdquo; if that is what user wants.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="logus2.png" alt="Stripe pause payment collection options" loading="lazy">
+                            </figure>
+
+                            <h4>Batch shipping requests</h4>
+                            <p>Batch shipping is only for 1 year plan.</p>
+                            <p>How to handle:</p>
+                            <ul>
+                                <li>Flag tech on call with the UHM.</li>
+                                <li>Ask them to create the next order as per user request.</li>
+                            </ul>
+                            <p>No need to involve Rachel or HEWA for batch shipping requests.</p>
+                            <figure class="ts-figure">
+                                <img src="logus3.png" alt="Batch shipping notes for US 1-year plan" loading="lazy">
+                            </figure>
+                            <p>Sensors are shipped in batches only for the 1-year plan. If a user reaches out asking for multiple batches to be shipped out, flag tech with the UHM and ask them to create the next order or merge the next 2 orders.</p>
+                            <p>The next order creation dates are visible on the user&#39;s profile; you can ask tech to change the dates if needed, as per the user&#39;s request. Example thread <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1723930349908359" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                            <figure class="ts-figure">
+                                <img src="logus4.png" alt="Example next order date management for US batch shipping" loading="lazy">
+                            </figure>
+                            <p>If Rachel says she is unable to find the FHS ID (marked in red) on her end, you can share the FH order ID (marked in yellow). Either way, for batch shipping date management, it is primarily managed from our end. Nothing much FH can do.</p>
+
+                            <h4>HEWA</h4>
+                            <p>HEWA is Foundation Health&rsquo;s fulfillment and pharmacy partner.</p>
+                            <p>Email: <a href="mailto:hewa-ultrahuman-support@healthwarehouse.com">hewa-ultrahuman-support@healthwarehouse.com</a></p>
+                            <h5>What we can flag to HEWA</h5>
+                            <ul>
+                                <li>No update in tracking link.</li>
+                                <li>Shipment stuck.</li>
+                                <li>Expediting (can also tell Rachel).</li>
+                                <li>Order refunded and should not ship.</li>
+                                <li>Share FHS ID and user email ID with them.</li>
+                            </ul>
+                            <h5>Email SOP</h5>
+                            <p>Send email to:</p>
+                            <ul>
+                                <li>To: <a href="mailto:hewa-ultrahuman-support@healthwarehouse.com">hewa-ultrahuman-support@healthwarehouse.com</a> (Ultrahuman × HealthWarehouse mailbox).</li>
+                                <li>Cc: <a href="mailto:support@foundationhealth.com">support@foundationhealth.com</a>.</li>
+                            </ul>
+                            <p>For visibility and to avoid billing issues, clearly state in the email if the order is:</p>
+                            <ul>
+                                <li>On hold</li>
+                                <li>Needs to be expedited</li>
+                                <li>Canceled</li>
+                            </ul>
+
+                            <h4>Address updates in the US</h4>
+                            <p>Address updates must be done on our end first.</p>
+                            <p>Steps:</p>
+                            <ul>
+                                <li>Flag tech on call with UHM or FHS and new address.</li>
+                                <li>You can loop in HEWA and Rachel for visibility.</li>
+                            </ul>
+                            <p>Last minute address changes:</p>
+                            <ul>
+                                <li>If order not shipped, email HEWA and also get address updated by tech.</li>
+                                <li>If sensor in transit, HEWA cannot update address. Only option is sending another sensor to updated address.</li>
+                            </ul>
+
+                            <h4>Unique cases</h4>
+                            <h5>1. Paid but no confirmation</h5>
+                            <p>User has paid but has not received confirmation and status shows Payment received. This happens when the user has not filled the telehealth form.</p>
+                            <p>Examples: <a href="https://ops.ultrahuman.com/admin/foundation_health_requests/572" target="_blank" rel="noopener noreferrer">User 1</a>, <a href="https://ops.ultrahuman.com/admin/foundation_health_requests/577" target="_blank" rel="noopener noreferrer">User 2</a>.</p>
+                            <figure class="ts-figure">
+                                <img src="logus5.png" alt="US payment received status awaiting telehealth form" loading="lazy">
+                            </figure>
+                            <figure class="ts-figure">
+                                <img src="logus6.png" alt="Telehealth form link highlighted for user" loading="lazy">
+                            </figure>
+                            <p>Action:</p>
+                            <ul>
+                                <li>Share the unique telehealth form link (highlighted) shown for that specific user.</li>
+                                <li>Ask them to fill it out.</li>
+                                <li>Please bear in mind that this link is unique to each user; ensure the link pertaining to that specific user is being shared with them.</li>
+                            </ul>
+                            <h5>2. Review in process for too long</h5>
+                            <p>If status shows Review in process for an extended period, flag on Slack channel.</p>
+                            <p>Flag this in <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H" target="_blank" rel="noopener noreferrer">#ultrahuman-cx-foundation-health</a>.</p>
+
+                            <h4>Order placement limitation</h4>
+                            <p>If user has placed a 3 month order, they cannot place a fresh one for the next 3 months using the same email.</p>
+                            <p>If it is a 1 month order, they cannot place another for a month.</p>
+                            <p>Reason: governing law in the US. If user has an active prescription, they cannot place another order.</p>
+                            <p>Users may use an alternate email on their own, but we do not recommend, suggest, or mention it.</p>
+
+                            <h4>Common M1 US queries and references</h4>
+                            <ol>
+                                <li>User ordered 3 months thinking they can split sensors with husband - <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1714345635635349" target="_blank" rel="noopener noreferrer">thread</a>.</li>
+                                <li>User requested partial refund for balance sensors - <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1712463054149229" target="_blank" rel="noopener noreferrer">thread</a>.</li>
+                                <li>Monthly recurring subscription order shows order_pending - <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1711806288026569" target="_blank" rel="noopener noreferrer">thread</a>.</li>
+                                <li>Order created but not shipped and delayed - <a href="https://ultrahumanworkspace.slack.com/archives/C06JHEUS43H/p1714448230186519" target="_blank" rel="noopener noreferrer">thread</a>.</li>
+                            </ol>
+                        </div>
                     </div>
 
                     <div class="tab-content bv-pane" id="m1-returns-tab" hidden>
@@ -921,26 +1590,272 @@
 
                         <div class="bv-region-pane" id="m1-returns-uae" hidden>
                             <h3>Replacements</h3>
-                            <p>Content coming soon.</p>
+                            <p>For UAE sensors, <strong>replacement via OMS is not supported</strong>. All replacements must be processed manually.</p>
+                            <h4>Mandatory checks before replacement</h4>
+                            <p>Before issuing a replacement, always complete both checks:</p>
+                            <h5>1. Confirm it is an internal sensor</h5>
+                            <p>You can verify this via:</p>
+                            <ul>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a> (OMS).</li>
+                                <li>Invoice check.
+                                    <ul>
+                                        <li>Invoice can be from Ultrahuman or authorised partners selling the Ultrahuman M1 plan.</li>
+                                        <li>Invoice must mention <strong>Ultrahuman M1 plan</strong>.</li>
+                                        <li>If invoice shows only Libre 2 or Libre 2 Plus, it indicates an outside purchase and cannot be replaced from us.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h5>2. Replacement quantity check</h5>
+                            <ul>
+                                <li>Ensure replacements issued are <strong>not more than 50%</strong> of the total sensors purchased by the user.</li>
+                                <li>If there are more than 50% replacements issued, we can process a refund for the user.</li>
+                                <li>Exceptions can be made <strong>only after SME or Lead approval</strong>.</li>
+                            </ul>
+                            <h4>Replacement process</h4>
+                            <p>Once both checks are cleared, fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=160138986#gid=160138986" target="_blank" rel="noopener noreferrer">UAE User req sheet</a> with accurate details.</p>
+                            <p><strong>Fields to be filled carefully:</strong></p>
+                            <ul>
+                                <li>Date - Date the request was raised.</li>
+                                <li>Email - User's purchase email.</li>
+                                <li>Comments - Address change for Shopify orders or address for Amazon/retail purchases.</li>
+                                <li>Request - Specify the request (replacement in this case).</li>
+                                <li>Reasons - Reason for replacement.</li>
+                                <li>Original order location - UAE.</li>
+                                <li>Faulty Sensor Type - Libre 2 or Libre 2 Plus.</li>
+                                <li>Sensor to be Sent - Libre 2 or Libre 2 Plus.</li>
+                                <li>Sensor Age - Number of days the sensor worked.</li>
+                                <li>Sensor Count - Total sensors used (confirm via stints).</li>
+                                <li>Sensor UID - Can be found in stints.</li>
+                                <li>Touchpoint - Chat, Email, Social, or Central Request.</li>
+                                <li>Last Order ID - Shopify order ID or retail store order ID and name.</li>
+                                <li>Quantity - Number of sensors to be sent.</li>
+                                <li>RTO Possibility - Yes or No.</li>
+                                <li>Shopify Order created - To be filled by Ops team (this can be later used to track the replacement status).</li>
+                            </ul>
+                            <p><strong>Ensure all fields are complete and accurate.</strong></p>
+                            <p>Ops team manually creates these orders on Shopify later.</p>
+                            <p>Tags: Relevant replacement tag subject to the case to be added.</p>
 
-                            <h3>Returns &amp; Refunds</h3>
-                            <p>Content coming soon.</p>
+                            <h3>Returns</h3>
+                            <h4>General UAE RTO rule</h4>
+                            <ul>
+                                <li>We RTO <strong>all sensors</strong> from the UAE unless the user has already thrown them away.</li>
+                            </ul>
+                            <h4>Cancellation or refund related RTO</h4>
+                            <ul>
+                                <li>Flag on Slack in <a href="https://ultrahumanworkspace.slack.com/archives/C07A90YV2BV" target="_blank" rel="noopener noreferrer">#cx_iqf_ops_support</a>.</li>
+                                <li>Tag <strong>Violet george</strong>.</li>
+                                <li>Add the RTO request in the same format shown in the reference screenshot.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="eg.png" alt="UAE RTO request format example for cancellations or refunds" loading="lazy">
+                            </figure>
+                            <h4>Replacement related RTO</h4>
+                            <ul>
+                                <li>No extra steps required.</li>
+                                <li>Mark <strong>RTO Possibility: Yes or No</strong> in the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=160138986" target="_blank" rel="noopener noreferrer">UAE User req</a> sheet entry.</li>
+                            </ul>
+                            <p>Tags: In case of RTOs please use <code>logistics_reverse_pick_up</code>.</p>
+
+                            <h3>Refunds</h3>
+                            <h4>One time purchases via website</h4>
+                            <ul>
+                                <li>Refund can be processed via Shopify.</li>
+                                <li>Tag SMEs to process refund via Shopify.</li>
+                                <li>Once done, please fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">Refund Sheet</a>.</li>
+                            </ul>
+                            <h4>Outside or retail purchases</h4>
+                            <p>For Amazon or retail purchases:</p>
+                            <ul>
+                                <li>Verify the invoice.</li>
+                                <li>Raise a <strong>manual refund request</strong> on the <a href="https://ultrahumanworkspace.slack.com/archives/C03NG01PN3H" target="_blank" rel="noopener noreferrer">#cx-finance</a> channel.</li>
+                                <li>Fill the <em>eu-row-in-uae-bank-refund-form</em> form.</li>
+                            </ul>
+                            <h4>Subscription refunds</h4>
+                            <ul>
+                                <li>If a user requests a refund for a <strong>previous charge</strong> and we are stopping shipments or getting sensors RTO&#39;d, confirm whether cancelling the subscription allows a refund of the last charge.</li>
+                            </ul>
+                            <p>Tags: <code>sensor_refund</code> in cases where the refund is processed. <code>sensor_subscription_cancel</code> in cases where we are cancelling the subscription.</p>
                         </div>
 
                         <div class="bv-region-pane" id="m1-returns-europe-uk" hidden>
                             <h3>Replacements</h3>
-                            <p>Content coming soon.</p>
+                            <p>For EU or UK sensors, <strong>replacement via OMS is not supported</strong>. All replacements must be processed manually.</p>
+                            <h4>Mandatory checks before replacement</h4>
+                            <p>Before issuing a replacement, always complete both checks:</p>
+                            <h5>1. Confirm it is an internal sensor</h5>
+                            <p>You can verify this via:</p>
+                            <ul>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a> (OMS).</li>
+                                <li>Invoice check.
+                                    <ul>
+                                        <li>Invoice can be from Ultrahuman or authorised partners selling the Ultrahuman M1 plan.</li>
+                                        <li>Invoice must mention <strong>Ultrahuman M1 plan</strong>.</li>
+                                        <li>If invoice shows only Libre 2 or Libre 2 Plus, it indicates an outside purchase and cannot be replaced from us.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h5>2. Replacement quantity check</h5>
+                            <ul>
+                                <li>Ensure replacements issued are <strong>not more than 50%</strong> of the total sensors purchased by the user.</li>
+                                <li>If there are more than 50% replacements issued, we can process a refund for the user.</li>
+                                <li>Exceptions can be made <strong>only after SME or Lead approval</strong>.</li>
+                            </ul>
+                            <h4>Replacement process</h4>
+                            <p>Once both checks are cleared, fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=1113344493#gid=1113344493" target="_blank" rel="noopener noreferrer">EU/UK Replacement Sheet</a> with accurate details.</p>
+                            <p><strong>Fields to be filled carefully:</strong></p>
+                            <ul>
+                                <li>Date - Date the request was raised.</li>
+                                <li>Name - Name of the user.</li>
+                                <li>Email - User's purchase email.</li>
+                                <li>Address - Complete address of the user.</li>
+                                <li>Phone Number - Phone number with country code.</li>
+                                <li>Sensor Issue - The replacement reason.</li>
+                                <li>Quantity - Number of sensors to be issued.</li>
+                            </ul>
+                            <p><strong>Ensure all fields are complete and accurate.</strong></p>
+                            <p>Tags: Relevant replacement tag subject to the case to be added.</p>
 
-                            <h3>Returns &amp; Refunds</h3>
-                            <p>Content coming soon.</p>
+                            <h3>Returns</h3>
+                            <ul>
+                                <li>We usually do not RTO faulty sensors during replacement.</li>
+                                <li>A return is required only in case of a refund.</li>
+                            </ul>
+                            <h4>Refund related returns</h4>
+                            <ul>
+                                <li>Flag <strong>Moin</strong> for RTO in <a href="https://ultrahumanworkspace.slack.com/archives/C04V60YP8LC" target="_blank" rel="noopener noreferrer">#int_shipments_rto</a> channel.</li>
+                                <li>Loop in <strong>Deepti S</strong> as well.</li>
+                                <li>The user will receive labels for the return and a doorstep pickup will be arranged.</li>
+                            </ul>
+                            <p>Tags: In case of RTOs please use <code>logistics_reverse_pick_up</code>.</p>
+
+                            <h3>Refunds</h3>
+                            <h4>If purchase was made via Stripe</h4>
+                            <ul>
+                                <li>Process the refund manually.</li>
+                                <li>Flag on <a href="https://ultrahumanworkspace.slack.com/archives/C03NG01PN3H" target="_blank" rel="noopener noreferrer">#cx-finance</a> and fill the <em>eu-row-in-uae-bank-refund-form</em>, <em>uk-bank-refund-form</em>, or <em>paypal-refund-form</em>.</li>
+                            </ul>
+                            <h4>Exception for Stripe refund to original payment source</h4>
+                            <ul>
+                                <li>If the user is very irate and demands a refund to the original payment source, Stripe refund can be done as an exception.</li>
+                                <li>Only after lead approval.</li>
+                                <li>Once the refund is done, please fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">refund sheet</a>.</li>
+                            </ul>
+                            <h4>If purchase was made via Shopify</h4>
+                            <ul>
+                                <li>Ask SMEs or lead to process the refund through Shopify.</li>
+                                <li>Fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823#gid=403303823" target="_blank" rel="noopener noreferrer">refund sheet</a>.</li>
+                            </ul>
+                            <p>Tags: <code>sensor_refund</code> in cases where the refund is processed.</p>
                         </div>
 
                         <div class="bv-region-pane" id="m1-returns-usa" hidden>
                             <h3>Replacements</h3>
-                            <p>Content coming soon.</p>
+                            <h4>Mandatory checks before replacement</h4>
+                            <p>Before issuing a replacement, always complete both checks:</p>
+                            <h5>1. Confirm it is an internal sensor</h5>
+                            <p>You can verify this via:</p>
+                            <ul>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.</li>
+                                <li><a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a> (OMS).</li>
+                                <li>Invoice check.
+                                    <ul>
+                                        <li>Invoice can be from Ultrahuman or authorised partners selling the Ultrahuman M1 plan.</li>
+                                        <li>Invoice must mention <strong>Ultrahuman M1 plan</strong>.</li>
+                                        <li>If invoice shows only Libre 2 or Libre 2 Plus, it indicates an outside purchase and cannot be replaced from us.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <h5>2. Replacement quantity check</h5>
+                            <ul>
+                                <li>Ensure replacements issued are <strong>not more than 50%</strong> of the total sensors purchased by the user.</li>
+                                <li>If there are more than 50% replacements issued, we can process a refund for the user.</li>
+                                <li>Exceptions can be made <strong>only after SME or Lead approval</strong>.</li>
+                            </ul>
+                            <h4>Replacement process</h4>
+                            <ul>
+                                <li>M1 replacement flow for US orders is now automated on the OMS.</li>
+                                <li>Earlier, replacements were created manually after entries were added in the <a href="https://docs.google.com/spreadsheets/d/1PwESKGdc28Pim9neZ6UoRNiOowzctEVZ2EBfe7ZJ6qk/edit#gid=1618806713" target="_blank" rel="noopener noreferrer">M1 US replacement sheet</a>.</li>
+                                <li>Going forward, replacements should be processed directly on OMS, similar to ring replacements.</li>
+                            </ul>
+                            <h4>Steps to process replacement on OMS</h4>
+                            <ol>
+                                <li>Go to Dash &rarr; Foundation Health Requests.</li>
+                                <li>Search for the user&#39;s email address.</li>
+                                <li>Open the corresponding order.</li>
+                                <li>Select <strong>Replace Sensor</strong>.</li>
+                            </ol>
+                            <figure class="ts-figure">
+                                <img src="eg1.png" alt="OMS replace sensor option for US M1 orders" loading="lazy">
+                            </figure>
+                            <h4>If replacement cannot be created via OMS</h4>
+                            <p>Use this operational workaround.</p>
+                            <h5>Operational workaround email</h5>
+                            <ol>
+                                <li>To: <code>hewa-ultrahuman-support@healthwarehouse.com</code></li>
+                                <li>Cc: <code>support@foundationhealth.com</code></li>
+                                <li>Subject: Ultrahuman replacement sensor</li>
+                                <li>Email body:
+                                    <ul>
+                                        <li>FHS ID:</li>
+                                        <li>How many sensors to send:</li>
+                                        <li>Name of recipient:</li>
+                                        <li>DOB of recipient:</li>
+                                        <li>Address of recipient:</li>
+                                        <li>Reason for replacement:</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p>Healthwarehouse will email back with the tracking number.</p>
+                            <h4>Order cancellation</h4>
+                            <ul>
+                                <li>Cancel the order via API.</li>
+                            </ul>
+                            <h4>Any other issues</h4>
+                            <ul>
+                                <li>Contact the Foundation Health team via the shared Slack channel.</li>
+                            </ul>
+                            <p>The dash will only allow replacements up to the number of sensors purchased. If the replacement cannot be processed even though it is valid, use the operational workaround.</p>
+                            <p>Tags: Relevant replacement tag subject to the case to be added.</p>
 
-                            <h3>Returns &amp; Refunds</h3>
-                            <p>Content coming soon.</p>
+                            <h3>Returns</h3>
+                            <ul>
+                                <li>We usually do not RTO faulty sensors during replacement.</li>
+                                <li>A return is required only in case of a refund where the quantity is more.</li>
+                            </ul>
+                            <h4>RTO process</h4>
+                            <ul>
+                                <li>Check with the user if USPS dropzone pickup works for them.</li>
+                                <li>Flag to Moin on <a href="https://ultrahumanworkspace.slack.com/archives/C04V60YP8LC" target="_blank" rel="noopener noreferrer">#int_shipments_rto</a> for return shipping labels with all the user details.</li>
+                                <li>Share labels with the user once ready.</li>
+                            </ul>
+                            <p>Tags: In case of RTOs please use <code>logistics_reverse_pick_up</code>.</p>
+
+                            <h3>Refunds</h3>
+                            <h4>Subscription cancellation process</h4>
+                            <ul>
+                                <li>If the user has reached out before the deduction date, we can cancel the subscription available on Stripe.</li>
+                            </ul>
+                            <figure class="ts-figure">
+                                <img src="eg2.png" alt="Stripe cancellation view for US subscription refunds" loading="lazy">
+                            </figure>
+                            <ul>
+                                <li>If the order has been created and shipped out, coordinate with the user to get the sensor picked up or let them keep it, then process the refund.</li>
+                                <li>If the order has been created but not shipped, cancel the subscription, refund, and ask HEWA not to ship the order.</li>
+                                <li>If a shipment is in transit, HEWA cannot recall it.</li>
+                                <li>In any RTO case, coordinate with the user (labels, dropzone, doorstep) and then process the refund.</li>
+                                <li>If the sensor is shipped to an incorrect address, process a refund.</li>
+                                <li>If the user says the shipment is not received, HEWA can only provide UPS tracking details; give the user the benefit of the doubt and send a replacement/refund as preferred. Flag to HEWA for visibility.</li>
+                            </ul>
+                            <h4>Refund process</h4>
+                            <ul>
+                                <li>Since the purchase was made via Stripe, process the refund manually on <a href="https://ultrahumanworkspace.slack.com/archives/C04V60YP8LC" target="_blank" rel="noopener noreferrer">#cx-finance</a> by filling the <em>us-bank-refund-form</em> or <em>paypal-refund-form</em>.</li>
+                                <li>If the user is very irate and demands refund to the original payment source, Stripe refund can be done as an exception, only after lead approval.</li>
+                                <li>In both cases, fill the <a href="https://docs.google.com/spreadsheets/d/1fVk9L41Nb91jDXG_-hORqlss2iJkjH5fTfbnB_KAO1c/edit?gid=403303823" target="_blank" rel="noopener noreferrer">refund sheet</a>.</li>
+                            </ul>
+                            <p>Tags: <code>sensor_refund</code> in cases where the refund is processed.</p>
                         </div>
                     </div>
                 </div>

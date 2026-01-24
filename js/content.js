@@ -1096,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     Object.keys(contentData).forEach(sectionId => {
-        if (sectionId === 'powerplug') return; // already initialized with bubble interactions
+        if (sectionId === 'powerplug' || sectionId === 'm1-sensor') return; // keep inline HTML for these
         loadContent(sectionId);
     });
     console.log('Content loaded successfully');
