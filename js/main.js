@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollEffects();
     initializeHeroButtons();
     initializeThemeToggle();
+    initializeRingAirTabs();
+    initializePowerplugTabs();
+    initializePowerplugModal();
+    initializeUltrahumanXTabs();
+    initializeUltrahumanHomeTabs();
 
     if (typeof window.initializeContent === 'function') {
         window.initializeContent();
@@ -209,6 +214,193 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+function initializeRingAirTabs() {
+    const ringAirTabs = document.querySelector('.ring-air-tabs');
+    if (!ringAirTabs) {
+        return;
+    }
+
+    ringAirTabs.addEventListener('click', function(event) {
+        const target = event.target.closest('.tab-button');
+        if (!target) {
+            return;
+        }
+
+        const targetId = target.getAttribute('data-target');
+        if (!targetId) {
+            return;
+        }
+
+        const activeButton = ringAirTabs.querySelector('.tab-button.active');
+        if (activeButton) {
+            activeButton.classList.remove('active');
+        }
+        target.classList.add('active');
+
+        const contentContainer = ringAirTabs.closest('.document-content');
+        if (!contentContainer) {
+            return;
+        }
+        const allContent = contentContainer.querySelectorAll('.tab-content');
+        allContent.forEach(panel => panel.classList.remove('active'));
+        const targetPanel = contentContainer.querySelector(`#${targetId}`);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    });
+}
+
+function initializePowerplugTabs() {
+    const powerplugTabs = document.querySelector('.powerplug-tabs');
+    if (!powerplugTabs) {
+        return;
+    }
+
+    powerplugTabs.addEventListener('click', function(event) {
+        const target = event.target.closest('.tab-button');
+        if (!target) {
+            return;
+        }
+
+        const targetId = target.getAttribute('data-target');
+        if (!targetId) {
+            return;
+        }
+
+        const activeButton = powerplugTabs.querySelector('.tab-button.active');
+        if (activeButton) {
+            activeButton.classList.remove('active');
+        }
+        target.classList.add('active');
+
+        const contentContainer = powerplugTabs.closest('.document-content');
+        if (!contentContainer) {
+            return;
+        }
+        const allContent = contentContainer.querySelectorAll('.tab-content');
+        allContent.forEach(panel => panel.classList.remove('active'));
+        const targetPanel = contentContainer.querySelector(`#${targetId}`);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    });
+}
+
+function initializePowerplugModal() {
+    const modal = document.getElementById('powerplugModal');
+    if (!modal) {
+        return;
+    }
+    const modalTitle = modal.querySelector('#powerplugModalTitle');
+    const modalContent = modal.querySelector('.powerplug-modal__content');
+    const closeButtons = modal.querySelectorAll('[data-powerplug-close]');
+
+    document.addEventListener('click', function(event) {
+        const bubble = event.target.closest('.powerplug-bubble');
+        if (bubble) {
+            if (modalTitle) {
+                modalTitle.textContent = bubble.textContent.trim();
+            }
+            if (modalContent) {
+                const targetName = bubble.textContent.trim();
+                const template = document.querySelector(`.powerplug-content-template[data-powerplug="${targetName}"]`);
+                if (template) {
+                    modalContent.innerHTML = template.innerHTML;
+                } else {
+                    modalContent.innerHTML = '<h4>Understanding Your Day</h4><p>Content coming soon.</p><button class="powerplug-modal__cta" type="button">Activate PowerPlug</button>';
+                }
+            }
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('powerplug-modal-open');
+            return;
+        }
+
+        if (event.target.closest('[data-powerplug-close]')) {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('powerplug-modal-open');
+        }
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('powerplug-modal-open');
+        });
+    });
+}
+
+function initializeUltrahumanXTabs() {
+    const ultrahumanxTabs = document.querySelector('.ultrahumanx-tabs');
+    if (!ultrahumanxTabs) {
+        return;
+    }
+
+    ultrahumanxTabs.addEventListener('click', function(event) {
+        const target = event.target.closest('.tab-button');
+        if (!target) {
+            return;
+        }
+
+        const targetId = target.getAttribute('data-target');
+        if (!targetId) {
+            return;
+        }
+
+        const activeButton = ultrahumanxTabs.querySelector('.tab-button.active');
+        if (activeButton) {
+            activeButton.classList.remove('active');
+        }
+        target.classList.add('active');
+
+        const contentContainer = ultrahumanxTabs.closest('.document-content');
+        if (!contentContainer) {
+            return;
+        }
+        const allContent = contentContainer.querySelectorAll('.tab-content');
+        allContent.forEach(panel => panel.classList.remove('active'));
+        const targetPanel = contentContainer.querySelector(`#${targetId}`);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    });
+}
+
+function initializeUltrahumanHomeTabs() {
+    const ultrahumanHomeTabs = document.querySelector('.ultrahuman-home-tabs');
+    if (!ultrahumanHomeTabs) {
+        return;
+    }
+
+    ultrahumanHomeTabs.addEventListener('click', function(event) {
+        const target = event.target.closest('.tab-button');
+        if (!target) {
+            return;
+        }
+
+        const targetId = target.getAttribute('data-target');
+        if (!targetId) {
+            return;
+        }
+
+        const activeButton = ultrahumanHomeTabs.querySelector('.tab-button.active');
+        if (activeButton) {
+            activeButton.classList.remove('active');
+        }
+        target.classList.add('active');
+
+        const contentContainer = ultrahumanHomeTabs.closest('.document-content');
+        if (!contentContainer) {
+            return;
+        }
+        const allContent = contentContainer.querySelectorAll('.tab-content');
+        allContent.forEach(panel => panel.classList.remove('active'));
+        const targetPanel = contentContainer.querySelector(`#${targetId}`);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    });
+}
 
 
 
