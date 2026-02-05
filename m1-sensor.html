@@ -148,14 +148,155 @@
 
                     <div class="tab-content" id="m1-integrations-tab" hidden>
                         <h3>Integrations</h3>
+                        <p><strong>Related tags:</strong> <code>integrations_faq</code> <code>integration_sync_error</code></p>
+                        <h4>Overview</h4>
+                        <p>M1 supports integrations that let us read health, fitness, sleep, and nutrition signals from partner apps to enrich insights inside the Ultrahuman app.</p>
+                        <p>We only read data from integrations and do not write any data back, except for Apple Health, where we write specific data types.</p>
+                        <h4>Key rules</h4>
                         <ul>
-                            <li>Ultrahuman App: primary dashboard for M1 data, insights, and notifications.</li>
-                            <li>Ring AIR: combines glucose data with recovery metrics for M1 Lite users.</li>
-                            <li>US data flow: Sensor &rarr; Libre 3 Plus app &rarr; Terra &rarr; Ultrahuman app.</li>
+                            <li>Read only for most integrations.</li>
+                            <li>Write is supported only for Apple Health:
+                                <ul>
+                                    <li>Write Mindful Minutes.</li>
+                                    <li>Write Blood Glucose.</li>
+                                </ul>
+                            </li>
                         </ul>
+                        <h4>Native integrations</h4>
+                        <ul>
+                            <li>Apple Health.</li>
+                            <li>Google Fit and Health Connect.</li>
+                        </ul>
+                        <h4>Non native integrations</h4>
+                        <p>All remaining integrations are powered via Terra.</p>
 
-                        <h4>Sync Checks</h4>
-                        <p>Ensure Bluetooth, background sync, and app permissions are enabled for reliable data flow.</p>
+                        <h4>Supported integrations and data types</h4>
+                        <div class="document-content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Integration</th>
+                                        <th>Android</th>
+                                        <th>iOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Google Fit or Health Connect</td>
+                                        <td>Read steps, read workout, read sleep</td>
+                                        <td>Read workout, read sleep</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fitbit</td>
+                                        <td>Read workout, read sleep</td>
+                                        <td>Read workout, read sleep</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garmin</td>
+                                        <td>Read workout, read sleep</td>
+                                        <td>Read workout, read sleep</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Polar</td>
+                                        <td>Read workout, read sleep</td>
+                                        <td>Read workout, read sleep</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Suunto</td>
+                                        <td>Read workout</td>
+                                        <td>Read workout</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TrainingPeaks</td>
+                                        <td>Read workout</td>
+                                        <td>Read workout</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zwift</td>
+                                        <td>Read workout</td>
+                                        <td>Read workout</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wahoo</td>
+                                        <td>Read workout</td>
+                                        <td>Read workout</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apple Health</td>
+                                        <td>Not available</td>
+                                        <td>Read sleep, mindful minutes, weight. Write mindful minutes. Write blood glucose</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Strava</td>
+                                        <td>Workout name</td>
+                                        <td>Workout name</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Clue</td>
+                                        <td>Cycle start dates</td>
+                                        <td>Cycle start dates</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FatSecret</td>
+                                        <td>Food logs</td>
+                                        <td>Food logs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Withings</td>
+                                        <td>Sleep and activity, workout name</td>
+                                        <td>Sleep and activity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Coros</td>
+                                        <td>Sleep and activity</td>
+                                        <td>Sleep and activity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Peloton</td>
+                                        <td>Workout including ride and run metrics</td>
+                                        <td>Workout including ride and run metrics</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MyFitnessPal</td>
+                                        <td>Food name, macro split</td>
+                                        <td>Food name, macro split</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Walkthrough</h4>
+                        <p>Add app walkthrough here:</p>
+                        <ol>
+                            <li>Head to the Profile tab (as highlighted in the screenshot).</li>
+                        </ol>
+                        <figure class="ts-figure">
+                            <img src="integrations1.png" alt="Profile tab highlighted for integrations entry" loading="lazy">
+                        </figure>
+                        <ol start="2">
+                            <li>Scroll down.</li>
+                        </ol>
+                        <figure class="ts-figure">
+                            <img src="integrations2.png" alt="Scroll down to the My Data section" loading="lazy">
+                        </figure>
+                        <ol start="3">
+                            <li>Under My Data, select Connect Other Apps.</li>
+                        </ol>
+                        <figure class="ts-figure">
+                            <img src="integrations3.png" alt="Connect Other Apps entry under My Data" loading="lazy">
+                        </figure>
+                        <ol start="4">
+                            <li>All available integrations will show up. Select the app you want to connect and complete the permission steps.</li>
+                        </ol>
+                        <figure class="ts-figure">
+                            <img src="integrations4.png" alt="List of available integrations to connect" loading="lazy">
+                        </figure>
+
+                        <h4>Tags &amp; macros</h4>
+                        <ul>
+                            <li>Yellow tags: <code>integrations_faq</code> <code>integration_sync_error</code>.</li>
+                            <li>Macro: None.</li>
+                        </ul>
                     </div>
 
                     <div class="tab-content" id="m1-troubleshooting-tab" hidden>

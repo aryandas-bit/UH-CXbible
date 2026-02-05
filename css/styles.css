@@ -374,12 +374,12 @@ body.dark-mode .header-title {
     margin: 3rem 0;
     padding: 4rem 3.5rem;
     scroll-margin-top: 160px;
-    border-radius: 48px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.16);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     overflow: hidden;
 }
 
@@ -389,8 +389,9 @@ body.dark-mode .header-title {
     position: absolute;
     width: 65%;
     height: 65%;
-    filter: blur(60px);
-    opacity: 0.7;
+    display: none;
+    filter: none;
+    opacity: 0;
     z-index: 0;
     pointer-events: none;
 }
@@ -778,10 +779,10 @@ body.dark-mode .pp-detail img {
 
 /* Dark mode panel styling to match solid bubble look */
 body.dark-mode .section {
-    background: linear-gradient(180deg, #1c1c1c 0%, #171717 55%, #141414 100%);
-    border: 1px solid #2a2a2a;
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(6px);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 body.dark-mode .section::before,
@@ -1474,8 +1475,19 @@ body.dark-mode .section::after {
 }
 
 .ring-air-tabs .tab-button {
-    background: none;
-    border: none;
+    width: 210px;
+    height: 56px;
+    padding: 0 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: #ffffff;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: none;
 }
 
 .powerplug-tabs .tab-button {
@@ -1494,12 +1506,16 @@ body.dark-mode .section::after {
 }
 
 .document-content img {
-    max-width: 100%;
+    max-width: 70%;
     height: auto;
     display: block;
     border-radius: 16px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
     margin: 0 auto 1rem;
+}
+
+.uh-home-page .document-content img {
+    max-width: 70%;
 }
 
 .document-content video {
@@ -1518,9 +1534,42 @@ body.dark-mode .section::after {
 }
 
 .media-row img {
-    flex: 1 1 280px;
-    max-width: 100%;
+    flex: 1 1 220px;
+    max-width: 320px;
     margin: 0;
+}
+
+.media-row--triple img {
+    flex: 0 1 30%;
+    max-width: 30%;
+}
+
+.media-row--pair img {
+    flex: 0 1 48%;
+    max-width: 48%;
+}
+
+.uh-home-page .media-row img {
+    flex-basis: 200px;
+}
+
+.uh-home-page .media-row.uh-home-pair {
+    justify-content: center;
+}
+
+.uh-home-page .media-row.uh-home-pair img {
+    flex: 0 1 200px;
+    max-width: 200px;
+}
+
+.uh-home-notification-image {
+    max-width: 280px;
+    width: 100%;
+}
+
+.uh-home-single-small {
+    max-width: 100px;
+    width: 100%;
 }
 
 .powerplug-bubbles {
@@ -1657,6 +1706,44 @@ body.dark-mode .powerplug-bubble:hover {
 }
 
 body.powerplug-modal-open {
+    overflow: hidden;
+}
+
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 2000;
+}
+
+.image-lightbox[aria-hidden="false"] {
+    display: block;
+}
+
+.image-lightbox__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.image-lightbox__content {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 2.5rem;
+}
+
+.image-lightbox__img {
+    max-width: min(92vw, 1200px);
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+body.image-lightbox-open {
     overflow: hidden;
 }
 
@@ -2098,8 +2185,10 @@ body.dark-mode .ring-air-tabs .tab-button:active {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem 1.75rem;
-    border-radius: 999px;
+    padding: 0 1rem;
+    border-radius: 8px;
+    width: 210px;
+    height: 56px;
     border: 1px solid rgba(148, 163, 184, 0.5);
     background: #ffffff;
     color: #1f2937;
@@ -2112,8 +2201,8 @@ body.dark-mode .ring-air-tabs .tab-button:active {
         0 10px 22px rgba(15, 23, 42, 0.08);
     cursor: pointer;
     transition: var(--transition);
-    min-height: 44px;
-    max-width: 360px;
+    min-height: 0;
+    max-width: none;
     text-align: center;
     white-space: normal;
     line-height: 1.25;
@@ -2153,7 +2242,7 @@ body.dark-mode .ring-air-tabs .tab-button:active {
 
 .ts-figure {
     margin: 1rem auto 1.25rem;
-    max-width: 760px;
+    max-width: 520px;
 }
 
 .ts-figure img {
@@ -2162,6 +2251,10 @@ body.dark-mode .ring-air-tabs .tab-button:active {
     height: auto;
     border-radius: 14px;
     box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+}
+
+.image-lightbox-target {
+    cursor: zoom-in;
 }
 
 .ts-panel + .ts-panel {
@@ -2187,7 +2280,9 @@ body.dark-mode .ring-air-tabs .tab-button:active {
     }
 
     .ts-block {
-        padding: 0.5rem 1.2rem;
+        padding: 0 0.8rem;
+        width: 170px;
+        height: 52px;
         font-size: 0.88rem;
     }
 }
@@ -2265,7 +2360,7 @@ body.dark-mode .ring-air-tabs .tab-button:active {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 520px;
+    max-height: 420px;
     object-fit: contain;
     border-radius: 12px;
 }
@@ -2672,14 +2767,14 @@ body.dark-mode {
     --dm-surface-3: #242424;
     --dm-border-strong: #2d2d2d;
     --dm-accent-glow: 0 12px 30px rgba(183, 255, 74, 0.25);
-    background: #101010;
+    background: #000000;
     color: var(--text-color);
 }
 
 body.dark-mode .header,
 body.dark-mode .header,
 body.dark-mode .login-screen {
-    background: linear-gradient(180deg, #1d1d1d 0%, #141414 70%, #101010 100%);
+    background: #000000;
     color: var(--text-color);
 }
 
@@ -2774,8 +2869,9 @@ body.dark-mode .document-content tr:nth-child(even) td {
 }
 
 body.dark-mode .header {
-    background: linear-gradient(180deg, #1d1d1d 0%, #141414 70%, #101010 100%);
+    background: #000000;
     color: var(--text-color);
+    box-shadow: none;
 }
 
 body.dark-mode .header::before {
@@ -2832,7 +2928,7 @@ body.dark-mode .search-button:hover {
 }
 
 body.dark-mode .main-content {
-    background: #101010;
+    background: #000000;
 }
 
 body.dark-mode .theme-toggle {
@@ -2872,8 +2968,9 @@ body.dark-mode .tab-button {
 }
 
 body.dark-mode .ring-air-tabs .tab-button {
-    background: none;
-    border: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(233, 237, 245, 0.85);
 }
 
 body.dark-mode .powerplug-tabs .tab-button {

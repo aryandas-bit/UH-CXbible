@@ -103,146 +103,677 @@
                     </div>
                     <div class="tab-content" id="powerplug-explore">
                         <h3>Explore PowerPlugs</h3>
-                        <div class="powerplug-bubbles">
-                            <button class="powerplug-bubble" type="button">Respiratory Health</button>
-                            <button class="powerplug-bubble" type="button">Cycle &amp; Ovulation</button>
-                            <button class="powerplug-bubble" type="button">Cycle &amp; Ovulation Pro</button>
-                            <button class="powerplug-bubble" type="button">Cycle &amp; Ovulation Plus</button>
-                            <button class="powerplug-bubble" type="button">Vitamin D</button>
-                            <button class="powerplug-bubble" type="button">Screentime</button>
-                            <button class="powerplug-bubble" type="button">Circadian Alignment</button>
-                            <button class="powerplug-bubble" type="button">Caffeine Window</button>
-                            <button class="powerplug-bubble" type="button">Pregnancy Insights</button>
-                            <button class="powerplug-bubble" type="button">Smart Alarm</button>
-                            <button class="powerplug-bubble" type="button">Social Jetlag</button>
-                            <button class="powerplug-bubble" type="button">Shift Work</button>
-                            <button class="powerplug-bubble" type="button">New Parent</button>
-                            <button class="powerplug-bubble" type="button">Cardio Adaptability</button>
-                            <button class="powerplug-bubble" type="button">AFib Detection</button>
-                            <button class="powerplug-bubble" type="button">UltraSync for Tesla</button>
+                        <div class="ts-blocks" role="list" aria-label="PowerPlug topics">
+                            <button type="button" class="ts-block active" data-ts-target="pp-respiratory" role="listitem">Respiratory Health</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-cycle-ovulation" role="listitem">Cycle &amp; Ovulation</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-cycle-ovulation-pro" role="listitem">Cycle &amp; Ovulation Pro</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-cycle-ovulation-plus" role="listitem">Cycle &amp; Ovulation Plus</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-vitamin-d" role="listitem">Vitamin D</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-screentime" role="listitem">Screentime</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-circadian" role="listitem">Circadian Alignment</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-caffeine" role="listitem">Caffeine Window</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-pregnancy" role="listitem">Pregnancy Insights</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-smart-alarm" role="listitem">Smart Alarm</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-social-jetlag" role="listitem">Social Jetlag</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-shift-work" role="listitem">Shift Work</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-new-parent" role="listitem">New Parent</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-cardio" role="listitem">Cardio Adaptability</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-afib" role="listitem">AFib Detection</button>
+                            <button type="button" class="ts-block" data-ts-target="pp-ultrasync" role="listitem">UltraSync for Tesla</button>
                         </div>
-                        <div class="powerplug-modal" id="powerplugModal" aria-hidden="true">
-                            <div class="powerplug-modal__overlay" data-powerplug-close="true"></div>
-                            <div class="powerplug-modal__card" role="dialog" aria-modal="true" aria-labelledby="powerplugModalTitle">
-                                <button class="powerplug-modal__back" type="button" data-powerplug-close="true">Back</button>
-                                <h3 class="powerplug-modal__title" id="powerplugModalTitle">PowerPlug</h3>
-                                <div class="powerplug-modal__content">
-                                    <h4>Understanding Your Day</h4>
-                                    <p>Content coming soon.</p>
-                                    <button class="powerplug-modal__cta" type="button">Activate PowerPlug</button>
-                                </div>
+                        <div class="ts-panels">
+                            <div class="ts-panel active" id="pp-respiratory">
+                                <h4>Respiratory Health</h4>
+                                <p>Content coming soon.</p>
                             </div>
-                        </div>
-                        <div class="powerplug-content-template" data-powerplug="Social Jetlag">
-                            <p><strong>Applicable Regions:</strong> Global</p>
-                            <p><strong>Related Tags:</strong></p>
-                            <ul>
-                                <li><code>Powerplugs_FAQ</code></li>
-                                <li><code>Powerplugs_app_usage</code></li>
-                            </ul>
+                            <div class="ts-panel" id="pp-cycle-ovulation" hidden>
+                                <h4>Cycle &amp; Ovulation</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-cycle-ovulation-pro" hidden>
+                                <h4>Cycle &amp; Ovulation Pro</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-cycle-ovulation-plus" hidden>
+                                <h4>Cycle &amp; Ovulation Plus</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-vitamin-d" hidden>
+                                <h4>Vitamin D</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-screentime" hidden>
+                                <h4>Screentime</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-circadian" hidden>
+                                <h4>Circadian Alignment</h4>
+                                <p><strong>Applicable regions:</strong> Global, Free Powerplug.</p>
+                                <p><strong>Related tags:</strong> <code>Powerplugs_FAQ</code>, <code>Powerplugs_app_usage</code></p>
 
-                            <hr>
+                                <h5>Overview</h5>
+                                <p>Your <strong>circadian rhythm</strong> is your body’s internal clock. It regulates your sleep-wake cycle, hormone release, core body temperature, and many other biological processes across a roughly 24-hour period. The <strong>Phase Response Curve (PRC)</strong> helps you understand how external factors like <strong>light, food, and exercise</strong> influence this rhythm, allowing you to optimize your sleep schedule naturally. When this rhythm is aligned with your daily behaviors — like when you eat, sleep, and exercise — your body functions more efficiently.</p>
+                                <p>Ultrahuman tracks circadian rhythm markers to help you optimize your sleep, recovery, and metabolic health. By analyzing things like your body temperature, heart rate patterns, and activity timing, the platform can show how well your behaviors are aligned with your biological clock — and guide you toward better alignment for improved performance and longevity.</p>
+                                <figure class="ts-figure">
+                                    <img src="ca.png" alt="Circadian alignment overview" loading="lazy">
+                                </figure>
 
-                            <h4>Overview</h4>
-                            <p>Social Jetlag refers to the <strong>misalignment between your biological circadian rhythm and your social/work schedule</strong>.</p>
-                            <p>It typically happens when your sleep timings differ between:</p>
-                            <ul>
-                                <li><strong>Workdays (MSW — Mid-Sleep Workdays)</strong></li>
-                                <li><strong>Free days (MSF — Mid-Sleep Free Days)</strong></li>
-                            </ul>
-                            <p><strong>Example:</strong> Waking at <strong>6 AM on weekdays</strong> but sleeping until <strong>9 AM on weekends</strong> shifts your internal clock, causing jetlag-like symptoms.</p>
-                            <p>Social jetlag can lead to:</p>
-                            <ul>
-                                <li>Fatigue</li>
-                                <li>Reduced cognitive performance</li>
-                                <li>Lower morning alertness</li>
-                                <li>Mood disturbances</li>
-                                <li>Long-term metabolic &amp; cardiovascular effects</li>
-                            </ul>
+                                <h5>Why it matters</h5>
+                                <p>By consistently aligning with your <strong>circadian rhythm</strong>, you can <strong>enhance sleep quality, boost energy levels, and improve overall well-being</strong>. Instead of forcing a sleep schedule, allow your body to naturally adapt by <strong>waking up at the right time</strong> and letting sleep follow effortlessly. This cycle is unique to each person, and with time, your body will find its <strong>optimal rhythm</strong>.</p>
 
-                            <p><img src="jet.png" alt="Social Jetlag overview"></p>
-                            <p><img src="jet1.png" alt="Social Jetlag example visual"></p>
-                            <p><img src="jet2.png" alt="Social Jetlag weekly trend"></p>
-                            <p><img src="jet3.png" alt="Social Jetlag biomarker impact"></p>
+                                <h5>Deep-dive</h5>
+                                <p>Your body runs on a natural 24-hour cycle called the <strong>circadian rhythm</strong>, which affects your energy, sleep, and recovery.</p>
+                                <p>The <strong>Phase Response Curve (PRC)</strong> shows how things like light and movement at certain times of day can shift this rhythm — either helping or hindering it.</p>
+                                <p>A key part of this is your <strong>temperature minima</strong>, a point during the night when your body hits its lowest core temperature. This acts like a reset button for your internal clock.</p>
+                                <p>Ultrahuman Ring AIR tracks your circadian rhythm phases to help you stay in sync — getting light and activity when your body needs it, and winding down when it’s time to rest.</p>
+                                <p>It also factors your rhythm into the <strong>Stress Rhythm Score</strong>, a new way of measuring stress that takes your natural body clock into account. Learn more in our <a href="https://www.notion.so/217755317a9180eb9c83e7e182132160?pvs=21" target="_blank" rel="noopener noreferrer">guide to Stress Rhythm Score</a>.</p>
 
-                            <h4>Visualisation</h4>
-                            <h5>1. Homepage</h5>
-                            <p>Shows the <strong>difference in sleep-time minima</strong> between weekdays and weekends.</p>
-                            <p><strong>Sleep time minima</strong> refers to the <strong>minimum amount of continuous sleep required for a sleep session to be considered valid or meaningful</strong>, either biologically, clinically, or by a sleep-tracking system.</p>
-                            <p><strong>How it’s used depends on context:</strong></p>
-                            <ul>
-                                <li><strong>In sleep science &amp; health:</strong> minimum sleep duration needed to get restorative benefits (~6 hours).</li>
-                                <li><strong>In sleep tracking (rings, watches, apps):</strong> threshold (2–3 hours, 4–5+ hours).</li>
-                                <li><strong>In practical terms:</strong> Short naps or very fragmented sleep below the minima may be ignored. Hitting or exceeding the minima allows reliable sleep stage detection, recovery/readiness calculations, and more accurate trends over time.</li>
-                            </ul>
+                                <h5>How it works</h5>
+                                <p>Your body follows four phases throughout the day—<strong>Circadian Dead Zone, Phase Advance, Phase Delay, and Minima</strong>. The key reference point in this cycle is your <strong>temperature minima</strong> (the lowest core body temperature during sleep), which determines whether external stimuli will shift your wake-up time <strong>earlier</strong> or <strong>later</strong>.</p>
 
-                            <h5>2. Detail Page</h5>
-                            <ul>
-                                <li>Graph showing MSW vs MSF</li>
-                                <li>Weekly history &amp; visual trends</li>
-                            </ul>
+                                <h5>Circadian Dead Zone</h5>
+                                <figure class="ts-figure">
+                                    <img src="ca1.png" alt="Circadian dead zone" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li><strong>What it is:</strong> A neutral period where external factors like light or physical activity have minimal impact on your circadian clock.</li>
+                                    <li><strong>When does it occur:</strong> Typically <strong>midday</strong>, between the phase advance and phase delay windows.</li>
+                                    <li><strong>Why it matters:</strong> Activities like caffeine consumption or exercise in this phase won’t disrupt your circadian rhythm, making it a neutral time for such behaviors. You can time your caffeine intake with your stimulant permissible window.</li>
+                                </ul>
+                                <p><strong>Example:</strong> Midday outdoor activities won’t interfere with your body’s natural rhythm.</p>
 
-                            <h5>3. Biomarker Impact (Weekday vs Weekend)</h5>
-                            <ul>
-                                <li>Resting Heart Rate (RHR)</li>
-                                <li>Heart Rate Variability (HRV)</li>
-                                <li>Morning Alertness</li>
-                            </ul>
+                                <h5>Phase Advance</h5>
+                                <figure class="ts-figure">
+                                    <img src="ca2.png" alt="Phase advance window" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li><strong>What it is:</strong> A time when light exposure or movement can shift your circadian clock forward, enabling earlier wake and sleep times.</li>
+                                    <li><strong>When it occurs:</strong> Approximately <strong>4 hours after your temperature minima</strong>.</li>
+                                    <li><strong>Why it matters:</strong> During this phase, your circadian rhythm is receptive to environmental cues like bright light. Leveraging this window can help regulate your internal clock and optimize daytime energy.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="ca3.png" alt="Phase advance example" loading="lazy">
+                                </figure>
+                                <p><strong>Example:</strong> Morning sunlight exposure soon after waking reinforces an earlier sleep-wake cycle and promotes alertness.</p>
 
-                            <h4>Individual Biomarker-Level Insights</h4>
-                            <h5>RHR (Resting Heart Rate)</h5>
-                            <ul>
-                                <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
-                                <li><strong>Unit:</strong> BPM</li>
-                                <li><strong>Title:</strong> RHR Diff.</li>
-                                <li><strong>Insight:</strong> “Your average RHR was <em>x% higher/lower</em> on free days.” If equal: “Your average RHR was the same on free days and workdays.”</li>
-                                <li><strong>Arrow Indicator:</strong> Green ↓ if Free Day &lt; Work Day, Red ↑ otherwise.</li>
-                            </ul>
+                                <h6>Phase advance activity</h6>
+                                <p><strong>Phase advance activity</strong> refers to behaviors or environmental cues that shift your circadian clock <strong>earlier</strong>, leading to an earlier sleep and wake time.</p>
+                                <p>These activities are particularly effective when performed during the <strong>phase advance window</strong>, which occurs approximately <strong>4 hours after your temperature minima</strong> (the lowest point of your body temperature during sleep).</p>
+                                <p>By engaging in <strong>phase advance activities</strong>, you can:</p>
+                                <ul>
+                                    <li>Improve sleep consistency.</li>
+                                    <li>Reduce jet lag or shift work disruptions.</li>
+                                    <li>Enhance morning alertness and productivity.</li>
+                                </ul>
 
-                            <h5>Stress Rhythm</h5>
-                            <ul>
-                                <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
-                                <li><strong>Unit:</strong> None</li>
-                                <li><strong>Title:</strong> Score Diff.</li>
-                                <li><strong>Insight:</strong> “Your average Stress Rhythm Score was <em>x% higher/lower</em> on free days.” If equal: “Your average Stress Rhythm Score was the same on workdays and free days.”</li>
-                                <li><strong>Arrow Indicator:</strong> Green ↑ if Free Day &gt; Work Day, Red ↓ otherwise.</li>
-                            </ul>
+                                <h6>Why you should be active during phase advance</h6>
+                                <p>Circadian rhythms are influenced by external factors such as <strong>light exposure, movement, and meal timing</strong>. These elements help regulate your <strong>biological clock</strong>, ensuring that physiological processes like <strong>hormone release, metabolism, and body temperature</strong> follow a predictable 24-hour cycle.</p>
+                                <p><strong>Phase advance activity</strong> helps shift the rhythm earlier, making it easier to wake up and feel alert in the morning. <em>Your first mile (1700 steps) can help you shift your bedtime start to an earlier window.</em></p>
+                                <p>You can check your step mobility by aligning it with the Phase Advance Window in the Circadian Rhythm tab on the ring homepage.</p>
 
-                            <h5>Morning Alertness</h5>
-                            <ul>
-                                <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
-                                <li><strong>Unit:</strong> Minutes</li>
-                                <li><strong>Title:</strong> Mins Diff.</li>
-                                <li><strong>Insight:</strong> “Your average Morning Alertness was <em>x% higher/lower</em> on free days.” If equal: “Your average Morning Alertness was the same on workdays and free days.”</li>
-                                <li><strong>Arrow Indicator:</strong> Green ↓ if Free Day &lt; Work Day, Red ↑ otherwise.</li>
-                            </ul>
+                                <h6>Why does my Phase Advance Window keep changing?</h6>
+                                <p>Your <strong>phase advance window</strong> keeps changing because it is dynamically tied to your <strong>temperature minima</strong>, which shifts based on various physiological and environmental factors.</p>
+                                <p>The <strong>phase advance window</strong> begins approximately <strong>4 hours after your temperature minima</strong>, the lowest point of your core body temperature during sleep. Since <strong>temperature minima is not fixed</strong> and can fluctuate due to multiple influences, your phase advance window also shifts accordingly.</p>
 
-                            <h4>Header Insights</h4>
-                            <h5>Calculating Phase / No Social Jetlag Yet</h5>
-                            <p><strong>If at least one sleep index exists:</strong> “Your average sleep midpoint so far is at 2:05 AM.”</p>
-                            <p><strong>If no valid workday data:</strong> “No valid sleep index is present for workdays. Social Jetlag calculation will begin once a workday sleep index is available.”</p>
-                            <p><strong>If no valid free-day data:</strong> “No valid sleep index is present for free days. Social Jetlag requires at least one free-day sleep index.”</p>
+                                <h6>Factors affecting temperature minima &amp; phase advance window:</h6>
+                                <ol>
+                                    <li><strong>Sleep timing &amp; quality</strong>
+                                        <ul>
+                                            <li>If you <strong>sleep later</strong>, your temperature minima shifts <strong>later</strong>, delaying your phase advance window.</li>
+                                            <li>Poor sleep quality (fragmented sleep, frequent wake-ups) can also cause shifts.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Light exposure before bed</strong>
+                                        <ul>
+                                            <li><strong>Bright light at night</strong> delays your circadian rhythm, pushing your temperature minima and phase advance window later.</li>
+                                            <li>Wear blue light blocking glasses timed with your phase delay window to avoid stimulants like artificial light from interfering with your circadian cycles.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Physical activity &amp; exercise timing</strong>
+                                        <ul>
+                                            <li>Exercise close to bedtime can delay temperature minima.</li>
+                                            <li>Morning workouts may help <strong>stabilize</strong> or <strong>advance</strong> it.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Stimulants &amp; nutrition timing</strong>
+                                        <ul>
+                                            <li><strong>Caffeine, late-night eating, and alcohol</strong> can interfere with your body&#39;s ability to cool down, delaying temperature minima.</li>
+                                            <li><strong>Consuming food earlier in the evening</strong> supports a more stable rhythm.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Travel &amp; time zone adjustments</strong>
+                                        <ul>
+                                            <li>Changing time zones affects your circadian rhythm, shifting temperature minima until your body adapts.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <figure class="ts-figure">
+                                    <img src="ca4.png" alt="Phase advance window shifts" loading="lazy">
+                                </figure>
 
-                            <h4>Educational Model</h4>
-                            <p><strong>Title:</strong> Social Jetlag</p>
-                            <p>Social Jetlag refers to the misalignment between an individual’s biological circadian rhythm and their socially imposed sleep-wake schedule, typically caused by work or school commitments. It is measured using the difference between MSW (mid-sleep on workdays) and MSF (mid-sleep on free days).</p>
-                            <p>Larger differences can lead to chronic sleep deprivation, reduced cognitive performance, and adverse health outcomes. Maintaining consistent sleep timing helps minimise these effects.</p>
+                                <h5>Phase Delay</h5>
+                                <figure class="ts-figure">
+                                    <img src="ca5.png" alt="Phase delay window" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li><strong>What it is:</strong> A time when exposure to light or activity delays your circadian clock, causing later sleep and wake times.</li>
+                                    <li><strong>When does it occur:</strong> <strong>Before your temperature minima</strong>, in the evening or early night.</li>
+                                    <li><strong>Why it matters:</strong> Bright light or stimulants during this window suppress <strong>melatonin production</strong>, delaying sleep onset and disrupting recovery.</li>
+                                </ul>
+                                <p><strong>Example:</strong> Avoiding blue light from screens or caffeine consumption in the evening helps maintain a consistent sleep schedule. You can use blue light blocking glasses to help you stay away from artificial light, which impacts your sleep schedule.</p>
+                                <p>To maintain a stable sleep cycle, avoid habits that can <strong>push your bedtime later</strong> during this window:</p>
+                                <ul>
+                                    <li>Have an early dinner.</li>
+                                    <li>Avoid late-night workouts.</li>
+                                    <li>Reduce screen time &amp; bright light exposure.</li>
+                                    <li>Create a relaxing bedtime routine.</li>
+                                    <li>Keep your room dark for better sleep.</li>
+                                </ul>
 
-                            <h4>How to Compute Social Jetlag</h4>
-                            <ol>
-                                <li><strong>Determine MSW (Mid-Sleep on Workdays)</strong> - Example: Sleep 11 PM → 7 AM → midpoint = <strong>3 AM</strong></li>
-                                <li><strong>Determine MSF (Mid-Sleep on Free Days)</strong> - Example: Sleep 1 AM → 9 AM → midpoint = <strong>5 AM</strong></li>
-                                <li><strong>Calculate Social Jetlag</strong> - Social Jetlag = MSF – MSW</li>
-                            </ol>
-                            <p><strong>Example:</strong> MSW = 3 AM, MSF = 5 AM, Social Jetlag = <strong>2 hours</strong>.</p>
+                                <h5>Minima</h5>
+                                <figure class="ts-figure">
+                                    <img src="ca6.png" alt="Temperature minima" loading="lazy">
+                                </figure>
+                                <ul>
+                                    <li><strong>What it is:</strong> The lowest point of your body’s temperature during sleep, typically occurring in the early hours of the morning.</li>
+                                    <li><strong>Why it’s important:</strong> Temperature minima acts as a reference point for your circadian rhythm.
+                                        <ul>
+                                            <li><strong>Phase Advance Window:</strong> Begins approximately <strong>4 hours after the temperature minima</strong>.</li>
+                                            <li><strong>Phase Delay Window:</strong> Occurs <strong>before the temperature minima</strong>, when the circadian system is highly sensitive to external cues like light and stimulants.</li>
+                                            <li><strong>Circadian Dead Zone:</strong> Falls between these windows, where the circadian system is less responsive to environmental inputs.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p>Knowing your temperature minima can help you time light exposure and activities for better alignment with your circadian rhythm.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-caffeine" hidden>
+                                <h4>Caffeine Window</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-pregnancy" hidden>
+                                <h4>Pregnancy Insights</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-smart-alarm" hidden>
+                                <h4>Smart Alarm</h4>
+                                <p>Content coming soon.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-social-jetlag" hidden>
+                                <h4>Social Jetlag</h4>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>Powerplugs_FAQ</code>, <code>Powerplugs_app_usage</code></p>
 
-                            <h4>Outlier Removal</h4>
-                            <ul>
-                                <li>Remove a day if <strong>Sleep Start deviates by &gt;4 hours</strong> from Baseline Sleep Start (workdays only).</li>
-                                <li>If <strong>no baseline</strong> is available: no outlier removal will be performed.</li>
-                            </ul>
+                                <h5>Overview</h5>
+                                <p>Social Jetlag refers to the <strong>misalignment between your biological circadian rhythm and your social/work schedule</strong>.</p>
+                                <p>It typically happens when your sleep timings differ between:</p>
+                                <ul>
+                                    <li><strong>Workdays (MSW — Mid-Sleep Workdays)</strong></li>
+                                    <li><strong>Free days (MSF — Mid-Sleep Free Days)</strong></li>
+                                </ul>
+                                <p><strong>Example:</strong> Waking at <strong>6 AM on weekdays</strong> but sleeping until <strong>9 AM on weekends</strong> shifts your internal clock, causing jetlag-like symptoms.</p>
+                                <p>Social jetlag can lead to:</p>
+                                <ul>
+                                    <li>Fatigue</li>
+                                    <li>Reduced cognitive performance</li>
+                                    <li>Lower morning alertness</li>
+                                    <li>Mood disturbances</li>
+                                    <li>Long-term metabolic &amp; cardiovascular effects</li>
+                                </ul>
+                                <div class="media-row media-row--pair">
+                                    <img src="jet.png" alt="Social Jetlag overview" loading="lazy">
+                                    <img src="jet1.png" alt="Social Jetlag example visual" loading="lazy">
+                                </div>
+                                <div class="media-row media-row--pair">
+                                    <img src="jet2.png" alt="Social Jetlag weekly trend" loading="lazy">
+                                    <img src="jet3.png" alt="Social Jetlag biomarker impact" loading="lazy">
+                                </div>
 
-                            <button class="powerplug-modal__cta" type="button">Activate PowerPlug</button>
+                                <h5>Visualisation</h5>
+                                <h6>1. Homepage</h6>
+                                <p>Shows the <strong>difference in sleep-time minima</strong> between weekdays and weekends.</p>
+                                <p><strong>Sleep time minima</strong> refers to the <strong>minimum amount of continuous sleep required for a sleep session to be considered valid or meaningful</strong>, either biologically, clinically, or by a sleep-tracking system.</p>
+                                <p><strong>How it’s used depends on context:</strong></p>
+                                <ul>
+                                    <li><strong>In sleep science &amp; health:</strong> minimum sleep duration needed to get restorative benefits (~6 hours).</li>
+                                    <li><strong>In sleep tracking (rings, watches, apps):</strong> threshold (2–3 hours, 4–5+ hours).</li>
+                                    <li><strong>In practical terms:</strong> Short naps or very fragmented sleep below the minima may be ignored. Hitting or exceeding the minima allows reliable sleep stage detection, recovery/readiness calculations, and more accurate trends over time.</li>
+                                </ul>
+
+                                <h6>2. Detail Page</h6>
+                                <ul>
+                                    <li>Graph showing MSW vs MSF</li>
+                                    <li>Weekly history &amp; visual trends</li>
+                                </ul>
+
+                                <h6>3. Biomarker Impact (Weekday vs Weekend)</h6>
+                                <ul>
+                                    <li>Resting Heart Rate (RHR)</li>
+                                    <li>Heart Rate Variability (HRV)</li>
+                                    <li>Morning Alertness</li>
+                                </ul>
+
+                                <h5>Individual biomarker-level insights</h5>
+                                <h6>RHR (Resting Heart Rate)</h6>
+                                <ul>
+                                    <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
+                                    <li><strong>Unit:</strong> BPM</li>
+                                    <li><strong>Title:</strong> RHR Diff.</li>
+                                    <li><strong>Insight:</strong> “Your average RHR was <em>x% higher/lower</em> on free days.” If equal: “Your average RHR was the same on free days and workdays.”</li>
+                                    <li><strong>Arrow Indicator:</strong> Green ↓ if Free Day &lt; Work Day, Red ↑ otherwise.</li>
+                                </ul>
+
+                                <h6>Stress Rhythm</h6>
+                                <ul>
+                                    <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
+                                    <li><strong>Unit:</strong> None</li>
+                                    <li><strong>Title:</strong> Score Diff.</li>
+                                    <li><strong>Insight:</strong> “Your average Stress Rhythm Score was <em>x% higher/lower</em> on free days.” If equal: “Your average Stress Rhythm Score was the same on workdays and free days.”</li>
+                                    <li><strong>Arrow Indicator:</strong> Green ↑ if Free Day &gt; Work Day, Red ↓ otherwise.</li>
+                                </ul>
+
+                                <h6>Morning Alertness</h6>
+                                <ul>
+                                    <li><strong>Value:</strong> | Free Day Avg – Work Day Avg |</li>
+                                    <li><strong>Unit:</strong> Minutes</li>
+                                    <li><strong>Title:</strong> Mins Diff.</li>
+                                    <li><strong>Insight:</strong> “Your average Morning Alertness was <em>x% higher/lower</em> on free days.” If equal: “Your average Morning Alertness was the same on workdays and free days.”</li>
+                                    <li><strong>Arrow Indicator:</strong> Green ↓ if Free Day &lt; Work Day, Red ↑ otherwise.</li>
+                                </ul>
+
+                                <h5>Header insights</h5>
+                                <h6>Calculating Phase / No Social Jetlag Yet</h6>
+                                <p><strong>If at least one sleep index exists:</strong> Your average sleep midpoint so far is at 2:05 AM.</p>
+                                <p><strong>If no valid workday data:</strong> No valid sleep index is present for workdays. Social Jetlag calculation will begin once a workday sleep index is available.</p>
+                                <p><strong>If no valid free-day data:</strong> No valid sleep index is present for free days. Social Jetlag requires at least one free-day sleep index.</p>
+
+                                <h5>Educational model</h5>
+                                <p><strong>Title:</strong> Social Jetlag</p>
+                                <p>Social Jetlag refers to the misalignment between an individual’s biological circadian rhythm and their socially imposed sleep-wake schedule, typically caused by work or school commitments. It is measured using the difference between MSW (mid-sleep on workdays) and MSF (mid-sleep on free days).</p>
+                                <p>Larger differences can lead to chronic sleep deprivation, reduced cognitive performance, and adverse health outcomes. Maintaining consistent sleep timing helps minimise these effects.</p>
+
+                                <h5>How to compute Social Jetlag</h5>
+                                <ol>
+                                    <li><strong>Determine MSW (Mid-Sleep on Workdays)</strong> - Example: Sleep 11 PM → 7 AM → midpoint = <strong>3 AM</strong></li>
+                                    <li><strong>Determine MSF (Mid-Sleep on Free Days)</strong> - Example: Sleep 1 AM → 9 AM → midpoint = <strong>5 AM</strong></li>
+                                    <li><strong>Calculate Social Jetlag</strong> - <strong>Social Jetlag = MSF – MSW</strong></li>
+                                </ol>
+                                <p><strong>Example:</strong> MSW = 3 AM, MSF = 5 AM, Social Jetlag = <strong>2 hours</strong>.</p>
+
+                                <h5>Outlier removal</h5>
+                                <ul>
+                                    <li>Remove a day if <strong>Sleep Start deviates by &gt;4 hours</strong> from Baseline Sleep Start (workdays only).</li>
+                                    <li>If <strong>no baseline</strong> is available, no outlier removal will be performed.</li>
+                                </ul>
+                            </div>
+                            <div class="ts-panel" id="pp-shift-work" hidden>
+                                <h4>Shift Work</h4>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>Powerplugs_FAQ</code>, <code>Powerplugs_app_usage</code></p>
+
+                                <h5>Overview</h5>
+                                <p>Shift work disrupts your natural circadian rhythm by requiring you to sleep and wake at irregular times. This misalignment can:</p>
+                                <ul>
+                                    <li>Reduce cognitive performance</li>
+                                    <li>Affect emotional regulation</li>
+                                    <li>Impair decision-making</li>
+                                    <li>Increase cardiovascular &amp; metabolic risks over time</li>
+                                </ul>
+                                <p>The <strong>Shift Work PowerPlug</strong> recalibrates sleep analysis for shift workers, ensuring insights remain accurate <strong>regardless of when you sleep</strong>.</p>
+
+                                <h5>How the Shift Work PowerPlug works</h5>
+                                <figure class="ts-figure">
+                                    <img src="sw.jpeg" alt="Shift Work PowerPlug overview" loading="lazy">
+                                </figure>
+
+                                <h5>Adaptive sleep tracking</h5>
+                                <p>The Ring AIR automatically recognizes your unique sleep–wake patterns without requiring manual schedule input.</p>
+                                <p>Your metrics adjust intelligently to reflect the realities of shift work.</p>
+
+                                <h5>Flexible sleep timing</h5>
+                                <p>Sleep is evaluated relative to <strong>when it happens</strong>, not against a fixed day–night assumption.</p>
+                                <p>This means:</p>
+                                <ul>
+                                    <li>No penalty for sleeping at unconventional hours</li>
+                                    <li>Insights remain meaningful whether you sleep at 3 PM or 3 AM</li>
+                                </ul>
+
+                                <h5>Enhanced nap detection</h5>
+                                <p>Improved <strong>Nap Detection V2</strong>, trained on <strong>1M+ anonymous naps</strong>, provides:</p>
+                                <ul>
+                                    <li>More accurate nap tracking</li>
+                                    <li>Real-time integration into <strong>Recovery Score</strong></li>
+                                    <li>Better calculation of <strong>Sleep Debt</strong></li>
+                                </ul>
+
+                                <h5>Why this matters</h5>
+                                <p>By offering sleep insights that adapt to your real schedule, the Shift Work PowerPlug empowers you to:</p>
+                                <ul>
+                                    <li>Recover better</li>
+                                    <li>Plan effective wind-down routines</li>
+                                    <li>Improve performance both at work and at home</li>
+                                </ul>
+                            </div>
+                            <div class="ts-panel" id="pp-new-parent" hidden>
+                                <h4>New Parent</h4>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong></p>
+                                <ul>
+                                    <li><code>PowerPlugs_FAQ</code> - For any FAQ related questions</li>
+                                </ul>
+
+                                <h5>Overview</h5>
+                                <p>The New Parent PowerPlug on Ultrahuman Ring AIR applies flexible sleep timing and recovery thresholds, giving you more accurate, supportive scores, no matter how many feeds you gave in the night.</p>
+                                <figure class="ts-figure">
+                                    <img src="np.png" alt="New Parent PowerPlug sleep and recovery view" loading="lazy">
+                                </figure>
+                                <p>When you get good quality rest, no matter what time of day or night, you’ll see that reflected in the sleep and recovery markers within the Ultrahuman app.</p>
+                                <ul>
+                                    <li>It applies flexible sleep timing and recovery thresholds, giving you a more accurate score, even when your sleep looks unconventional on paper. It prioritises deep sleep, sleep efficiency, restfulness, and REM sleep from your overall sleep score to enable users to get a fairer assessment of their sleep.</li>
+                                    <li>When the New Parent PowerPlug is active, the Ultrahuman Ring AIR reduces the daily goal to 7,000 steps to better reflect realistic activity levels during this phase. It also removes workout frequency as a contributing factor to overall recovery.</li>
+                                </ul>
+                            </div>
+                            <div class="ts-panel" id="pp-cardio" hidden>
+                                <h4>Cardio Adaptability</h4>
+                                <p><strong>Related tags:</strong></p>
+                                <ul>
+                                    <li><code>PowerPlugs_FAQ</code> - Queries for what is BV</li>
+                                    <li><code>PowerPlugs_techerror</code> - Tech issues with the PowerPlug</li>
+                                </ul>
+
+                                <h5>Overview</h5>
+                                <p>The Cardio Adaptability PowerPlug analyses cardio adaptability using detailed tachograms and Lorenz plots, providing key insights into how your heart responds to various activities, stress, and rest.</p>
+                                <figure class="ts-figure">
+                                    <img src="cardio.png" alt="Cardio Adaptability tachogram and Lorenz plot" loading="lazy">
+                                </figure>
+
+                                <h5>Sample report</h5>
+                                <p>The Ring is designed to take regular background heart measurements during your sleep.</p>
+                                <p>However, there are certain situations where these measurements may not be taken:</p>
+                                <figure class="ts-figure">
+                                    <img src="cardio1.png" alt="Sample report showing missing heart measurements" loading="lazy">
+                                </figure>
+                                <ol>
+                                    <li><strong>Low Battery or Power Saving Mode</strong><br>Background measurements will be suspended if the ring&#39;s battery level falls below 5% or if the ring enters power saving mode. This helps preserve battery life for essential functions.</li>
+                                    <li><strong>Ring in Airplane Mode</strong><br>Background measurements will be suspended when the ring is in airplane mode, as this disables wireless communication features.</li>
+                                    <li><strong>Disconnection from App</strong><br>If the ring loses its connection to the companion app throughout the night, background heart measurements cannot be recorded or synced. Ensure your phone is within range and the app is running in the background for consistent monitoring.</li>
+                                    <li><strong>High Motion Detection</strong><br>During periods of significant movement, the ring may pause heart measurements to avoid inaccurate readings. This typically occurs during restless sleep or if you get up during the night.</li>
+                                    <li><strong>Lack of Skin Contact</strong><br>If the ring detects that it&#39;s not in proper contact with your skin (e.g., if it&#39;s too loose or has been removed), it will not attempt to take heart measurements to prevent false readings.</li>
+                                </ol>
+                            </div>
+                            <div class="ts-panel" id="pp-afib" hidden>
+                                <h4>AFib Detection</h4>
+                                <p><strong>Support level:</strong> L2</p>
+                                <p><strong>Applicable regions:</strong> See availability list below.</p>
+                                <p><strong>Related tags:</strong> (Add once available)</p>
+
+                                <h5>Overview</h5>
+                                <p>The <strong>AFib Detection PowerPlug</strong> enables passive, overnight monitoring for signs of <strong>atrial fibrillation (AFib)</strong>, the most common form of irregular heart rhythm. It uses clinical grade algorithms from our partner <strong>FibriCheck</strong>, a CE-marked and FDA-cleared medical technology company specializing in heart rhythm diagnostics, analyzing heart rhythm during sleep to surface potential irregularities. If anything suggestive of AFib is detected, it will appear in the <strong>morning report</strong>.</p>
+                                <p>Once enabled, the system runs automatically using the Ultrahuman Ring and requires no manual action during the night.</p>
+
+                                <h5>What it does</h5>
+                                <ul>
+                                    <li>Runs a passive overnight scan to look for signs of AFib or atrial flutter.</li>
+                                    <li>Surfaces results in the morning report.</li>
+                                    <li>Logs results in an <strong>AFib history</strong> view.</li>
+                                    <li>Allows export of results and downloadable reports for sharing with a physician.</li>
+                                </ul>
+
+                                <h5>How it works</h5>
+                                <ul>
+                                    <li>The PowerPlug activates automatically during sleep and focuses on <strong>motion free</strong> periods when the heart is at rest.</li>
+                                    <li>Your ring records heart rhythm data which is processed by <strong>FibriCheck’s clinically validated algorithm</strong>.</li>
+                                    <li>Each night’s rhythm is classified into one of the following:
+                                        <ul>
+                                            <li><strong>Sinus rhythm (normal)</strong></li>
+                                            <li><strong>Possible irregularity</strong></li>
+                                            <li><strong>Possible AFib or atrial flutter</strong></li>
+                                            <li><strong>Quality too low</strong> (when analysis is not possible due to movement, weak contact, or signal issues)</li>
+                                        </ul>
+                                    </li>
+                                    <li>These insights are displayed each morning and stored in your AFib history view.</li>
+                                    <li>Results can be exported and shared with a healthcare provider.</li>
+                                </ul>
+
+                                <h5>When and how to use it</h5>
+                                <p><strong>When:</strong> Every night, automatically during sleep.</p>
+                                <p><strong>How:</strong> Ensure the following:</p>
+                                <ul>
+                                    <li>Ring is <strong>snug and properly fitted</strong>.</li>
+                                    <li>Sensor bump is <strong>facing your palm</strong>.</li>
+                                    <li>Ring is <strong>charged</strong>.</li>
+                                    <li>Phone stays within <strong>1.5 meters</strong> of the ring while you sleep.</li>
+                                </ul>
+                                <p>No further action is needed. The scan runs in the background.</p>
+
+                                <h5>Understanding your AFib results</h5>
+                                <div class="media-row media-row--triple">
+                                    <img src="af.jpeg" alt="AFib result card collapsed complication" loading="lazy">
+                                    <img src="af1.jpeg" alt="AFib result card expanded complication" loading="lazy">
+                                    <img src="af2.jpeg" alt="AFib details page with history" loading="lazy">
+                                </div>
+                                <p>Each morning, your app shows a summary of last night’s heart rhythm status.</p>
+
+                                <h6>Normal heart rhythm</h6>
+                                <p><strong>Meaning:</strong> A regular sinus rhythm was detected.</p>
+                                <p><strong>What to do:</strong> No action needed.</p>
+
+                                <h6>Possible irregularities</h6>
+                                <p><strong>Meaning:</strong> Some signs of rhythm irregularity were seen, but not conclusive for AFib.</p>
+                                <p><strong>What to do:</strong> If this is new or happens repeatedly, consider discussing it with your doctor.</p>
+
+                                <h6>Possible AFib</h6>
+                                <p><strong>Meaning:</strong> Irregularities consistent with AFib or atrial flutter were detected.</p>
+                                <p><strong>What to do:</strong> Follow up with your healthcare provider, especially if you are experiencing symptoms.</p>
+
+                                <h6>Quality too low</h6>
+                                <p><strong>Meaning:</strong> Data could not be analyzed due to movement, poor ring contact, or signal issues.</p>
+                                <p><strong>What to do:</strong> Ensure the ring fits well, remains still during sleep, and the sensor bump faces your palm.</p>
+
+                                <h5>Key terms explained</h5>
+                                <p><strong>AFib (Atrial Fibrillation)</strong></p>
+                                <p>An irregular heartbeat that begins in the atria. It can reduce pumping efficiency and increase the risk of stroke, heart failure, and other complications. Some people have symptoms, others do not.</p>
+
+                                <p><strong>AFib burden</strong></p>
+                                <p>The percentage of time the heart spends in AFib during a monitoring period. Higher burden may be linked to greater health risks and can influence clinical decisions.</p>
+
+                                <p><strong>Sinus rhythm</strong></p>
+                                <p>A normal, healthy rhythm where the sinoatrial node sends regular electrical signals that keep the heart beating steadily.</p>
+
+                                <p><strong>Atrial flutter</strong></p>
+                                <p>A related abnormal rhythm where the atria beat very fast but in a more regular pattern than AFib. It can shift in and out of AFib and is often treated similarly.</p>
+
+                                <p><strong>Atrial stiffness</strong></p>
+                                <p>Reduced flexibility of atrial walls, often linked to aging or long term cardiovascular stress, which can increase AFib risk.</p>
+
+                                <h5>AFib Detection PowerPlug not showing overnight measurements</h5>
+                                <p>If your AFib Detection PowerPlug isn’t showing any overnight heart readings, it may be due to one of the following issues. Check each step to help restore normal tracking:</p>
+
+                                <h6>1. Check battery and background sync</h6>
+                                <ul>
+                                    <li>Make sure your ring’s battery is <strong>above 5%</strong> before sleep.</li>
+                                    <li>Open the app and ensure <strong>Background Sync</strong> is turned on.</li>
+                                </ul>
+                                <p>If the battery is too low or background sync is off, overnight measurements are paused to conserve power.</p>
+
+                                <h6>2. Make sure Airplane Mode is off</h6>
+                                <ul>
+                                    <li>Open the app, tap the <strong>Ring icon</strong>, and check if <strong>Airplane Mode</strong> is enabled.</li>
+                                    <li>If it is, turn it off to restore background heart tracking.</li>
+                                </ul>
+                                <p>Airplane Mode disables wireless communication, which stops the ring from syncing overnight data.</p>
+
+                                <h6>3. Ensure the ring stays connected overnight</h6>
+                                <ul>
+                                    <li>Keep your phone <strong>within Bluetooth range</strong> of the ring while you sleep.</li>
+                                    <li>Ensure the Ultrahuman app is <strong>running in the background</strong>.</li>
+                                </ul>
+                                <p>If the ring disconnects overnight, heart readings won’t be recorded or synced.</p>
+
+                                <h6>4. Minimize movement during sleep</h6>
+                                <ul>
+                                    <li>Excess movement or getting out of bed can interrupt readings.</li>
+                                    <li>Try to limit overnight disruptions to help the ring capture clean signals.</li>
+                                </ul>
+                                <p>The ring may pause measurements when motion is high to avoid inaccurate readings.</p>
+
+                                <h6>5. Check skin contact</h6>
+                                <ul>
+                                    <li>Make sure the ring fits <strong>snugly</strong> — not loose.</li>
+                                    <li>Ensure it maintains continuous contact with the skin during sleep.</li>
+                                </ul>
+
+                                <h5>History and reports</h5>
+                                <p>Users can view their <strong>AFib history</strong> in the app over time and download reports. This supports trend tracking and meaningful conversations with a healthcare provider.</p>
+
+                                <h5>Availability</h5>
+                                <p>This feature is currently supported in:</p>
+                                <div class="document-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Code</th>
+                                                <th>Country</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>AL</td><td>Albania</td></tr>
+                                            <tr><td>AU</td><td>Australia</td></tr>
+                                            <tr><td>DZ</td><td>Algeria</td></tr>
+                                            <tr><td>AD</td><td>Andorra</td></tr>
+                                            <tr><td>AO</td><td>Angola</td></tr>
+                                            <tr><td>AG</td><td>Antigua and Barbuda</td></tr>
+                                            <tr><td>AM</td><td>Armenia</td></tr>
+                                            <tr><td>AZ</td><td>Azerbaijan</td></tr>
+                                            <tr><td>BS</td><td>Bahamas</td></tr>
+                                            <tr><td>BH</td><td>Bahrain</td></tr>
+                                            <tr><td>BD</td><td>Bangladesh</td></tr>
+                                            <tr><td>BB</td><td>Barbados</td></tr>
+                                            <tr><td>BZ</td><td>Belize</td></tr>
+                                            <tr><td>BJ</td><td>Benin</td></tr>
+                                            <tr><td>BT</td><td>Bhutan</td></tr>
+                                            <tr><td>BW</td><td>Botswana</td></tr>
+                                            <tr><td>BN</td><td>Brunei</td></tr>
+                                            <tr><td>BF</td><td>Burkina Faso</td></tr>
+                                            <tr><td>BI</td><td>Burundi</td></tr>
+                                            <tr><td>CV</td><td>Cabo Verde</td></tr>
+                                            <tr><td>CM</td><td>Cameroon</td></tr>
+                                            <tr><td>TD</td><td>Chad</td></tr>
+                                            <tr><td>KM</td><td>Comoros</td></tr>
+                                            <tr><td>CI</td><td>Côte d'Ivoire</td></tr>
+                                            <tr><td>DJ</td><td>Djibouti</td></tr>
+                                            <tr><td>DM</td><td>Dominica</td></tr>
+                                            <tr><td>DO</td><td>Dominican Republic</td></tr>
+                                            <tr><td>SV</td><td>El Salvador</td></tr>
+                                            <tr><td>GQ</td><td>Equatorial Guinea</td></tr>
+                                            <tr><td>ER</td><td>Eritrea</td></tr>
+                                            <tr><td>SZ</td><td>Eswatini</td></tr>
+                                            <tr><td>EU</td><td>European Union</td></tr>
+                                            <tr><td>FJ</td><td>Fiji</td></tr>
+                                            <tr><td>GA</td><td>Gabon</td></tr>
+                                            <tr><td>GM</td><td>Gambia</td></tr>
+                                            <tr><td>GE</td><td>Georgia</td></tr>
+                                            <tr><td>GD</td><td>Grenada</td></tr>
+                                            <tr><td>GT</td><td>Guatemala</td></tr>
+                                            <tr><td>GN</td><td>Guinea</td></tr>
+                                            <tr><td>GW</td><td>Guinea-Bissau</td></tr>
+                                            <tr><td>GY</td><td>Guyana</td></tr>
+                                            <tr><td>HT</td><td>Haiti</td></tr>
+                                            <tr><td>HK</td><td>Hong Kong</td></tr>
+                                            <tr><td>JM</td><td>Jamaica</td></tr>
+                                            <tr><td>KI</td><td>Kiribati</td></tr>
+                                            <tr><td>KW</td><td>Kuwait</td></tr>
+                                            <tr><td>LA</td><td>Laos</td></tr>
+                                            <tr><td>LS</td><td>Lesotho</td></tr>
+                                            <tr><td>LR</td><td>Liberia</td></tr>
+                                            <tr><td>MO</td><td>Macau</td></tr>
+                                            <tr><td>MG</td><td>Madagascar</td></tr>
+                                            <tr><td>MW</td><td>Malawi</td></tr>
+                                            <tr><td>MV</td><td>Maldives</td></tr>
+                                            <tr><td>MH</td><td>Marshall Islands</td></tr>
+                                            <tr><td>MR</td><td>Mauritania</td></tr>
+                                            <tr><td>MU</td><td>Mauritius</td></tr>
+                                            <tr><td>FM</td><td>Micronesia</td></tr>
+                                            <tr><td>MD</td><td>Moldova</td></tr>
+                                            <tr><td>MN</td><td>Mongolia</td></tr>
+                                            <tr><td>MZ</td><td>Mozambique</td></tr>
+                                            <tr><td>NA</td><td>Namibia</td></tr>
+                                            <tr><td>NR</td><td>Nauru</td></tr>
+                                            <tr><td>NP</td><td>Nepal</td></tr>
+                                            <tr><td>NE</td><td>Niger</td></tr>
+                                            <tr><td>PK</td><td>Pakistan</td></tr>
+                                            <tr><td>PW</td><td>Palau</td></tr>
+                                            <tr><td>PG</td><td>Papua New Guinea</td></tr>
+                                            <tr><td>QA</td><td>Qatar</td></tr>
+                                            <tr><td>CG</td><td>Republic of the Congo</td></tr>
+                                            <tr><td>RW</td><td>Rwanda</td></tr>
+                                            <tr><td>SA</td><td>Saudi Arabia</td></tr>
+                                            <tr><td>KN</td><td>Saint Kitts and Nevis</td></tr>
+                                            <tr><td>LC</td><td>Saint Lucia</td></tr>
+                                            <tr><td>VC</td><td>Saint Vincent and the Grenadines</td></tr>
+                                            <tr><td>ST</td><td>São Tomé and Príncipe</td></tr>
+                                            <tr><td>SN</td><td>Senegal</td></tr>
+                                            <tr><td>SC</td><td>Seychelles</td></tr>
+                                            <tr><td>SL</td><td>Sierra Leone</td></tr>
+                                            <tr><td>SG</td><td>Singapore</td></tr>
+                                            <tr><td>SR</td><td>Suriname</td></tr>
+                                            <tr><td>CH</td><td>Switzerland</td></tr>
+                                            <tr><td>TL</td><td>Timor-Leste</td></tr>
+                                            <tr><td>TG</td><td>Togo</td></tr>
+                                            <tr><td>TO</td><td>Tonga</td></tr>
+                                            <tr><td>TT</td><td>Trinidad and Tobago</td></tr>
+                                            <tr><td>TR</td><td>Turkey</td></tr>
+                                            <tr><td>TM</td><td>Turkmenistan</td></tr>
+                                            <tr><td>TV</td><td>Tuvalu</td></tr>
+                                            <tr><td>UG</td><td>Uganda</td></tr>
+                                            <tr><td>AE</td><td>United Arab Emirates</td></tr>
+                                            <tr><td>GB</td><td>United Kingdom</td></tr>
+                                            <tr><td>VU</td><td>Vanuatu</td></tr>
+                                            <tr><td>EH</td><td>Western Sahara</td></tr>
+                                            <tr><td>ZM</td><td>Zambia</td></tr>
+                                            <tr><td>ZW</td><td>Zimbabwe</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Please note that this list may change over time, so kindly refer to this <a href="https://www.notion.so/AFib-Detection-PowerPlug-FAQ-224755317a91800c8192eabeb5b0eee4?pvs=21" target="_blank" rel="noopener noreferrer">document</a> for the most up-to-date information.</p>
+                            </div>
+                            <div class="ts-panel" id="pp-ultrasync" hidden>
+                                <h4>UltraSync for Tesla</h4>
+                                <p><strong>Applicable regions:</strong> Global.</p>
+                                <p><strong>Related tags:</strong> <code>Powerplugs_FAQ</code>, <code>Powerplugs_app_usage</code></p>
+
+                                <h5>Overview</h5>
+                                <p>The UltraSync with Tesla PowerPlug connects your Ultrahuman Ring AIR with your (Tesla) car, syncing sleep quality and recovery data with real-time driving behaviour.</p>
+                                <p>Whether it’s your morning commute or late-night highway miles, the UltraSync with Tesla PowerPlug translates your health markers into actionable insights, helping you manage stress, avoid fatigue, and build safer habits behind the wheel.</p>
+                                <p>UltraSync with Tesla brings a health-first perspective to your driving experience, with your health data staying private and <strong>never shared with Tesla</strong>.</p>
+                                <p>It retrieves vehicle information, such as speed, drive mode, and cabin settings, directly from your car, and combines it with key health metrics like sleep, recovery, and heart rate from your Ultrahuman Ring. All data is processed locally.</p>
+
+                                <h5>Drive Readiness Score</h5>
+                                <p>Before you hit the road, the UltraSync with Tesla PowerPlug calculates a Drive Readiness Score, which is a dynamic rating of how safe it is to drive, based on sleep quality, efficiency, circadian rhythm, and sleep debt.</p>
+                                <p>UltraSync also recommends the most suitable driving mode – Chill, Standard, or Plaid – based on your recovery levels. If your score is high, you’re good to go. If it’s low, the app prompts you to pause, recover, or delay your trip. Scores below 40 are considered unsafe to drive.</p>
+                                <p>It also factors in how long you’ve been awake or driving, to create an adaptive score that shifts with your day.</p>
+
+                                <h5>Stress insights</h5>
+                                <figure class="ts-figure">
+                                    <img src="tesla.png" alt="UltraSync Tesla stress insights view" loading="lazy">
+                                </figure>
+                                <p>Any journey in your Tesla is auto-detected in the Ultrahuman app. Once confirmed, journeys are added to Ride History within the UltraSync card.</p>
+                                <p>As you drive, Ring AIR monitors heart rate and heart rate variability to map your stress response in real time.</p>
+                                <p>At the end of your drive, you’ll see your route visualised, with highlights showing where your nervous system appeared relaxed or elicited a stress response.</p>
+                                <p>After a stressful trip, the UltraSync with Tesla PowerPlug helps you reset. Breathing exercises, cold exposure, or mindfulness can help your nervous system recover for a more productive day, a safer onward journey, and improved long-term health.</p>
+
+                                <h5>Your car knows if you’re sick</h5>
+                                <figure class="ts-figure">
+                                    <img src="tesla1.jpeg" alt="UltraSync Tesla health-aware climate adjustments" loading="lazy">
+                                </figure>
+                                <p>When your recovery dips, immune markers shift, or body temperature rises, UltraSync suggests – and can configure – fan speed and climate settings to reduce cold stress, minimise pollutant exposure, and ease airflow – helping your car support you when you’re run down.</p>
+
+                                <h5>Health nudges</h5>
+                                <ul>
+                                    <li><strong>Your car slept more than you:</strong> When your Tesla’s idle time beats your sleep hours.</li>
+                                    <li><strong>Your car moved more than you:</strong> When its mileage outpaces your step count.</li>
+                                    <li><strong>Your car is more charged than you:</strong> When your recovery score is lower than your EV’s battery level.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

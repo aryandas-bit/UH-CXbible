@@ -33,7 +33,1003 @@
                 </div>
                 <h2>Misc</h2>
                 <div id="misc-content" class="document-content">
-                    <p>Quick links, release notes, and references that do not fit other modules.</p>
+                    <div class="ts-blocks" role="list" aria-label="Misc topics">
+                        <button type="button" class="ts-block active" data-ts-target="misc-pocs" role="listitem">Company-wide POCs</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-vision-dashboard" role="listitem">Vision Dashboard</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-data-migration" role="listitem">User Data Migration</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-api-access" role="listitem">API Access</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-chat-etiquette" role="listitem">Chat Etiquette</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-email-etiquette" role="listitem">Email Etiquette</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-chat-email-sops" role="listitem">Chat/Email Handling &amp; Flagging SOPs</button>
+                        <button type="button" class="ts-block" data-ts-target="misc-performance-coaches" role="listitem">Performance Coaches</button>
+                    </div>
+                    <div class="ts-panels">
+                        <div class="ts-panel active" id="misc-pocs">
+                            <h4>Company-wide POCs</h4>
+                            <p><strong>Applicable regions:</strong> Global.</p>
+                            <h5>Overview</h5>
+                            <p>This directory serves as the <strong>single source of truth</strong> for cross-functional Points of Contact (POCs) across Ops, Tech, Product, Hardware, Finance, Marketing, Science, and more.</p>
+                            <p>Use this page to quickly find the correct escalation path or the right stakeholder for internal dependencies.</p>
+
+                            <h5>OPS</h5>
+                            <div class="document-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Queries related to</th>
+                                            <th>Ops POC</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>USPS, MCF orders</strong></td>
+                                            <td>@Balaji J</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>DHL, FedEx</strong></td>
+                                            <td>@Arjun, @Mario, @Siddharth</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Costco orders</strong></td>
+                                            <td>@Deepti S</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sizing Kit</strong></td>
+                                            <td>@Sarvesh</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Merch, Sleep Mask, BLBG</strong></td>
+                                            <td>@Deepti S + @Sarvesh</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Computerworks (ETA Follow-ups)</strong></td>
+                                            <td>@Janardhana Balaji R</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Procycle</strong></td>
+                                            <td>@nathida (FUP only in <code>#warranty-procycle</code>)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Customs-related queries</strong></td>
+                                            <td>@Mario, @Balaji J (CC: @Raghu)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring Replacement</strong></td>
+                                            <td>@harshitha shetty + @cyril (CC: @Deepti B)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring Amazon / QVC / US Warehouse Shipping</strong></td>
+                                            <td>@Tushar / @Janardhana Balaji R</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring shipment RTO – International</strong></td>
+                                            <td>@Moin</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring shipment RTO – Domestic</strong></td>
+                                            <td>@Balaji</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Domestic M1 queries</strong></td>
+                                            <td>Aman Qureshi</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>UK / EU M1 queries</strong></td>
+                                            <td>@Deepti S</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>UAE M1 & Ring RTO</strong></td>
+                                            <td>@Violet George (FUP only in <code>#cx_iqf_ops_support</code>)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ultrahuman Home</strong></td>
+                                            <td>@Sarvesh (CC: @Tushar)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring shipments B2C</strong></td>
+                                            <td>@harshitha shetty, @Deepti B, @Cyril</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring shipments B2B</strong></td>
+                                            <td>@Prashant, @Dhineeb K B, @Mubarak</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>FQC</strong></td>
+                                            <td>@Robin</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Ring ETA</strong></td>
+                                            <td>@Sathya Sai + @Harshita (CC: @Cyril)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Voyager Charger</strong></td>
+                                            <td>@Deepti B &amp; @Deepti S</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Delights</strong></td>
+                                            <td>@Deepti S + @Sarvesh</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Logs-related queries</strong></td>
+                                            <td>@Raghu &amp; team (@Mario, @Arjun, @Balaji J)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h5>TECH</h5>
+                            <ul>
+                                <li><strong>Android:</strong> Arka</li>
+                                <li><strong>Backend:</strong> Jaleel</li>
+                                <li><strong>Firmware:</strong> Yogansh</li>
+                                <li><strong>iOS:</strong> Pawan</li>
+                                <li><strong>Frontend:</strong> Vatsal</li>
+                                <li><strong>Web:</strong> Rachit</li>
+                            </ul>
+                            <p><strong>Relevant groups:</strong> <code>@backendoncall</code>, <code>@tech-oncall</code></p>
+
+                            <h5>HARDWARE &amp; IQC</h5>
+                            <p><strong>POC:</strong> Yogansh</p>
+                            <p><strong>Relevant groups:</strong> <code>@hardware</code></p>
+
+                            <h5>DATA</h5>
+                            <p><strong>POC:</strong> Nishant</p>
+                            <p><strong>Relevant groups:</strong> <code>@data</code></p>
+
+                            <h5>FINANCE</h5>
+                            <ul>
+                                <li><strong>Finance:</strong> Yogesh</li>
+                                <li><strong>Payments:</strong> Prasanna</li>
+                                <li><strong>Invoices:</strong> Vijay Kumar</li>
+                            </ul>
+                            <p><strong>Relevant groups:</strong> <code>@finance</code>, <code>@fin-payments</code>, <code>@fin-invoice</code></p>
+
+                            <h5>RETAIL, STRATEGY &amp; OPS</h5>
+                            <p><strong>POC:</strong> Bhuvan</p>
+                            <p><strong>Relevant groups:</strong> <code>@retail</code></p>
+
+                            <h5>SCIENCE</h5>
+                            <p><strong>POC:</strong> Aditi B</p>
+                            <p><strong>Relevant groups:</strong> <code>@science</code></p>
+
+                            <h5>PRODUCT</h5>
+                            <p><strong>Product:</strong> Apurva, Pawan</p>
+                            <p><strong>Design:</strong> Apurva</p>
+                            <p><strong>Relevant groups:</strong> <code>@product-team</code></p>
+
+                            <h5>SCM (Supply Chain Management)</h5>
+                            <p><strong>POC:</strong> Srinivasan</p>
+                            <p><strong>Relevant groups:</strong> <code>@rings_required</code></p>
+
+                            <h5>LEGAL</h5>
+                            <p><strong>POC:</strong> Abhilasha</p>
+                            <p><strong>Relevant groups:</strong> <code>@legal-team</code></p>
+
+                            <h5>MARKETING</h5>
+                            <p><strong>POC:</strong> Hisham</p>
+                            <p><strong>Relevant groups:</strong> <code>@marketing-pr-team</code></p>
+
+                            <h5>MARKETPLACES</h5>
+                            <p><strong>POC:</strong> Kartik, Shantnu Patil</p>
+                            <p><strong>Relevant groups:</strong> <code>@marketplaces</code></p>
+
+                            <h5>PARTNERSHIPS</h5>
+                            <p><strong>POCs:</strong> Kartik, Sonisha</p>
+                            <p><strong>Relevant groups:</strong> <code>@partnerships</code></p>
+
+                            <h5>SALES</h5>
+                            <p><strong>Sales Team:</strong> Yashraj, Athif, Niyati, Pushkar</p>
+                            <p><strong>Relevant groups:</strong> <code>@sales_team</code></p>
+
+                            <h5>DESIGN / UI–UX</h5>
+                            <p><strong>POC:</strong> Ritvik (App)</p>
+                            <p><strong>Relevant groups:</strong> <code>@design</code>, <code>@mechdesign</code></p>
+
+                            <h5>SOCIAL</h5>
+                            <p><strong>POC:</strong> Reema</p>
+                            <p><strong>Relevant groups:</strong> <code>@influencer_marketing</code></p>
+
+                            <h5>PCs (Performance Coaches)</h5>
+                            <p><strong>Team:</strong> Mugdha, Mrudula, Rekha, Nandini</p>
+                            <p><strong>Relevant groups:</strong> <code>@performance-coaches</code></p>
+
+                            <h5>HR</h5>
+                            <p><strong>POC:</strong> Pinkal, Shivika</p>
+
+                            <h5>ORANGE HEALTH/ Tata 1 MG</h5>
+                            <p><strong>POC (Orange Health):</strong> Harsh R, Omprakash Sahu</p>
+                            <p><strong>POC (Tata 1 MG):</strong> Aarnik</p>
+
+                            <h5>HEWA</h5>
+                            <p><strong>POC:</strong> Abdul Akhtar</p>
+
+                            <h5>Rare</h5>
+                            <p><strong>POC:</strong> Prashant Nair</p>
+                        </div>
+                        <div class="ts-panel" id="misc-vision-dashboard" hidden>
+                            <h4>Vision Dashboard</h4>
+                            <p><strong>Applicable regions:</strong> Global.</p>
+                            <p><strong>Related tags:</strong> NA.</p>
+                            <h5>Overview</h5>
+                            <p>Vision Dashboard is a comprehensive health tracking platform for <strong>both individual users and B2B partners</strong>, offering a holistic view of <strong>personal</strong> and <strong>team wellbeing</strong>.</p>
+                            <p>Available at: <code>https://vision.ultrahuman.com/</code></p>
+                            <figure class="ts-figure">
+                                <img src="vb1.png" alt="Vision dashboard overview" loading="lazy">
+                            </figure>
+                            <figure class="ts-figure">
+                                <img src="vb2.png" alt="Vision dashboard health data view" loading="lazy">
+                            </figure>
+                            <figure class="ts-figure">
+                                <img src="vb3.png" alt="Vision dashboard analytics view" loading="lazy">
+                            </figure>
+                            <p>It provides a consolidated view of health data, along with the ability to download and analyze it further.</p>
+                            <p>Vision’s goal is to gather biomarkers from various Ultrahuman products under one roof, including:</p>
+                            <ul>
+                                <li>Blood glucose and diet from M1 (currently via Ultrahuman Bios, soon to be retired, M1 to be added later in Vision).</li>
+                                <li>Sleep, recovery, and movement data from Ring.</li>
+                                <li>Blood test biomarkers.</li>
+                                <li>Any future biomarkers launched later.</li>
+                            </ul>
+
+                            <h5>Targeted user benefits</h5>
+                            <ul>
+                                <li><strong>For Coaches:</strong> Enables coaches to track sleep and athletic performance of athletes.</li>
+                                <li><strong>For Businesses:</strong> Assists businesses in various industries (corporate, healthcare, aviation etc.) to monitor and act upon employee’s health data.</li>
+                                <li><strong>Access to team data:</strong> Provides companies with global employee healthcare welfare programs the ability to view entire teams' health data at once.</li>
+                                <li><strong>Tailored programs:</strong> Allows leaders, healthcare professionals, and coaches to craft tailored methods and programs for client and employee welfare and communicate easily through Vision.</li>
+                                <li>For an individual user, Vision dashboard will be complementing the mobile app by offering a more comprehensive and visual view, utilizing the large real estate and modular nature of a web dashboard for enhanced data visualisation and easier way to download their data, view insights and track progress.</li>
+                            </ul>
+
+                            <h5>Views available</h5>
+                            <p><strong>Coach view</strong></p>
+                            <ul>
+                                <li>Coaches can access holistic team data.</li>
+                                <li>Can dive into individual user views from the team view.</li>
+                            </ul>
+                            <p><strong>Individual view</strong></p>
+                            <ul>
+                                <li>Individual users can access their own personal health data.</li>
+                            </ul>
+
+                            <h5>How to create a coach and add a team partner</h5>
+                            <p>The insights on Individual and Coach views can be checked <a href="https://www.notion.so/Product-description-0bd8c66997fc479f91b991d6002fbded?pvs=21" target="_blank" rel="noopener noreferrer">here</a>.</p>
+
+                            <h5>Troubleshooting user cases</h5>
+                            <ul>
+                                <li>Users facing issues with acceptance of Partner ID: Flag the case to tech-on-call/backend-dev-team after taking all the relevant details from the user (E-mail ID, partner ID if already created). Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1703912629285459" target="_blank" rel="noopener noreferrer">slack thread 1</a> and <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1709277254787229" target="_blank" rel="noopener noreferrer">slack thread 2</a>.</li>
+                                <li>User are not able to enter the Partner ID: Flag to tech-on-call post taking relevant details from user. Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1711609178065799" target="_blank" rel="noopener noreferrer">slack thread</a>.</li>
+                                <li>Individual user reports missing data from the Vision dashboard: Flag to tech-on-call post taking relevant details from user. Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1714863043257909" target="_blank" rel="noopener noreferrer">slack thread</a>.</li>
+                                <li>Discrepancy reported between ring vs vision dashboard data: Flag to tech-on-call post taking relevant details from user. Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1711267551926839" target="_blank" rel="noopener noreferrer">slack thread</a>.</li>
+                                <li>Login issues on the vision dashboard: Flag to tech-on-call post taking relevant details from user. Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1713945974900949" target="_blank" rel="noopener noreferrer">slack thread</a>.</li>
+                                <li>User asks CX team to create coach + user on dashboard: Flag to tech-on-call post taking relevant details from user (coach and user - E-mail IDs). Reference <a href="https://ultrahumanworkspace.slack.com/archives/C02DUT8HSHF/p1710325457816979" target="_blank" rel="noopener noreferrer">slack thread</a>.</li>
+                            </ul>
+
+                            <h5>Blood reports on Vision</h5>
+                            <p>Blood reports available in the app, including those added via Blood Vision Cloud, are also visible on the Vision dashboard.</p>
+                            <figure class="ts-figure">
+                                <img src="vb4.png" alt="Blood reports in Vision dashboard" loading="lazy">
+                            </figure>
+                            <figure class="ts-figure">
+                                <img src="vb5.png" alt="Blood report details in Vision dashboard" loading="lazy">
+                            </figure>
+                        </div>
+                        <div class="ts-panel" id="misc-data-migration" hidden>
+                            <h4>User Data Migration</h4>
+                            <p><strong>Applicable regions:</strong> Global.</p>
+                            <p><strong>Related tags:</strong> <code>ring_account_transfer</code>, <code>sensor_account_transfer</code></p>
+
+                            <p>When users want to transfer all their app data (from either the Ring or M1) from an old email ID (<strong>Account A</strong>) to a new one (<strong>Account B</strong>), follow the steps below to complete the migration process smoothly:</p>
+
+                            <h5>Step 1: Collect required details</h5>
+                            <ul>
+                                <li><strong>Account A</strong> - The current account that holds the data (this can be the account they are reaching out to us from on Yellow.AI).</li>
+                                <li><strong>Account B</strong> - The new email ID they want to move their data to.</li>
+                                <li>The reason for the transfer.</li>
+                            </ul>
+                            <blockquote>
+                                <p>Please confirm the email address currently linked to your data, along with the new email ID you&#39;d like to move your data to.</p>
+                                <p>Also, do let us know the reason for the email change. For example, are you switching devices (like moving from iOS to Android), or is it simply a personal preference? This helps us ensure everything goes smoothly and nothing gets missed.</p>
+                            </blockquote>
+
+                            <h5>Step 2: Verify Account B</h5>
+                            <p>Search the dashboard (Internal &gt; <a href="https://ops.ultrahuman.com/admin/users" target="_blank" rel="noopener noreferrer">Users</a> and/or Ring Data &gt; <a href="https://ops.ultrahuman.com/admin/ring_dashboards" target="_blank" rel="noopener noreferrer">Ring Dashboards</a> for Ring, and Internal &gt; <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a> for M1) to verify whether <strong>Account B</strong>:</p>
+                            <ul>
+                                <li>Already exists, and</li>
+                                <li>Has any data or activity (this could include logging into the app or any device pairing).</li>
+                            </ul>
+
+                            <h5>Step 3: If Account B already has data</h5>
+                            <p>If you check and <strong>Account B</strong> does not exist in our system (i.e., the user has never logged in with it), skip this step and proceed to Step 4.</p>
+                            <p>If <strong>Account B</strong> was previously used to log into the app and now has any stored data:</p>
+                            <ol>
+                                <li>Ask the user to delete Account B from their end:
+                                    <ul>
+                                        <li>They should log into the app using Account B.</li>
+                                        <li>Go to: Profile &rarr; Settings &rarr; Delete Account.</li>
+                                    </ul>
+                                </li>
+                                <li>Let them know that this deletion will result in permanent loss of any data linked to Account B.</li>
+                            </ol>
+                            <blockquote>
+                                <p>It looks like your new email (Account B) is already linked to an existing account with some data. In order to move your data from your old account, we&#39;ll need you to delete this new account first.</p>
+                                <p>Please log in to the app using Account B, head to Profile &rarr; Settings &rarr; Delete Account. Once this is done, log in using Account A and let us know.</p>
+                                <p>Please note that any data linked to this account will be permanently lost, so do proceed only if that&#39;s okay.</p>
+                            </blockquote>
+                            <p>Once the deletion is confirmed, move to the next step.</p>
+
+                            <h5>Step 4: Raise the request</h5>
+                            <p>Once you&#39;ve confirmed that:</p>
+                            <ul>
+                                <li><strong>Account A</strong> (source) and <strong>Account B</strong> (target) have been shared.</li>
+                                <li><strong>Account B</strong> is either deleted or was never used.</li>
+                            </ul>
+                            <p>Raise the request to the <a href="https://ultrahumanworkspace.slack.com/admin/user_groups" target="_blank" rel="noopener noreferrer">@cx-datatransfer</a> team with both email IDs and context on <a href="https://ultrahumanworkspace.slack.com/archives/C09RH099494" target="_blank" rel="noopener noreferrer">cx-data-transfer-requests</a> by filling the <strong>data-transfer-form</strong> with the required details.</p>
+                            <blockquote>
+                                <p>@cxdatatransfer User has requested data transfer from Account A (old@email.com) to Account B (new@email.com).</p>
+                                <p>Reason: Add the reason here.</p>
+                                <p>Confirmed: Account B is [already deleted / never used].</p>
+                                <p>Please proceed with migrating their data.</p>
+                            </blockquote>
+
+                            <h5>Step 5: Confirm completion</h5>
+                            <p>Once the data transfer is complete, let the user know that their data has been migrated successfully.</p>
+                            <blockquote>
+                                <p>Your data has now been successfully moved to your new email ID. You can now log in to the app using this email and access all your previous data.</p>
+                            </blockquote>
+
+                            <h5>Important notes &amp; edge cases</h5>
+                            <ol>
+                                <li>Do not attempt to merge accounts or manually transfer data outside this process.</li>
+                                <li>Always confirm user understanding of data deletion consequences to avoid issues later.</li>
+                                <li>Users who sign in using Apple&#39;s <strong>Sign in with Apple</strong> feature may have an email address ending in <code>@privaterelay.appleid.com</code> if they opt for the <strong>hide my email</strong> option. This is a masked, Apple-generated email that forwards to their actual Apple ID email. This is essentially an extension of their Apple ID and shouldn&#39;t cause any issues as long as they continue using Apple to sign in. There&#39;s no need to worry or change anything unless the user is switching platforms.
+                                    <p>If the user is planning to switch from <strong>iOS to Android</strong>, they may want to migrate their account to a standard email (like Gmail) to ensure seamless access on Android. In such cases, treat it like any other email migration request and follow the standard Account A &rarr; Account B transfer process.</p>
+                                    <blockquote>
+                                        <p>Your account is linked to an Apple Private Relay ID — this is just a masked version of your Apple email and works normally within the Apple ecosystem.</p>
+                                        <p>There&#39;s no need to migrate your data unless you&#39;re planning to switch to an Android device. In that case, we recommend moving your data to a regular email ID (like Gmail) to avoid any login or access issues outside of Apple&#39;s system.</p>
+                                    </blockquote>
+                                </li>
+                                <li>If the user has just signed up and doesn&#39;t have any data linked to their current account (i.e., no device paired, no metrics generated), there&#39;s no need to raise a data migration request. Ask the user to log out and log back in using their preferred email ID.
+                                    <blockquote>
+                                        <p>Since there&#39;s no data associated with your current account yet, you can just log out and log back in using your preferred email. That&#39;ll set things up exactly how you need — no data will be lost.</p>
+                                    </blockquote>
+                                </li>
+                                <li>You can click on <strong>data-transfer-form</strong> and fill the form with relevant details in case a user needs to have their name changed on the app.</li>
+                            </ol>
+                        </div>
+                        <div class="ts-panel" id="misc-api-access" hidden>
+                            <h4>API Access</h4>
+                            <p><strong>Applicable regions:</strong> Global.</p>
+                            <p><strong>Related tags:</strong> <code>API_access_granted</code>, <code>ring_faq</code></p>
+                            <p>When users ask if they can obtain API access to their ring&#39;s data, please ask them about the intended use case.</p>
+
+                            <p>After that, here are the steps to follow:</p>
+                            <ol>
+                                <li>Go to the dashboard &gt; Internal &gt; <a href="https://ops.ultrahuman.com/admin/partners" target="_blank" rel="noopener noreferrer">Partners</a>.</li>
+                                <li>Click on <strong>New Partner</strong> &gt; enter their email ID (check with the user on which email they want the access on) in the <strong>name</strong> section &gt; click on <strong>Create Partner</strong>.</li>
+                                <li>Once this is done, you will see a page with the <strong>Auth token</strong> and <strong>Partner Code</strong> on the next screen created for this user. As soon as you&#39;re on this page, please share the credentials directly from here and do not press back or reload. <strong>One note:</strong> Once you return to this page, the Auth token code will disappear due to security measures. It&#39;s important to immediately take the details or make a note of them from this page and share them with users in real-time.</li>
+                                <li>Post this, please share the Auth token and Partner code back with the user and ask them to head to Profile &gt; Settings &gt; scroll down and select <strong>partner ID</strong> and enter this code in the text box for them to view their data.</li>
+                            </ol>
+                            <p><strong>Example of Auth Token:</strong></p>
+                            <p><code>eyJhbGciOiJIUzI1NiJ9.eyJzZWNyZXQiOiJkZGM5Y2JkZThjMzg3ODhkMDg0NyIsImV4cCI6MjQ2NDc1NTk2NH0.ToPMD7UyB8jGq8x1b65LOte_6pOXqIDk0R-3hC5Z3fM</code></p>
+                            <p><strong>Example of Partner ID:</strong> <code>EDULBMAG</code></p>
+                            <p>Along with the Auth token and Partner ID, please share <a href="https://www.notion.so/5f32ec15ef6b4fa5bc8249f7b875d212?pvs=21" target="_blank" rel="noopener noreferrer">this API doc</a> as well, which has instructions for them.</p>
+                        </div>
+                        <div class="ts-panel" id="misc-chat-etiquette" hidden>
+                            <h4>Chat Etiquette</h4>
+                            <h5>Mastering professional communication</h5>
+                            <p><strong>Ultrahuman’s Guide to Effective Chat Etiquette</strong></p>
+
+                            <h5>1. Connection through clarity</h5>
+                            <p>At Ultrahuman, every chat interaction is an opportunity to build trust and deliver exceptional support. Chat is fast-paced, direct, and dynamic — but professionalism, clarity, and warmth still matter.</p>
+                            <p>This guide helps every team member, from new joiners to experienced specialists, communicate confidently and consistently in chat environments. Remember:</p>
+                            <p><em>Chat is not email, but it’s also not texting. Be quick, but never careless.</em></p>
+
+                            <hr>
+
+                            <h5>2. The anatomy of a perfect support chat</h5>
+                            <p>Chats move fast, but they still need clarity and structure.</p>
+
+                            <h6>The greeting: a quick professional welcome</h6>
+                            <p>Start friendly and concise.</p>
+                            <ul>
+                                <li>&ldquo;Hi [Name]! 😊Thanks for reaching out. Can you please elaborate on what issues you are facing with the ring so that I can understand the situation better?&rdquo;</li>
+                                <li>&ldquo;Hello [Name], happy to help! Please give me a while to read through your query and assist you accordingly&rdquo;</li>
+                            </ul>
+
+                            <h6>Opening line: acknowledge &amp; set context immediately</h6>
+                            <p>Your first message should confirm you’ve understood their issue.</p>
+                            <p>Instead of &ldquo;Sorry you&#39;re facing issues.&rdquo;</p>
+                            <p><strong>Use:</strong> &ldquo;Thanks for reaching out! I see you’re having trouble with the app — I’m here to help.&rdquo;</p>
+
+                            <h6>The body: keep it clear, short, and highly scannable</h6>
+                            <ul>
+                                <li>Use short messages rather than long paragraphs.</li>
+                                <li>Use bullet points for steps or questions.</li>
+                                <li>One idea per message for maximum clarity.</li>
+                            </ul>
+
+                            <h6>Closing messages: set expectations clearly</h6>
+                            <p>Examples:</p>
+                            <p>&ldquo;We’re checking this with the technical team now — we’ll update you in the next 24-48 hours. Appreciate your patience and understanding regarding this.&rdquo;</p>
+
+                            <h6>Final ticket closure message</h6>
+                            <p>Before marking a ticket as Resolved in Yellow.ai, send a clear closing message.</p>
+                            <p>Example:</p>
+                            <p>&ldquo;Hi [Name],</p>
+                            <p>Great news — your data sync is now working! I’m closing this chat for now. If anything else comes up, feel free to reach out anytime.&rdquo;</p>
+
+                            <h6>The golden rules of handling chat threads</h6>
+                            <ol>
+                                <li>Acknowledge → Clarify → Act</li>
+                                <li>Avoid chat spam with consolidated messages</li>
+                                <li>Maintain a warm, professional tone</li>
+                            </ol>
+
+                            <hr>
+
+                            <h5>3. Our tonality: supportive, confident, clear</h5>
+                            <p>Avoid overly apologetic language. Use warm, supportive phrasing instead.</p>
+                            <div class="document-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Instead of this (Overly Apologetic)</th>
+                                            <th>Use This (Friendly &amp; Supportive)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>I am so terribly sorry for the massive inconvenience this has caused.</td>
+                                            <td>I understand this is frustrating, and I&#39;m here to help get it resolved.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apologies for the delayed response.</td>
+                                            <td>Thanks for your patience!</td>
+                                        </tr>
+                                        <tr>
+                                            <td>I’m not sure.</td>
+                                            <td>Great question! Please give me a moment while I’m checking this with the team.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>We can’t do that.</td>
+                                            <td>While that feature isn’t available, that is an amazing suggestion and feedback. We will definitely share this with the team and might roll this out in the future.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h5>4. Using AI tools responsibly</h5>
+                            <p>AI tools are support copilots — not replacements for judgment.</p>
+                            <p><strong>Golden rule:</strong> AI drafts → You refine.</p>
+                            <p>Before sending:</p>
+                            <ul>
+                                <li><strong>Proofread</strong> — does it sound natural?</li>
+                                <li><strong>Personalize</strong> — use their name + context.</li>
+                                <li><strong>Check accuracy</strong> — avoid overpromising.</li>
+                                <li><strong>Inject our tone</strong> — friendly, confident, clear.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h5>5. Why accurate tagging is important</h5>
+                            <p>Always apply only the tags that correctly represent the customer’s issue or request. <strong>Remove any irrelevant tags.</strong></p>
+
+                            <h6>Ensures reliable data &amp; reporting</h6>
+                            <p>Tags are the backbone of how we measure customer issues, trends, and volumes. If tags are inaccurate:</p>
+                            <ul>
+                                <li>The data becomes misleading.</li>
+                                <li>Trends appear distorted.</li>
+                                <li>Reporting loses credibility.</li>
+                            </ul>
+                            <p>Correct tagging ensures management can trust the insights used for planning and decision-making.</p>
+
+                            <h6>Helps operations plan resources effectively</h6>
+                            <p>Leads rely on tags to understand:</p>
+                            <ul>
+                                <li>Which issues are increasing.</li>
+                                <li>Where training or SOP improvements are needed.</li>
+                                <li>If there is a certain tech issue that needs to be fixed ASAP.</li>
+                            </ul>
+                            <p><strong>Accurate tags = accurate operational planning.</strong></p>
+
+                            <h6>Improves product &amp; engineering alignment</h6>
+                            <p>Tags tell the product and tech team:</p>
+                            <ul>
+                                <li>What customers struggle with most.</li>
+                                <li>Which features cause recurring issues.</li>
+                                <li>What bugs are affecting user experience.</li>
+                                <li>What improvements matter most.</li>
+                            </ul>
+                            <p><strong>With wrong tags, the wrong priorities get attention.</strong></p>
+
+                            <h6>Ensures better team coordination</h6>
+                            <p>When a chat is reassigned or escalated, correct tags help the next associate:</p>
+                            <ul>
+                                <li>Quickly understand the nature of the issue.</li>
+                                <li>Know where the case belongs.</li>
+                                <li>Follow the correct workflow.</li>
+                            </ul>
+                            <p>Wrong tags lead to confusion, delays, and repeated questions to the customer.</p>
+
+                            <hr>
+
+                            <h5>6. Why leaving internal notes on chats is essential</h5>
+                            <h6>Ensures smooth handoffs between associates</h6>
+                            <p>Internal notes provide context that helps the next associate quickly understand:</p>
+                            <ul>
+                                <li>What actions have already been taken.</li>
+                                <li>What the customer has been told.</li>
+                                <li>What information is still pending.</li>
+                                <li>Any blockers or special considerations.</li>
+                            </ul>
+                            <p>This prevents the customer from having to repeat themselves and ensures the new associate can continue the conversation confidently and efficiently.</p>
+
+                            <h6>Improves consistency in customer experience</h6>
+                            <p>With clear internal notes, even if multiple team members work on the same case, the customer experience remains:</p>
+                            <ul>
+                                <li>Consistent</li>
+                                <li>Accurate</li>
+                                <li>Personalized</li>
+                            </ul>
+                            <p>Notes act as a bridge, preserving continuity across shifts, escalations, and reassignments.</p>
+
+                            <h6>Critical for complex or multi-step cases</h6>
+                            <p>When a case involves multiple troubleshooting steps, cross-team collaboration, product escalations, or long turnaround times, detailed notes become essential.</p>
+                            <p>They help avoid:</p>
+                            <ul>
+                                <li>Repeating the same steps</li>
+                                <li>Providing conflicting information</li>
+                                <li>Missing follow-ups</li>
+                                <li>Delaying resolutions</li>
+                            </ul>
+                            <p>For complex issues, internal notes serve as the “case history” that guides the next action.</p>
+
+                            <h6>Supports proper auditing and compliance</h6>
+                            <p>Accurate internal notes are a key part of audit-ready documentation.</p>
+                            <p>They help ensure:</p>
+                            <ul>
+                                <li>Every action is traceable</li>
+                                <li>Every decision is justified</li>
+                                <li>Each step of the support process is properly recorded</li>
+                            </ul>
+                            <p>This protects you during internal reviews, performance audits, or customer escalations.</p>
+
+                            <hr>
+
+                            <h5>7. Final checklist</h5>
+                            <p>Before sending an important chat response and resolving the chat, confirm:</p>
+                            <ul>
+                                <li>Greeting is correct.</li>
+                                <li>Message is clear and scannable.</li>
+                                <li>Tone is supportive.</li>
+                                <li>Next steps are stated.</li>
+                                <li>Spelling &amp; grammar checked.</li>
+                                <li>Ticket is tagged accurately.</li>
+                                <li>Internal notes added if needed, especially for complicated cases so that the next agent handling the case saves time.</li>
+                            </ul>
+                        </div>
+                        <div class="ts-panel" id="misc-email-etiquette" hidden>
+                            <h4>Email Etiquette</h4>
+                            <h5>Mastering professional communication</h5>
+                            <p><strong>Ultrahuman’s Guide to Effective Email Etiquette</strong></p>
+
+                            <h5>1. Connection through clarity</h5>
+                            <p>At Ultrahuman, every email is an opportunity to build trust and provide outstanding support. Our goal is to be clear, helpful, and efficient, ensuring our clients and colleagues feel heard and respected.</p>
+                            <p>This guide is here to empower everyone, from new hires to seasoned team members, to communicate with confidence. Remember, an email is a lasting record of our conversation; it&#39;s not a chat. Let&#39;s make every interaction a positive one.</p>
+
+                            <hr>
+
+                            <h5>2. The anatomy of a perfect support email</h5>
+                            <p>Every email you send should be structured for maximum clarity and impact. Think of it like building with LEGOs; each piece has a purpose.</p>
+
+                            <h6>A. The greeting: the professional handshake</h6>
+                            <p>Start warm and professional.</p>
+                            <ul>
+                                <li><strong>Safe &amp; friendly:</strong> &ldquo;Hi [Name],&rdquo; or &ldquo;Hello [Name],&rdquo;</li>
+                                <li><strong>For group emails:</strong> &ldquo;Hi Team,&rdquo; or &ldquo;Hello Everyone,&rdquo;</li>
+                            </ul>
+
+                            <h6>B. The opening line: get straight to the point</h6>
+                            <p>Your first sentence should immediately set the context and acknowledge the sender&#39;s email. This shows you&#39;ve read and understood their message.</p>
+                            <ul>
+                                <li><strong>Instead of:</strong> &ldquo;I&#39;m sorry for the trouble you&#39;re facing.&rdquo;</li>
+                                <li><strong>Try:</strong> &ldquo;Thanks for reaching out about the issue with the app.&rdquo; or &ldquo;I&#39;m happy to help you with your question about user permissions.&rdquo;</li>
+                            </ul>
+
+                            <h6>C. The body: provide clarity and structure</h6>
+                            <p>This is where the &ldquo;email is not a chat&rdquo; rule is most critical. Avoid long, unbroken paragraphs. Guide your reader&#39;s eye.</p>
+                            <ul>
+                                <li><strong>Use lists:</strong> For questions, action items, or steps, use bullet points or numbered lists.</li>
+                                <li><strong>Use bolding:</strong> Emphasize key information like <strong>dates</strong>, <strong>names</strong>, or <strong>critical actions</strong>.</li>
+                                <li><strong>One idea per paragraph:</strong> Keep paragraphs short (2-3 sentences) and focused on a single topic.</li>
+                                <li><strong>Provide context:</strong> If referencing a past conversation, briefly summarize it. &ldquo;In our last email, we discussed setting up your new profile. Here are the final steps to complete that...&rdquo;</li>
+                            </ul>
+
+                            <h6>D. The closing: set clear expectations</h6>
+                            <p>Your closing should summarize the next steps. What do you need from them? What will you do next?</p>
+                            <ul>
+                                <li><strong>Good example:</strong> &ldquo;I have now escalated this to our technical team. You can expect an update from us within the next 24-48 hours.&rdquo;</li>
+                                <li><strong>Vague example:</strong> &ldquo;Okay, I&#39;ll look into it.&rdquo;</li>
+                            </ul>
+
+                            <h6>E. The sign-off and signature</h6>
+                            <p>End professionally, with a warm tone.</p>
+                            <p><strong>Friendly &amp; professional:</strong> &ldquo;Best regards,&rdquo; &ldquo;All the best,&rdquo; &ldquo;Thank you,&rdquo; or &ldquo;Kind regards,&rdquo; along with your name. You can also include your title and the company’s name.</p>
+
+                            <h6>D. Closing a ticket cleanly</h6>
+                            <p>Before you set the ticket status to <strong>Resolved</strong> on Yellow.ai, send a final closing message. This confirms the resolution and prevents confusion.</p>
+                            <p><strong>Example closing message:</strong></p>
+                            <p>&ldquo;Hi [Customer Name],</p>
+                            <p>I&#39;m glad we were able to get your data export working! I&#39;m now closing this ticket. If you have any other questions in the future, please feel free to open a new one.</p>
+                            <p>Thanks for contacting us!&rdquo;</p>
+
+                            <hr>
+
+                            <h5>3. The golden rules of handling email threads</h5>
+                            <h6>A. Rule #1: Acknowledge, Clarify, Act.</h6>
+                            <p>For every new support request, follow this simple three-step process.</p>
+                            <ol>
+                                <li><strong>Acknowledge:</strong> Start by confirming you&#39;ve received their message and understand their core issue. &ldquo;Thanks for letting us know about the login issue on the mobile app.&rdquo;</li>
+                                <li><strong>Clarify (if needed):</strong> If you need more information, ask specific, numbered questions.</li>
+                                <li><strong>Act:</strong> State what you are doing right now and what they can expect next.</li>
+                            </ol>
+                            <p><strong>Clarify example:</strong> &ldquo;To help me investigate further, could you please provide: 1. The device model you&#39;re using? 2. The version of the app installed? 3. A screenshot of the error message?&rdquo;</p>
+                            <p><strong>Act example:</strong> &ldquo;I am now reviewing the logs for your account. I will provide an update within an hour.&rdquo;</p>
+
+                            <h6>B. Rule #2: Consolidate your responses.</h6>
+                            <p><strong>This is the most important rule to avoid the &ldquo;chat&rdquo; trap.</strong> Before hitting &#39;Send&#39; on a reply in an ongoing thread, ask yourself: &ldquo;Do I have more questions or updates to add?&rdquo;</p>
+                            <p><strong>Instead of sending multiple emails like a chat:</strong></p>
+                            <ul>
+                                <li><em>Email 1:</em> &ldquo;Got it.&rdquo;</li>
+                                <li><em>Email 2:</em> &ldquo;What browser are you using?&rdquo;</li>
+                                <li><em>Email 3:</em> &ldquo;Oh, and can you send a screenshot?&rdquo;</li>
+                            </ul>
+                            <p><strong>Send ONE consolidated email:</strong></p>
+                            <p>&ldquo;Thanks for confirming. To move forward, I just need two more things from your end:</p>
+                            <p>1. The browser and version you are using.</p>
+                            <p>2. A screenshot of your entire screen showing the error.</p>
+                            <p>Once I have these, I&#39;ll have everything I need to escalate this to our engineering team.&rdquo;</p>
+
+                            <h6>C. Rule #3: Use &ldquo;Reply All&rdquo; with great caution.</h6>
+                            <p>Only use &ldquo;Reply All&rdquo; if every single person on the original email <em>needs</em> to know the information in your reply. When in doubt, just reply to the sender.</p>
+
+                            <hr>
+
+                            <h5>4. Our tonality: supportive, confident, and clear</h5>
+                            <p>Our tone is our brand. We are friendly partners, not apologetic servants.</p>
+                            <div class="document-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Instead of this (Overly Apologetic)</th>
+                                            <th>Use This (Friendly &amp; Supportive)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>&ldquo;I am so terribly sorry for the massive inconvenience this has caused.&rdquo;</td>
+                                            <td>&ldquo;I understand this is frustrating, and I&#39;m here to help get it resolved.&rdquo;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&ldquo;Apologies for the delayed response.&rdquo;</td>
+                                            <td>&ldquo;Thanks for your patience.&rdquo;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&ldquo;I&#39;m sorry, I&#39;m not sure.&rdquo;</td>
+                                            <td>&ldquo;That&#39;s a great question. Let me check with the team and get back to you.&rdquo;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&ldquo;Unfortunately, the product can&#39;t do that.&rdquo;</td>
+                                            <td>&ldquo;While that specific function isn&#39;t available, many users have found [Alternative Solution] to be a great workaround.&rdquo;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h5>5. Leveraging AI tools (like Gemini) responsibly</h5>
+                            <p>AI assistants are fantastic co-pilots, but you are always the pilot in command. Use them to create drafts, but never send an AI-generated response without reviewing and personalizing it.</p>
+                            <p><strong>The golden rule:</strong> AI is for Drafting, you are for Finishing.</p>
+
+                            <h6>A. How to use AI effectively</h6>
+                            <ul>
+                                <li><strong>For structure:</strong> Draft a professional email acknowledging a customer&#39;s complaint about a billing error. Ask for the Order ID and a screenshot of the charge. Structure it with a clear opening, a numbered list for the required information, and a closing that sets expectations for a resolution timeframe.</li>
+                                <li><strong>For tone adjustment:</strong> Rewrite this sentence to sound more supportive and less apologetic: &ldquo;I&#39;m sorry, but we have to deny your feature request.&rdquo; <em>AI might suggest:</em> &ldquo;Thank you for this excellent suggestion. While it&#39;s not on our immediate roadmap, we&#39;ve logged it for future consideration by our product team.&rdquo;</li>
+                                <li><strong>For summarizing:</strong> Summarize this long email thread with the customer&#39;s key issues and the steps we&#39;ve taken so far.</li>
+                            </ul>
+
+                            <h6>B. The non-negotiable human check</h6>
+                            <ol>
+                                <li><strong>Proofread:</strong> AI can make grammatical mistakes or sound unnatural. Read it aloud.</li>
+                                <li><strong>Personalise:</strong> Add the customer&#39;s name and reference a specific detail from their previous email. Make it human.</li>
+                                <li><strong>Check for accuracy:</strong> Does the AI&#39;s response promise something we can&#39;t deliver? Is the technical information correct? <strong>You are responsible for the final content.</strong></li>
+                                <li><strong>Inject our tone:</strong> Ensure the final draft feels like it came from our company, not a robot.</li>
+                            </ol>
+
+                            <hr>
+
+                            <h5>6. Final checklist before you hit &#39;Send&#39;</h5>
+                            <ul>
+                                <li><strong>Greeting:</strong> Is it professional and addressed to the right person?</li>
+                                <li><strong>Clarity:</strong> Is my message easy to scan? (Used lists/bolding?)</li>
+                                <li><strong>Consolidation:</strong> Have I included all my questions/updates in this one email?</li>
+                                <li><strong>Tone:</strong> Do I sound supportive and confident?</li>
+                                <li><strong>Next steps:</strong> Is it crystal clear what happens next?</li>
+                                <li><strong>Proofread:</strong> Have I checked for typos and grammar errors?</li>
+                                <li><strong>Ticket status:</strong> Is the ticket correctly categorised and tagged in Yellow.ai?</li>
+                                <li><strong>Internal notes:</strong> Have I added any necessary internal notes for my colleagues before sending the reply?</li>
+                            </ul>
+                        </div>
+                        <div class="ts-panel" id="misc-chat-email-sops" hidden>
+                            <h4>Chat/Email Handling &amp; Flagging SOPs</h4>
+                            <h5>Overview</h5>
+                            <p>To outline standardised procedures for handling support chat interactions, ensuring high-quality and consistent support. This SOP applies to all agents managing customer chats via <a href="http://yellow.ai/" target="_blank" rel="noopener noreferrer">Yellow.AI</a>.</p>
+
+                            <h6>For emails</h6>
+                            <p>Once it is decided that a user&#39;s issue needs to be flagged, follow the flagged process &gt; paste the flagged URL in the flagged box [Details &gt; &ldquo;Flagged Link&rdquo;], send the Holding message, and change the status to ON-HOLD.</p>
+
+                            <h6>For chats</h6>
+                            <p>Once decided that a user&#39;s issue needs to be flagged, follow the flagged process &gt; paste the flagged URL in the flagged box [Details &gt; &ldquo;Flagged Link&rdquo;] and send the Holding message &gt; assign the chat to the FLAGGED QUEUE and agent Mukesh Kumar.</p>
+
+                            <p><strong>Holding Message:</strong> <em>Macro name - flagged_holdingnote</em></p>
+                            <blockquote>
+                                <p>After carefully reviewing your issue, we’ve determined that it needs to be escalated to our internal team for a thorough check. We’ve raised it with the concerned team, and typically this process takes less than 48 hours. In rare cases, it may take up to 72 hours. Please rest assured—we’ll keep this chat open and update you as soon as we have a resolution.</p>
+                            </blockquote>
+
+                            <p>Once flagged, the internal flagged team will take over. General guidelines:</p>
+                            <ul>
+                                <li><strong>If the chat is active</strong> → Respond to the customer and try to solve.</li>
+                                <li><strong>If the chat is inactive</strong> → Follow up with the internal team.</li>
+                                <li><strong>If the team replies</strong> → Update the customer.</li>
+                                <li><strong>If no reply</strong> → Mark &ldquo;no update&rdquo; in internal notes till next follow-up.</li>
+                            </ul>
+
+                            <h5>Escalation if delayed</h5>
+                            <p>If a flagged chat goes beyond 2 days without resolution, highlight it to the leads:</p>
+                            <p>@Parth Saluja, @Vishal, @Trishala, @Twinkle, @Ashad, @Shalm, @Govind, @Shanon, @Sanil Sharma.</p>
+                            <p>Also, reply appropriately to the customer, e.g., <em>&ldquo;This is taking longer than expected, but our team is actively working on it. We apologize for the delay.&rdquo;</em></p>
+                            <blockquote>
+                                <p>Keep the chat flagged and ensure resolution.</p>
+                            </blockquote>
+
+                            <h5>Decision table</h5>
+                            <p>Use this table to determine when to mark a chat as resolved or to flag it.</p>
+                            <div class="document-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Scenario</th>
+                                            <th>Mark as Resolved</th>
+                                            <th>Flag</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>When an issue is fully solved, and the user has confirmed</td>
+                                            <td>Yes</td>
+                                            <td>No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Feedback or feature request shared</td>
+                                            <td>Yes</td>
+                                            <td>No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>The refund/replacement has been processed</td>
+                                            <td>Yes</td>
+                                            <td>No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waiting for the user’s reply after the partial solution</td>
+                                            <td>Allow chat to auto-resolve</td>
+                                            <td>No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Distress related to the ring, causing burns, shock, or any injury to the user (also follow-up care)</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bug reported/tech issue, pending internal fix</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Transaction/refund issues that need finance review</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ops issues (ETA, customs, lost packages, RTO, SKU, engraving, tracking link issues) or Finance/Refund-related cases</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Central requests</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>The customer query cannot be resolved with standard troubleshooting</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>An escalation is needed to unblock progress</td>
+                                            <td>No</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <blockquote>
+                                <p><a href="https://docs.google.com/spreadsheets/d/1DdaZv4LZbm0kJHCcBfOZu_z__1l4MOsfaUmcDe-JO-E/edit?gid=1107080691#gid=1107080691" target="_blank" rel="noopener noreferrer">Examples</a></p>
+                            </blockquote>
+
+                            <h5>Definitions</h5>
+                            <ul>
+                                <li><strong>Mark as Resolved (Done):</strong> Close the chat when no further action is needed from either side.</li>
+                                <li><strong>Flag:</strong> Escalate the chat to an internal team.</li>
+                            </ul>
+
+                            <hr>
+
+                            <h5>Flagging</h5>
+                            <blockquote>
+                                <p>You can find the list of the company-wide POCs <a href="https://ultrahumanworkspace.slack.com/docs/TQ4FXMWAU/F094C67NB46" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                            </blockquote>
+                            <p>To streamline our workflow, we&#39;ve implemented the following protocol for handling flagged chats.</p>
+                            <p><strong>Important to note:</strong></p>
+                            <ul>
+                                <li>Associates must appropriately tag any newly flagged chat and move it to the flagged queue.</li>
+                                <li>The assigned agents will manage flagged thread follow-ups by:
+                                    <ul>
+                                        <li>Following up with the internal team on the relevant threads at intervals.</li>
+                                        <li>Updating users only if there’s a new update.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>If there is an update:</p>
+                            <ol>
+                                <li>Relay the same to the users and snooze the chat for the customer’s reply.</li>
+                                <li>Reassign the chat back to the main queue.</li>
+                            </ol>
+                            <p>Once the user responds and the chat reopens, it will be treated as a regular live chat and should be handled by associates. If it needs to be flagged again, the same process applies.</p>
+
+                            <h6>Setting expectations when flagging</h6>
+                            <p>Whenever we are flagging for the below reasons, set clear expectations with the user that we will get back to them within the following timelines:</p>
+                            <ul>
+                                <li>Logistics ETA: 24-48 hours</li>
+                                <li>Customs: 2-3 working days</li>
+                                <li>Shipment redirection: 2-3 working days</li>
+                                <li>Label: 24-48 hours</li>
+                                <li>Refund: 3-5 working days (for refund initiation from finance)</li>
+                                <li>Invoice validation: 2-3 working days</li>
+                                <li>Tech: 24-48 hours</li>
+                                <li>Legal: 2-3 working days</li>
+                            </ul>
+                            <p>If there is no update from the team by the end of this duration, we can drop a message/email asking them for more time.</p>
+
+                            <hr>
+
+                            <h5>Flagging SOPs</h5>
+                            <ul>
+                                <li><a href="https://www.notion.so/Flagging-Ops-2fe755317a9180ca84ffc241de2cda05?pvs=21" target="_blank" rel="noopener noreferrer">Flagging - Ops</a></li>
+                                <li><a href="https://www.notion.so/Flagging-Finance-2fe755317a91803bb934dc761a7a4c0a?pvs=21" target="_blank" rel="noopener noreferrer">Flagging - Finance</a></li>
+                                <li><a href="https://www.notion.so/Flagging-Tech-2fe755317a9180f4bbcdc44a1991156d?pvs=21" target="_blank" rel="noopener noreferrer">Flagging - Tech</a></li>
+                                <li><a href="https://www.notion.so/Flagging-Others-2fe755317a9180fea585cb4dfa05e0f6?pvs=21" target="_blank" rel="noopener noreferrer">Flagging - Others</a></li>
+                                <li><a href="https://www.notion.so/Flagging-Labels-2fe755317a9180248ab1ef10f88975a8?pvs=21" target="_blank" rel="noopener noreferrer">Flagging - Labels</a></li>
+                            </ul>
+
+                            <h5>Fraud cases</h5>
+                            <p>When handling potential fraud cases, watch for these red flags and follow the investigation process outlined above:</p>
+                            <ul>
+                                <li><strong>Multiple logged-in email addresses for the same ring:</strong> Check if different email accounts are associated with or claiming the same ring serial number.</li>
+                                <li><strong>Multiple reach-outs from different email addresses:</strong> The same ring issue is being reported by different logged-in email addresses, indicating potential account manipulation.</li>
+                                <li><strong>Confusion about ring-box association:</strong> User shares multiple ring boxes but cannot clearly identify which ring corresponds to their order.</li>
+                                <li><strong>Unable or unwilling to provide invoice:</strong> User repeatedly avoids sharing proof of purchase or dodges questions about the invoice.</li>
+                            </ul>
+                            <blockquote>
+                                <p><strong>Action required:</strong> If you encounter any of these red flags, immediately escalate to SME/Leads before proceeding with any resolution.</p>
+                            </blockquote>
+                            <p><strong>Past case studies:</strong></p>
+                            <ul>
+                                <li><strong>Alza Honza:</strong> User was reaching out for multiple replacements using different email addresses within a few days/weeks. <code>https://docs.google.com/document/d/1Go0XXvg5hppqSou5ddg_PqOuD1Ooam54zZ2pDiCdWvk/edit?tab=t.0</code></li>
+                                <li><strong>GigaBest/PikaBesty Group:</strong> They learned that if they do not connect the ring for a few days, the case is classified as &ldquo;non-advertising,&rdquo; triggering a replacement from our side. Many of the rings were then resold to other people and are still active. Refunds have already been processed for the original purchases. <code>https://docs.google.com/document/d/1_17DOlQCwViLF6aB8fMiQHc1CcFyd1iLDVDX9L4WFiQ/edit?tab=t.0</code></li>
+                                <li><strong>JB HiFi Gang:</strong> They were sharing fake JB Hifi invoices with us, and insisted that the amount that we needed to transfer was in USD and not AUD. Multiple reachouts via different logged-in email addresses, and same invoice was being shared with minor edits.</li>
+                            </ul>
+                            <p><strong>Exceptional case:</strong></p>
+                            <ul>
+                                <li><strong>Vasilis Spathopoulos:</strong> Shared personal referral link on Twitter. Original order was then refunded and then he has been reselling the rings which he got from us for free, while posting negative reviews on app store/Trust pilot. <code>https://docs.google.com/document/d/1P7z1QSkTCIl652uREeqG_-guC0mP_B1J/edit#heading=h.dy1bxhg9l02l</code></li>
+                            </ul>
+
+                            <h5>Tagging SOP</h5>
+                            <ul>
+                                <li>If a case is flagged, and then a resolution is given after, still keep the flag tags on. Don’t remove them.</li>
+                                <li>All chats should be tagged with the relevant tags based on the case:
+                                    <ul>
+                                        <li><code>random</code> - To be used initially when you don’t know what the query is, OR in case of promotional emails/spam emails.</li>
+                                        <li><code>logistics_outbound_update</code> - When composing a <strong>fresh</strong> email to any user.</li>
+                                    </ul>
+                                </li>
+                                <li>When flagging ANY chat, follow this:
+                                    <ul>
+                                        <li><code>Flagged_Tech</code> - Whenever chats are flagged to the tech team.</li>
+                                        <li><code>Flagged_Ops</code> - Whenever chats are flagged to the Ops team.</li>
+                                        <li><code>Flagged_Finance</code> - Whenever chats are flagged to the Finance team.</li>
+                                        <li><code>Flagged_Other</code> - Whenever chats are flagged to any other team.</li>
+                                        <li><code>Flagged_Labels</code> - Whenever we request an RTO shipping label.</li>
+                                    </ul>
+                                </li>
+                                <li>For any chats where the issue is resolved, please tag them as <code>resolved</code>.</li>
+                            </ul>
+
+                            <h5>Tonality</h5>
+                            <blockquote>
+                                <p>Always ensure that the tone of your voice is friendly, natural, and never overly apologetic. It’s a mutual process – you’re helping the user out, and the user is helping you out.</p>
+                            </blockquote>
+                            <p><strong>In-app chat support</strong></p>
+                            <ul>
+                                <li>Chat-like conversations/responses.</li>
+                                <li>Sound light, friendly, pro-active, and super helpful.</li>
+                            </ul>
+                            <p><strong>Emails</strong></p>
+                            <ul>
+                                <li>Generally, detailed responses (to reduce back and forth).</li>
+                                <li>Sound light, but detail-oriented, responsible, pro-active, and super helpful.</li>
+                            </ul>
+                            <p><strong>Social platforms</strong></p>
+                            <ul>
+                                <li>Chat-like conversations/responses.</li>
+                                <li>Sound light, friendly, super helpful.</li>
+                            </ul>
+
+                            <h5>Best practices</h5>
+                            <ul>
+                                <li>Always tag customer messages on time. It gives everyone context about the kind of queries that come in.</li>
+                                <li>Be aware of the different macros and shortcuts already available to you.</li>
+                                <li>When you do use macros, personalize them so that the message received by the user doesn’t sound like a template.</li>
+                                <li>Always leave a <strong>summary note</strong> when flagging a chat.</li>
+                                <li>Always ensure that the tone of your voice is friendly, natural, and never overly apologetic.</li>
+                                <li>Close a conversation when you’re done answering all the questions from your side.</li>
+                                <li>While attending messages on Yellow, go back to the &ldquo;Searches&rdquo; page and search with the email address of the user in quotation marks (&ldquo;user@example.com&rdquo;) every now and then to ensure no chats have been missed.</li>
+                                <li>Never send formal responses like &ldquo;Good Morning, Sir/ Ma’am&rdquo;.</li>
+                            </ul>
+
+                            <h5>Important metrics</h5>
+                            <ul>
+                                <li><strong>FRT (First response time):</strong> Respond with a greeting like &ldquo;Hey!&rdquo; / &ldquo;Hello!&rdquo; / &ldquo;Hi there!&rdquo; as soon as you see a new message, to maintain your FRT.</li>
+                                <li><strong>AHT (Average handling time):</strong> This measures how fast you resolve queries. Be sure to prioritise your queries well.</li>
+                            </ul>
+                        </div>
+                        <div class="ts-panel" id="misc-performance-coaches" hidden>
+                            <h4>Performance Coaches</h4>
+                            <p><strong>Applicable regions:</strong> Global.</p>
+                            <p><strong>Related tags:</strong> <code>performancecoaches</code></p>
+
+                            <h5>Overview</h5>
+                            <p>Performance Coaches are ACSM-certified experts available to all users at <strong>no extra cost</strong>. They provide personalised, science-backed insights based on users’ glucose and biomarker trends.</p>
+
+                            <h5>What coaches can do</h5>
+                            <ul>
+                                <li>Help users understand their glucose and biomarker patterns.</li>
+                                <li>Offer personalised, actionable recommendations.</li>
+                                <li>Guide users in making the best use of the platform.</li>
+                            </ul>
+                            <p><strong>Note:</strong> Coaches do <em>not</em> provide prescriptive meal plans or workout plans.</p>
+
+                            <h5>When CX should direct users to a coach</h5>
+                            <ul>
+                                <li>User is confused about their glucose or biomarker data.</li>
+                                <li>User needs help interpreting trends.</li>
+                                <li>User wants deeper guidance than basic support can provide.</li>
+                            </ul>
+
+                            <h5>How users can reach a performance coach</h5>
+                            <p>Guide users to follow these steps:</p>
+                            <p><strong>App → Profile → Get Help → Review My Data With a Coach</strong></p>
+                            <p>This opens a chat with a live, certified coach.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
