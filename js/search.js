@@ -28,11 +28,12 @@ class CodeXSearch {
             sentences.forEach((sentence, index) => {
                 const words = sentence.toLowerCase().split(/\s+/);
                 words.forEach(word => {
-                    if (word.length > 2) { // Only index words longer than 2 characters
-                        if (!this.searchIndex[word]) {
-                            this.searchIndex[word] = [];
+                    const normalized = this.normalizeToken(word);
+                    if (normalized.length > 2) { // Only index words longer than 2 characters
+                        if (!this.searchIndex[normalized]) {
+                            this.searchIndex[normalized] = [];
                         }
-                        this.searchIndex[word].push({
+                        this.searchIndex[normalized].push({
                             sectionId: sectionId,
                             sectionTitle: section.title,
                             sentence: sentence.trim(),
@@ -45,11 +46,12 @@ class CodeXSearch {
             // Also index the title
             const titleWords = title.split(/\s+/);
             titleWords.forEach(word => {
-                if (word.length > 2) {
-                    if (!this.searchIndex[word]) {
-                        this.searchIndex[word] = [];
+                const normalized = this.normalizeToken(word);
+                if (normalized.length > 2) {
+                    if (!this.searchIndex[normalized]) {
+                        this.searchIndex[normalized] = [];
                     }
-                    this.searchIndex[word].push({
+                    this.searchIndex[normalized].push({
                         sectionId: sectionId,
                         sectionTitle: section.title,
                         sentence: title,
@@ -88,6 +90,38 @@ class CodeXSearch {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         return tempDiv.textContent || tempDiv.innerText || '';
+    }
+
+    normalizeToken(token) {
+        return (token || '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '')
+            .trim();
+    }
+
+    stemToken(token) {
+        const word = this.normalizeToken(token);
+        if (word.length <= 3) return word;
+        return word
+            .replace(/(ing|edly|edly|ed|es|s)$/i, '')
+            .replace(/(tion|tions)$/i, 't');
+    }
+
+    getCandidateKeys(token) {
+        const normalized = this.normalizeToken(token);
+        const stemmed = this.stemToken(normalized);
+        const keys = new Set();
+        if (this.searchIndex[normalized]) keys.add(normalized);
+        if (stemmed && this.searchIndex[stemmed]) keys.add(stemmed);
+
+        if (normalized.length >= 4) {
+            Object.keys(this.searchIndex).forEach(key => {
+                if (key.startsWith(normalized)) {
+                    keys.add(key);
+                }
+            });
+        }
+        return Array.from(keys);
     }
 
     bindEvents() {
@@ -204,25 +238,44 @@ class CodeXSearch {
         this.currentQuery = query;
         this.searchResults = [];
 
-        const queryWords = query.split(/\s+/).filter(word => word.length > 2);
+        const queryWords = query
+            .split(/\s+/)
+            .map(word => this.normalizeToken(word))
+            .filter(word => word.length > 2);
         const resultMap = new Map();
 
         queryWords.forEach(word => {
-            if (this.searchIndex[word]) {
-                this.searchIndex[word].forEach(result => {
-                    const key = `${result.sectionId}-${result.sentenceIndex}`;
-                    if (!resultMap.has(key)) {
-                        resultMap.set(key, {
-                            ...result,
-                            score: 0,
-                            matchedWords: []
-                        });
-                    }
-                    const existing = resultMap.get(key);
-                    existing.score += result.isTitle ? 10 : 1; // Title matches get higher score
-                    existing.matchedWords.push(word);
-                });
+            const candidates = this.getCandidateKeys(word);
+            candidates.forEach(candidate => {
+                const weight = candidate === word ? 2 : 1;
+                if (this.searchIndex[candidate]) {
+                    this.searchIndex[candidate].forEach(result => {
+                        const key = `${result.sectionId}-${result.sentenceIndex}`;
+                        if (!resultMap.has(key)) {
+                            resultMap.set(key, {
+                                ...result,
+                                score: 0,
+                                matchedWords: new Set()
+                            });
+                        }
+                        const existing = resultMap.get(key);
+                        existing.score += (result.isTitle ? 12 : 1) * weight; // Title matches get higher score
+                        existing.matchedWords.add(word);
+                    });
+                }
+            });
+        });
+
+        const queryPhrase = queryWords.join(' ');
+
+        resultMap.forEach(result => {
+            const uniqueMatches = result.matchedWords.size;
+            result.score += uniqueMatches * 2;
+            const sentenceLower = (result.sentence || '').toLowerCase();
+            if (queryPhrase && sentenceLower.includes(queryPhrase)) {
+                result.score += 5;
             }
+            result.matchedWords = Array.from(result.matchedWords);
         });
 
         // Convert map to array and sort by score

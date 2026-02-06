@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
-    const homeLinks = document.querySelectorAll('.home-pill, .back-pill');
+    const homeLinks = document.querySelectorAll('.home-pill');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -255,6 +255,95 @@ function navigateToSection(sectionId) {
     }
 }
 
+const TAB_COLLAPSE_THRESHOLD = 4;
+
+function getSectionBackButton(section) {
+    if (!section) {
+        return null;
+    }
+    return section.querySelector('.back-pill[data-tabs-back]');
+}
+
+function setBackVisibility(section) {
+    const backButton = getSectionBackButton(section);
+    if (!backButton) {
+        return;
+    }
+    const show = section.classList.contains('tabs-collapsed') || section.classList.contains('ts-collapsed');
+    backButton.setAttribute('aria-hidden', show ? 'false' : 'true');
+}
+
+function bindSectionBackButton(section) {
+    const backButton = getSectionBackButton(section);
+    if (!backButton || backButton.getAttribute('data-back-bound') === 'true') {
+        return;
+    }
+
+    backButton.setAttribute('data-back-bound', 'true');
+    backButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        section.classList.remove('tabs-collapsed');
+        section.classList.remove('ts-collapsed');
+        setBackVisibility(section);
+
+        const tabButtons = section.querySelector('.tab-buttons');
+        const tsBlocks = section.querySelector('.ts-blocks');
+        const scrollTarget = tabButtons || tsBlocks || section;
+        if (scrollTarget) {
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, { capture: true });
+}
+
+function setupCollapsibleTabs(group) {
+    if (!group) {
+        return {
+            shouldCollapse: false,
+            collapseTabs: () => {},
+            expandTabs: () => {}
+        };
+    }
+
+    const tabButtons = group.querySelectorAll('.tab-button');
+    const forceCollapse = group.getAttribute('data-collapse') === 'true';
+    const shouldCollapse = forceCollapse || tabButtons.length > TAB_COLLAPSE_THRESHOLD;
+    if (!shouldCollapse) {
+        return {
+            shouldCollapse: false,
+            collapseTabs: () => {},
+            expandTabs: () => {}
+        };
+    }
+
+    const section = group.closest('.section');
+    if (!section || !getSectionBackButton(section)) {
+        return {
+            shouldCollapse: false,
+            collapseTabs: () => {},
+            expandTabs: () => {}
+        };
+    }
+
+    const collapseTabs = () => {
+        section.classList.add('tabs-collapsed');
+        setBackVisibility(section);
+    };
+
+    const expandTabs = () => {
+        section.classList.remove('tabs-collapsed');
+        setBackVisibility(section);
+        group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    bindSectionBackButton(section);
+
+    return {
+        shouldCollapse,
+        collapseTabs,
+        expandTabs
+    };
+}
+
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
     // Ctrl/Cmd + K to focus search
@@ -297,6 +386,8 @@ function initializeRingAirTabs() {
         return;
     }
 
+    const { shouldCollapse, collapseTabs } = setupCollapsibleTabs(ringAirTabs);
+
     ringAirTabs.addEventListener('click', function(event) {
         const target = event.target.closest('.tab-button');
         if (!target) {
@@ -324,6 +415,10 @@ function initializeRingAirTabs() {
         if (targetPanel) {
             targetPanel.classList.add('active');
         }
+
+        if (shouldCollapse) {
+            collapseTabs();
+        }
     });
 }
 
@@ -332,6 +427,9 @@ function initializePowerplugTabs() {
     if (!powerplugTabs) {
         return;
     }
+
+    const { shouldCollapse, collapseTabs } = setupCollapsibleTabs(powerplugTabs);
+    const forceCollapse = powerplugTabs.getAttribute('data-collapse') === 'true';
 
     powerplugTabs.addEventListener('click', function(event) {
         const target = event.target.closest('.tab-button');
@@ -359,6 +457,19 @@ function initializePowerplugTabs() {
         const targetPanel = contentContainer.querySelector(`#${targetId}`);
         if (targetPanel) {
             targetPanel.classList.add('active');
+        }
+
+        if (shouldCollapse) {
+            collapseTabs();
+        } else if (forceCollapse) {
+            const section = powerplugTabs.closest('.section');
+            if (section) {
+                section.classList.add('tabs-collapsed');
+                const backButton = section.querySelector('.back-pill[data-tabs-back]');
+                if (backButton) {
+                    backButton.setAttribute('aria-hidden', 'false');
+                }
+            }
         }
     });
 }
@@ -412,6 +523,8 @@ function initializeUltrahumanXTabs() {
         return;
     }
 
+    const { shouldCollapse, collapseTabs } = setupCollapsibleTabs(ultrahumanxTabs);
+
     ultrahumanxTabs.addEventListener('click', function(event) {
         const target = event.target.closest('.tab-button');
         if (!target) {
@@ -439,6 +552,10 @@ function initializeUltrahumanXTabs() {
         if (targetPanel) {
             targetPanel.classList.add('active');
         }
+
+        if (shouldCollapse) {
+            collapseTabs();
+        }
     });
 }
 
@@ -447,6 +564,8 @@ function initializeUltrahumanHomeTabs() {
     if (!ultrahumanHomeTabs) {
         return;
     }
+
+    const { shouldCollapse, collapseTabs } = setupCollapsibleTabs(ultrahumanHomeTabs);
 
     ultrahumanHomeTabs.addEventListener('click', function(event) {
         const target = event.target.closest('.tab-button');
@@ -474,6 +593,10 @@ function initializeUltrahumanHomeTabs() {
         const targetPanel = contentContainer.querySelector(`#${targetId}`);
         if (targetPanel) {
             targetPanel.classList.add('active');
+        }
+
+        if (shouldCollapse) {
+            collapseTabs();
         }
     });
 }
@@ -515,6 +638,8 @@ function initializeTabs() {
 
         if (!tabButtons.length || !tabContents.length) return;
 
+        const { shouldCollapse, collapseTabs } = setupCollapsibleTabs(group);
+
         tabContents.forEach(content => {
             if (content.classList.contains('active')) {
                 content.removeAttribute('hidden');
@@ -549,6 +674,10 @@ function initializeTabs() {
                 if (tabBar) {
                     const offset = tabBar.getBoundingClientRect().top + window.pageYOffset - 60;
                     window.scrollTo({ top: offset, behavior: 'instant' });
+                }
+
+                if (shouldCollapse) {
+                    collapseTabs();
                 }
             });
         });
@@ -678,6 +807,10 @@ function initializeTroubleshootingBlocks() {
         const blocks = Array.from(group.querySelectorAll('.ts-block'));
         const panels = Array.from(container.querySelectorAll('.ts-panel'));
         if (!blocks.length || !panels.length) return;
+        const section = group.closest('.section');
+        if (section) {
+            bindSectionBackButton(section);
+        }
 
         const activate = (targetId) => {
             blocks.forEach(block => {
@@ -701,6 +834,10 @@ function initializeTroubleshootingBlocks() {
                 const targetId = block.getAttribute('data-ts-target');
                 if (targetId) {
                     activate(targetId);
+                    if (section) {
+                        section.classList.add('ts-collapsed');
+                        setBackVisibility(section);
+                    }
                 }
             });
         });

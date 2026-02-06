@@ -33,7 +33,179 @@
                 </div>
                 <h2>Chat/Email Handling</h2>
                 <div id="chat-email-handling-content" class="document-content">
-                    <p>Templates, tone, escalation tags, and QA checklists for chat and email support.</p>
+                    <hr>
+
+                    <h3>Overview</h3>
+                    <p>To outline standardised procedures for handling support chat interactions, ensuring high-quality and consistent support. This SOP applies to all agents managing customer chats via Yellow.AI.</p>
+
+                    <h3>Flagging Process</h3>
+
+                    <h4>For emails</h4>
+                    <p>Once it is decided that a user's issue needs to be flagged, follow the flagged process &gt; paste the flagged URL in the flagged box [Details &gt; “Flagged Link”], send the Holding message, and change the status to <strong>ON-HOLD</strong>.</p>
+
+                    <h4>For chats</h4>
+                    <p>Once decided that a user's issue needs to be flagged, follow the flagged process &gt; paste the flagged URL in the flagged box [Details &gt; “Flagged Link”] and send the Holding message &gt; assign the chat to the <strong>FLAGGED QUEUE</strong> and agent <strong>Mukesh Kumar</strong>.</p>
+
+                    <h4>Holding message</h4>
+                    <p><strong>Macro name:</strong> <code>flagged_holdingnote</code></p>
+                    <blockquote>
+                        <p>After carefully reviewing your issue, we’ve determined that it needs to be escalated to our internal team for a thorough check. We’ve raised it with the concerned team, and typically this process takes less than 48 hours. In rare cases, it may take up to 72 hours. Please rest assured—we’ll keep this chat open and update you as soon as we have a resolution.</p>
+                    </blockquote>
+
+                    <h4>Once flagged</h4>
+                    <ul>
+                        <li>If the chat is active → Respond to the customer and try to solve.</li>
+                        <li>If the chat is inactive → Follow up with the internal team.</li>
+                        <li>If the team replies → Update the customer.</li>
+                        <li>If no reply → Mark “no update” in internal notes till next follow-up.</li>
+                    </ul>
+
+                    <h4>Escalation if delayed</h4>
+                    <p>If a flagged chat goes beyond 2 days without resolution, highlight it to the leads:</p>
+                    <p><strong>@Parth Saluja, @Vishal, @Trishala, @Twinkle, @Ashad, @Shalm, @Govind, @Shanon, @Sanil Sharma</strong>.</p>
+                    <p>Also, reply appropriately to the customer, e.g., “This is taking longer than expected, but our team is actively working on it. We apologize for the delay.”</p>
+                    <p>Keep the chat flagged and ensure resolution.</p>
+
+                    <h3>Decision Table</h3>
+                    <p>Use this table to determine when to mark a chat as resolved or to flag it.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Mark as Resolved</th>
+                                <th>Flag</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>When an issue is fully solved, and the user has confirmed</td><td>Yes</td><td>No</td></tr>
+                            <tr><td>Feedback or feature request shared</td><td>Yes</td><td>No</td></tr>
+                            <tr><td>The refund/replacement has been processed</td><td>Yes</td><td>No</td></tr>
+                            <tr><td>Waiting for the user’s reply after the partial solution</td><td>Allow chat to auto-resolve</td><td>No</td></tr>
+                            <tr><td>Distress related to the ring, causing burns, shock, or any injury to the user (also follow-up care)</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Bug reported/tech issue, pending internal fix</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Transaction/refund issues that need finance review</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Ops issues (ETA, customs, lost packages, RTO, SKU, engraving, tracking link issues) or Finance/Refund-related cases</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>Central requests</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>The customer query cannot be resolved with standard troubleshooting</td><td>No</td><td>Yes</td></tr>
+                            <tr><td>An escalation is needed to unblock progress</td><td>No</td><td>Yes</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Definitions</h3>
+                    <ul>
+                        <li><strong>Mark as Resolved (Done):</strong> Close the chat when no further action is needed from either side.</li>
+                        <li><strong>Flag:</strong> Escalate the chat to an internal team.</li>
+                    </ul>
+
+                    <h3>Flagging SOPs</h3>
+                    <p>You can find the list of the company-wide POCs here.</p>
+                    <p>To streamline our workflow, we've implemented the following protocol for handling flagged chats.</p>
+                    <ul>
+                        <li>Associates must appropriately tag any newly flagged chat and move it to the flagged queue.</li>
+                        <li>The assigned agents will manage flagged thread follow-ups by:</li>
+                        <li>Following up with the internal team on the relevant threads at intervals.</li>
+                        <li>Updating users only if there’s a new update.</li>
+                    </ul>
+
+                    <h4>If there is an update</h4>
+                    <ul>
+                        <li>Relay the same to the users and snooze the chat for the customer’s reply.</li>
+                        <li>Reassign the chat back to the main queue.</li>
+                        <li>Once the user responds and the chat reopens, it will be treated as a regular live chat and should be handled by associates. If it needs to be flagged again, the same process applies.</li>
+                    </ul>
+
+                    <h3>Setting Expectations When Flagging</h3>
+                    <p>Whenever we are flagging for the below reasons, set clear expectations with the user that we will get back to them within the following timelines:</p>
+                    <ul>
+                        <li>Logistics ETA: 24-48 hours</li>
+                        <li>Customs: 2-3 working days</li>
+                        <li>Shipment redirection: 2-3 working days</li>
+                        <li>Label: 24-48 hours</li>
+                        <li>Refund: 3-5 working days (for refund initiation from finance)</li>
+                        <li>Invoice validation: 2-3 working days</li>
+                        <li>Tech: 24-48 hours</li>
+                        <li>Legal: 2-3 working days</li>
+                    </ul>
+                    <p>If there is no update from the team by the end of this duration, we can drop a message/email asking them for more time.</p>
+
+                    <h3>Flagging Types</h3>
+                    <ul>
+                        <li>Flagging - Ops</li>
+                        <li>Flagging - Finance</li>
+                        <li>Flagging - Tech</li>
+                        <li>Flagging - Others</li>
+                        <li>Flagging - Labels</li>
+                    </ul>
+
+                    <h3>Fraud Cases</h3>
+                    <p>When handling potential fraud cases, watch for these red flags and follow the investigation process outlined above:</p>
+                    <ul>
+                        <li>Multiple logged-in email addresses for the same ring: Check if different email accounts are associated with or claiming the same ring serial number.</li>
+                        <li>Multiple reach-outs from different email addresses: The same ring issue is being reported by different logged-in email addresses, indicating potential account manipulation.</li>
+                        <li>Confusion about ring-box association: User shares multiple ring boxes but cannot clearly identify which ring corresponds to their order.</li>
+                        <li>Unable or unwilling to provide invoice: User repeatedly avoids sharing proof of purchase or dodges questions about the invoice.</li>
+                    </ul>
+                    <p><strong>Action required:</strong> If you encounter any of these red flags, immediately escalate to SME/Leads before proceeding with any resolution.</p>
+
+                    <h4>Past case studies</h4>
+                    <ul>
+                        <li>Alza Honza: User was reaching out for multiple replacements using different email addresses within a few days/weeks. https://docs.google.com/document/d/1Go0XXvg5hppqSou5ddg_PqOuD1Ooam54zZ2pDiCdWvk/edit?tab=t.0</li>
+                        <li>GigaBest/PikaBesty Group: They learned that if they do not connect the ring for a few days, the case is classified as “non-advertising,” triggering a replacement from our side. Many of the rings were then resold to other people and are still active. Refunds have already been processed for the original purchases. https://docs.google.com/document/d/1_17DOlQCwViLF6aB8fMiQHc1CcFyd1iLDVDX9L4WFiQ/edit?tab=t.0</li>
+                        <li>JB HiFi Gang: They were sharing fake JB Hifi invoices with us, and insisted that the amount that we needed to transfer was in USD and not AUD. Multiple reachouts via different logged-in email addresses, and same invoice was being shared with minor edits.</li>
+                    </ul>
+
+                    <h4>Exceptional case</h4>
+                    <ul>
+                        <li>Vasilis Spathopoulos: Shared personal referral link on Twitter. Original order was then refunded and then he has been reselling the rings which he got from us for free, while posting negative reviews on app store/Trust pilot. https://docs.google.com/document/d/1P7z1QSkTCIl652uREeqG_-guC0mP_B1J/edit#heading=h.dy1bxhg9l02l</li>
+                    </ul>
+
+                    <h3>Tagging SOP</h3>
+                    <p>If a case is flagged, and then a resolution is given after, still keep the flag tags on. Don’t remove them.</p>
+                    <p>All chats should be tagged with the relevant tags based on the case:</p>
+                    <ul>
+                        <li><code>random</code> - To be used initially when you don’t know what the query is, OR in case of promotional emails/spam emails.</li>
+                        <li><code>logistics_outbound_update</code> - When composing a fresh email to any user.</li>
+                    </ul>
+
+                    <p><strong>When flagging ANY chat, follow this:</strong></p>
+                    <ul>
+                        <li><code>Flagged_Tech</code> - Whenever chats are flagged to the tech team.</li>
+                        <li><code>Flagged_Ops</code> - Whenever chats are flagged to the Ops team.</li>
+                        <li><code>Flagged_Finance</code> - Whenever chats are flagged to the Finance team.</li>
+                        <li><code>Flagged_Other</code> - Whenever chats are flagged to any other team.</li>
+                        <li><code>Flagged_Labels</code> - Whenever we request an RTO shipping label.</li>
+                    </ul>
+                    <p>For any chats where the issue is resolved, please tag them as resolved.</p>
+
+                    <h3>Tonality</h3>
+                    <p>Always ensure that the tone of your voice is friendly, natural, and never overly apologetic. It’s a mutual process – you’re helping the user out, and the user is helping you out.</p>
+
+                    <h4>In-app chat support</h4>
+                    <p>Chat-like conversations/responses. Sound light, friendly, pro-active, and super helpful.</p>
+
+                    <h4>Emails</h4>
+                    <p>Generally, detailed responses (to reduce back and forth). Sound light, but detail-oriented, responsible, pro-active, and super helpful.</p>
+
+                    <h4>Social platforms</h4>
+                    <p>Chat-like conversations/responses. Sound light, friendly, super helpful.</p>
+
+                    <h3>Best Practices</h3>
+                    <ul>
+                        <li>Always tag customer messages on time. It gives everyone context about the kind of queries that come in.</li>
+                        <li>Be aware of the different macros and shortcuts already available to you.</li>
+                        <li>When you do use macros, personalize them so that the message received by the user doesn’t sound like a template.</li>
+                        <li>Always leave a summary note when flagging a chat.</li>
+                        <li>Always ensure that the tone of your voice is friendly, natural, and never overly apologetic.</li>
+                        <li>Close a conversation when you’re done answering all the questions from your side.</li>
+                        <li>While attending messages on Yellow, go back to the “Searches” page and search with the email address of the user in quotation marks (“user@example.com”) every now and then to ensure no chats have been missed.</li>
+                        <li>Never send formal responses like “Good Morning, Sir/ Ma’am”.</li>
+                    </ul>
+
+                    <h3>Important Metrics</h3>
+                    <ul>
+                        <li><strong>FRT (First response time):</strong> Respond with a greeting like “Hey!” / “Hello!” / “Hi there!” as soon as you see a new message, to maintain your FRT.</li>
+                        <li><strong>AHT (Average handling time):</strong> This measures how fast you resolve queries. Be sure to prioritise your queries well.</li>
+                    </ul>
                 </div>
             </section>
         </div>
