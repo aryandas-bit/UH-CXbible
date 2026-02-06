@@ -4,6 +4,7 @@
     --primary-color: #0f172a;
     --secondary-color: #ffffff;
     --accent-color: #7c3aed;
+    --sheet-header-bg: #4c1d95;
     --text-color: #0f172a;
     --text-light: rgba(15, 23, 42, 0.6);
     --border-color: rgba(15, 23, 42, 0.12);
@@ -68,6 +69,17 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
+}
+
+.header-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-title-link:hover,
+.header-title-link:focus-visible {
+    color: inherit;
+    text-decoration: none;
 }
 
 body.dark-mode .header-title {
@@ -433,7 +445,7 @@ body.dark-mode .header-title {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    color: var(--primary-color);
+    color: var(--sheet-header-bg);
     background: none;
 }
 
@@ -906,7 +918,7 @@ body.dark-mode .section::after {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 2rem 0 1rem 0;
-    color: var(--primary-color);
+    color: var(--sheet-header-bg);
     border-bottom: 1px solid rgba(15, 23, 42, 0.1);
     padding-bottom: 0.5rem;
 }
@@ -961,7 +973,7 @@ body.dark-mode .section::after {
 }
 
 .document-content th {
-    background: linear-gradient(135deg, #4c1d95, #7c3aed);
+    background: var(--sheet-header-bg);
     color: #fff;
     font-weight: 600;
 }
@@ -2777,6 +2789,7 @@ body.dark-mode {
     --primary-color: #f0f0f0;
     --secondary-color: #0b0b0b;
     --accent-color: #dfff00;
+    --sheet-header-bg: #1f1f1f;
     --text-color: #e6e6e6;
     --text-light: rgba(230, 230, 230, 0.66);
     --border-color: rgba(255, 255, 255, 0.08);
@@ -2868,8 +2881,8 @@ body.dark-mode .overview-card::after {
 }
 
 body.dark-mode .document-content th {
-    background: linear-gradient(135deg, #dfff00, #c8ff00);
-    color: #0b1205;
+    background: var(--sheet-header-bg);
+    color: #ffffff;
 }
 
 body.dark-mode .document-content table {
@@ -3194,6 +3207,11 @@ body.dark-mode .document-content h3,
 body.dark-mode .document-content h4,
 body.dark-mode .document-content h5,
 body.dark-mode .document-content h6 {
+    color: var(--text-color);
+}
+
+body.dark-mode .section h2,
+body.dark-mode .document-content h3 {
     color: var(--text-color);
 }
 
