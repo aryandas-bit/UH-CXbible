@@ -6,17 +6,28 @@ class CodeXSearch {
         this.currentQuery = '';
         this.suggestionPool = [];
         this.suggestionContainer = null;
+        this.validSectionIds = new Set();
         this.init();
     }
 
     init() {
+        this.collectValidSectionIds();
         this.buildSearchIndex();
         this.bindEvents();
+    }
+
+    collectValidSectionIds() {
+        this.validSectionIds = new Set(
+            Array.from(document.querySelectorAll('.section[id]')).map(section => section.id)
+        );
     }
 
     buildSearchIndex() {
         // Build search index from content data
         Object.keys(contentData).forEach(sectionId => {
+            if (!this.validSectionIds.has(sectionId)) {
+                return;
+            }
             const section = contentData[sectionId];
             // Strip HTML tags and get plain text content
             const content = this.stripHtml(section.content).toLowerCase();
@@ -68,6 +79,9 @@ class CodeXSearch {
 
         // From contentData
         Object.entries(contentData).forEach(([id, section]) => {
+            if (!this.validSectionIds.has(id)) {
+                return;
+            }
             const title = section.title || id;
             pool.set(id, { id, title });
         });
@@ -301,6 +315,9 @@ class CodeXSearch {
 
         // Try contentData titles/ids
         for (const [sectionId, section] of Object.entries(contentData)) {
+            if (!this.validSectionIds.has(sectionId)) {
+                continue;
+            }
             const titleMatch = section.title && section.title.toLowerCase().includes(normalized);
             const idMatch = sectionId.toLowerCase().includes(normalized);
             if (titleMatch || idMatch) return sectionId;
@@ -382,28 +399,46 @@ class CodeXSearch {
     }
 
     navigateToSection(sectionId) {
+        const sectionRouteMap = {
+            'blood-vision': 'blood-vision.html',
+            'm1-sensor': 'm1-sensor.html',
+            'ring-air': 'ring-air.html',
+            'powerplug': 'powerplug.html',
+            'ultrahumanx': 'ultrahumanx.html',
+            'ultrahuman-home': 'ultrahuman-home.html',
+            'chat-email-handling': 'chat-email-handling.html',
+            'misc': 'misc.html'
+        };
+
+        const route = sectionRouteMap[sectionId];
+        if (route) {
+            window.location.href = route;
+            return;
+        }
+
+        const targetSection = document.getElementById(sectionId);
+        if (!targetSection) {
+            return;
+        }
+
         // Hide all sections
         document.querySelectorAll('.section').forEach(section => {
             section.classList.remove('active');
         });
 
-        // Show target section
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
+        targetSection.classList.add('active');
 
-            // Update navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            const navLink = document.querySelector(`[href="#${sectionId}"]`);
-            if (navLink) {
-                navLink.classList.add('active');
-            }
-
-            // Scroll to top of section
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+        // Update navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        const navLink = document.querySelector(`[href="#${sectionId}"]`);
+        if (navLink) {
+            navLink.classList.add('active');
         }
+
+        // Scroll to top of section
+        targetSection.scrollIntoView({ behavior: 'smooth' });
     }
 
     showNoResults() {

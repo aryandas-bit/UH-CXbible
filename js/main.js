@@ -676,7 +676,14 @@ function initializeTabs() {
                     window.scrollTo({ top: offset, behavior: 'instant' });
                 }
 
-                if (shouldCollapse) {
+                const section = group.closest('.section');
+                const isM1Overview =
+                    group.classList.contains('m1-tabs') && tabId === 'm1-overview';
+
+                if (isM1Overview && section) {
+                    section.classList.remove('tabs-collapsed');
+                    setBackVisibility(section);
+                } else if (shouldCollapse) {
                     collapseTabs();
                 }
             });

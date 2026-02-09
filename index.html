@@ -14,8 +14,6 @@
 <body>
     <header class="header">
         <div class="header-content">
-            <h1 class="header-title" id="headerTitle"><a class="header-title-link" href="https://uhbiblecx.vercel.app" target="_blank" rel="noopener noreferrer">CODEX</a></h1>
-            <p class="header-subtitle">Ultrahuman Customer Support Documentation</p>
             <div class="search-container">
                 <div class="search-widget">
                     <div class="search-bar" role="search">
@@ -24,13 +22,13 @@
                                 <path d="M11 4a7 7 0 0 1 5.52 11.32l3.58 3.58a1 1 0 0 1-1.42 1.42l-3.58-3.58A7 7 0 1 1 11 4zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" fill="currentColor"/>
                             </svg>
                         </span>
-                        <input type="text" id="searchInput" placeholder="What would you like to find today?" class="search-input" aria-label="Search Codex documentation">
+                        <input type="text" id="searchInput" placeholder="What would you like to find today?" class="search-input" aria-label="Search Codex documentation" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                         <div class="search-actions">
                             <span class="search-shortcut" aria-hidden="true">
                                 <span>Ctrl</span>
                                 <span>/</span>
                             </span>
-                            <button id="searchButton" class="search-button" aria-label="Run search">
+                            <button type="button" id="searchButton" class="search-button" aria-label="Run search">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 12h14m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
@@ -40,13 +38,6 @@
                     </div>
                 </div>
                 <button id="searchToggle" class="search-toggle" aria-label="Toggle search panel">🔍</button>
-            </div>
-
-            <div class="theme-toggle-container">
-                <button id="themeToggle" class="theme-toggle" aria-pressed="false">
-                    <span class="theme-toggle__icon" aria-hidden="true">??</span>
-                    <span class="theme-toggle__label">Dark Mode</span>
-                </button>
             </div>
 
         </div>
@@ -77,9 +68,6 @@
     <main class="main-content">
         <div class="content-container">
             <section id="overview" class="section active">
-                <h2>Welcome to Codex</h2>
-                <p>This comprehensive documentation covers all aspects of Ultrahuman's customer support operations, including product FAQs, troubleshooting guides, and standard operating procedures.</p>
-
                 <div class="overview-grid">
                     <div class="overview-card">
                         <h3>Blood Vision</h3>
