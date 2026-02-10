@@ -1,228 +1,324 @@
 // Search functionality for CodeX
 class CodeXSearch {
     constructor() {
-        this.searchIndex = {};
-        this.searchResults = [];
+        this.searchEntries = [];
         this.currentQuery = '';
-        this.suggestionPool = [];
+        this.searchResults = [];
         this.suggestionContainer = null;
-        this.validSectionIds = new Set();
+        this.sectionRouteMap = {
+            'blood-vision': 'blood-vision.html',
+            'm1-sensor': 'm1-sensor.html',
+            'ring-air': 'ring-air.html',
+            'powerplug': 'powerplug.html',
+            'ultrahumanx': 'ultrahumanx.html',
+            'ultrahuman-home': 'ultrahuman-home.html',
+            'chat-email-handling': 'chat-email-handling.html',
+            'misc': 'misc.html'
+        };
         this.init();
     }
 
     init() {
-        this.collectValidSectionIds();
         this.buildSearchIndex();
         this.bindEvents();
     }
 
-    collectValidSectionIds() {
-        this.validSectionIds = new Set(
-            Array.from(document.querySelectorAll('.section[id]')).map(section => section.id)
-        );
-    }
-
-    buildSearchIndex() {
-        // Build search index from content data
-        Object.keys(contentData).forEach(sectionId => {
-            if (!this.validSectionIds.has(sectionId)) {
-                return;
-            }
-            const section = contentData[sectionId];
-            // Strip HTML tags and get plain text content
-            const content = this.stripHtml(section.content).toLowerCase();
-            const title = section.title.toLowerCase();
-
-            // Split content into sentences for better snippet extraction
-            const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
-
-            sentences.forEach((sentence, index) => {
-                const words = sentence.toLowerCase().split(/\s+/);
-                words.forEach(word => {
-                    const normalized = this.normalizeToken(word);
-                    if (normalized.length > 2) { // Only index words longer than 2 characters
-                        if (!this.searchIndex[normalized]) {
-                            this.searchIndex[normalized] = [];
-                        }
-                        this.searchIndex[normalized].push({
-                            sectionId: sectionId,
-                            sectionTitle: section.title,
-                            sentence: sentence.trim(),
-                            sentenceIndex: index
-                        });
-                    }
-                });
-            });
-
-            // Also index the title
-            const titleWords = title.split(/\s+/);
-            titleWords.forEach(word => {
-                const normalized = this.normalizeToken(word);
-                if (normalized.length > 2) {
-                    if (!this.searchIndex[normalized]) {
-                        this.searchIndex[normalized] = [];
-                    }
-                    this.searchIndex[normalized].push({
-                        sectionId: sectionId,
-                        sectionTitle: section.title,
-                        sentence: title,
-                        sentenceIndex: -1,
-                        isTitle: true
-                    });
-                }
-            });
-        });
-    }
-
-    collectSuggestionPool() {
-        const pool = new Map();
-
-        // From contentData
-        Object.entries(contentData).forEach(([id, section]) => {
-            if (!this.validSectionIds.has(id)) {
-                return;
-            }
-            const title = section.title || id;
-            pool.set(id, { id, title });
-        });
-
-        // From nav links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            const href = link.getAttribute('href') || '';
-            if (href.startsWith('#')) {
-                const id = href.substring(1);
-                const title = link.textContent.trim() || id;
-                pool.set(id, { id, title });
-            }
-        });
-
-        this.suggestionPool = Array.from(pool.values());
-    }
-
-    stripHtml(html) {
-        // Create a temporary div element to strip HTML tags
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        return tempDiv.textContent || tempDiv.innerText || '';
-    }
-
-    normalizeToken(token) {
-        return (token || '')
+    normalizeText(value) {
+        return (value || '')
             .toLowerCase()
-            .replace(/[^a-z0-9]/g, '')
+            .replace(/[^a-z0-9\s]/g, ' ')
+            .replace(/\s+/g, ' ')
             .trim();
     }
 
-    stemToken(token) {
-        const word = this.normalizeToken(token);
-        if (word.length <= 3) return word;
-        return word
-            .replace(/(ing|edly|edly|ed|es|s)$/i, '')
-            .replace(/(tion|tions)$/i, 't');
+    tokenize(value) {
+        return this.normalizeText(value)
+            .split(' ')
+            .map(word => word.trim())
+            .filter(word => word.length >= 2);
     }
 
-    getCandidateKeys(token) {
-        const normalized = this.normalizeToken(token);
-        const stemmed = this.stemToken(normalized);
-        const keys = new Set();
-        if (this.searchIndex[normalized]) keys.add(normalized);
-        if (stemmed && this.searchIndex[stemmed]) keys.add(stemmed);
-
-        if (normalized.length >= 4) {
-            Object.keys(this.searchIndex).forEach(key => {
-                if (key.startsWith(normalized)) {
-                    keys.add(key);
-                }
-            });
+    getSectionTitle(section) {
+        const heading = section.querySelector('h1, h2');
+        if (heading && heading.textContent.trim()) {
+            return heading.textContent.trim();
         }
-        return Array.from(keys);
+
+        const id = section.id || 'section';
+        return id
+            .split('-')
+            .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+            .join(' ');
+    }
+
+    buildSearchIndex() {
+        this.searchEntries = [];
+
+        const sections = Array.from(document.querySelectorAll('.section[id]'))
+            .filter(section => section.id !== 'overview');
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionTitle = this.getSectionTitle(section);
+            const sectionTitleTokens = new Set(this.tokenize(sectionTitle));
+            const searchableNodes = section.querySelectorAll('h3, h4, h5, h6, p, li, td, th, figcaption');
+
+            let currentLocation = 'Overview';
+
+            searchableNodes.forEach(node => {
+                const text = (node.textContent || '').replace(/\s+/g, ' ').trim();
+                if (!text) {
+                    return;
+                }
+
+                if (/^H[3-6]$/.test(node.tagName)) {
+                    currentLocation = text;
+                }
+
+                const textTokens = new Set(this.tokenize(text));
+                if (!textTokens.size) {
+                    return;
+                }
+
+                const locationTokens = new Set(this.tokenize(currentLocation));
+                const combinedTokens = new Set([
+                    ...textTokens,
+                    ...locationTokens,
+                    ...sectionTitleTokens
+                ]);
+
+                this.searchEntries.push({
+                    sectionId,
+                    sectionTitle,
+                    location: currentLocation,
+                    text,
+                    normalizedText: this.normalizeText(text),
+                    normalizedLocation: this.normalizeText(currentLocation),
+                    combinedTokens
+                });
+            });
+        });
     }
 
     bindEvents() {
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
 
-        this.collectSuggestionPool();
+        if (!searchInput || !searchButton) {
+            return;
+        }
 
-        if (searchInput && searchButton) {
-            searchButton.addEventListener('click', () => this.performSearch());
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
+        searchButton.addEventListener('click', () => this.performSearch());
+
+        searchInput.addEventListener('keypress', event => {
+            if (event.key === 'Enter') {
+                this.performSearch();
+            }
+        });
+
+        let searchTimeout;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            const query = searchInput.value.trim();
+            this.showSuggestions(query);
+
+            searchTimeout = setTimeout(() => {
+                if (query.length >= 2) {
                     this.performSearch();
+                } else if (!query.length) {
+                    this.clearSearchResults();
+                    this.clearSuggestions();
+                }
+            }, 160);
+        });
+
+        searchInput.addEventListener('focus', () => {
+            this.showSuggestions(searchInput.value);
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => this.clearSuggestions(), 120);
+        });
+
+        document.addEventListener('click', event => {
+            if (!this.suggestionContainer) {
+                return;
+            }
+            if (event.target === searchInput || this.suggestionContainer.contains(event.target)) {
+                return;
+            }
+            this.clearSuggestions();
+        });
+    }
+
+    findDirectSection(query) {
+        const normalized = this.normalizeText(query);
+        if (!normalized) {
+            return null;
+        }
+
+        const sections = Array.from(document.querySelectorAll('.section[id]'))
+            .filter(section => section.id !== 'overview');
+
+        for (const section of sections) {
+            const sectionId = section.id;
+            const sectionTitle = this.normalizeText(this.getSectionTitle(section));
+            if (sectionId === normalized || sectionTitle === normalized) {
+                return sectionId;
+            }
+        }
+
+        return null;
+    }
+
+    getMatches(query) {
+        const normalizedQuery = this.normalizeText(query);
+        const queryTokens = this.tokenize(query);
+
+        if (!queryTokens.length) {
+            return [];
+        }
+
+        const matches = [];
+
+        this.searchEntries.forEach(entry => {
+            const hasAllTokens = queryTokens.every(token => entry.combinedTokens.has(token));
+            const hasExactPhrase = normalizedQuery.length >= 3 && (
+                entry.normalizedText.includes(normalizedQuery) ||
+                entry.normalizedLocation.includes(normalizedQuery)
+            );
+
+            if (!hasAllTokens && !hasExactPhrase) {
+                return;
+            }
+
+            let score = 0;
+            if (hasExactPhrase) {
+                score += 8;
+            }
+
+            queryTokens.forEach(token => {
+                if (entry.normalizedLocation.includes(token)) {
+                    score += 3;
+                }
+                if (entry.normalizedText.includes(token)) {
+                    score += 2;
+                }
+                if (this.normalizeText(entry.sectionTitle).includes(token)) {
+                    score += 4;
                 }
             });
 
-            // Live search with debounce
-            let searchTimeout;
-            searchInput.addEventListener('input', () => {
-                clearTimeout(searchTimeout);
-                this.showSuggestions(searchInput.value);
-                searchTimeout = setTimeout(() => {
-                    if (searchInput.value.length > 2) {
-                        this.performSearch();
-                    } else if (searchInput.value.length === 0) {
-                        this.clearSearchResults();
-                        this.clearSuggestions();
-                    }
-                }, 300);
+            matches.push({
+                ...entry,
+                score
             });
-
-            searchInput.addEventListener('focus', () => this.showSuggestions(searchInput.value));
-            searchInput.addEventListener('blur', () => {
-                setTimeout(() => this.clearSuggestions(), 120);
-            });
-        }
-
-        document.addEventListener('click', (e) => {
-            if (this.suggestionContainer && !this.suggestionContainer.contains(e.target) && e.target !== searchInput) {
-                this.clearSuggestions();
-            }
         });
+
+        return matches
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 30);
     }
 
     showSuggestions(query) {
         this.clearSuggestions();
-        const trimmed = (query || '').toLowerCase().trim();
-        if (trimmed.length < 2 || this.suggestionPool.length === 0) return;
 
-        const matches = this.suggestionPool
-            .map(item => {
-                const title = item.title.toLowerCase();
-                const id = item.id.toLowerCase();
-                const matchIndex = title.indexOf(trimmed);
-                const idIndex = id.indexOf(trimmed);
-                const score = matchIndex !== -1 ? matchIndex : idIndex !== -1 ? idIndex + 100 : Infinity;
-                return { ...item, score };
-            })
-            .filter(item => item.score !== Infinity)
+        const normalizedQuery = this.normalizeText(query);
+        if (normalizedQuery.length < 2) {
+            return;
+        }
+
+        const sectionSuggestions = [];
+
+        Array.from(document.querySelectorAll('.section[id]'))
+            .filter(section => section.id !== 'overview')
+            .forEach(section => {
+                const title = this.getSectionTitle(section);
+                const normalizedTitle = this.normalizeText(title);
+                if (!normalizedTitle.includes(normalizedQuery)) {
+                    return;
+                }
+
+                sectionSuggestions.push({
+                    type: 'section',
+                    title,
+                    meta: 'Main topic',
+                    sectionId: section.id,
+                    score: normalizedTitle.indexOf(normalizedQuery)
+                });
+            });
+
+        const contentSuggestions = this.searchEntries
+            .filter(entry => (
+                entry.normalizedText.includes(normalizedQuery) ||
+                entry.normalizedLocation.includes(normalizedQuery)
+            ))
+            .slice(0, 18)
+            .map(entry => ({
+                type: 'content',
+                title: entry.sectionTitle,
+                meta: entry.location,
+                sectionId: entry.sectionId,
+                preview: entry.text,
+                score: entry.normalizedLocation.indexOf(normalizedQuery) !== -1
+                    ? entry.normalizedLocation.indexOf(normalizedQuery)
+                    : entry.normalizedText.indexOf(normalizedQuery)
+            }));
+
+        const suggestions = [...sectionSuggestions, ...contentSuggestions]
             .sort((a, b) => a.score - b.score)
-            .slice(0, 6);
+            .filter((item, index, items) => {
+                const key = `${item.sectionId}|${item.meta}`;
+                return items.findIndex(candidate => `${candidate.sectionId}|${candidate.meta}` === key) === index;
+            })
+            .slice(0, 8);
 
-        if (matches.length === 0) return;
+        if (!suggestions.length) {
+            return;
+        }
 
         const container = document.createElement('div');
         container.className = 'search-suggestions';
 
-        matches.forEach(match => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'search-suggestion';
-            btn.textContent = match.title;
-            btn.addEventListener('click', () => {
-                const input = document.getElementById('searchInput');
-                if (input) input.value = match.title;
-                this.navigateToSection(match.id);
+        suggestions.forEach(suggestion => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'search-suggestion';
+
+            const title = document.createElement('span');
+            title.className = 'search-suggestion__title';
+            title.textContent = suggestion.title;
+
+            const meta = document.createElement('span');
+            meta.className = 'search-suggestion__meta';
+            meta.textContent = suggestion.meta;
+
+            button.appendChild(title);
+            button.appendChild(meta);
+
+            button.addEventListener('click', () => {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) {
+                    searchInput.value = suggestion.type === 'section'
+                        ? suggestion.title
+                        : `${suggestion.title} ${suggestion.meta}`;
+                }
+
+                this.navigateToSection(suggestion.sectionId);
                 this.clearSuggestions();
                 this.clearSearchResults(true);
             });
-            container.appendChild(btn);
+
+            container.appendChild(button);
         });
 
         const widget = document.querySelector('.search-widget');
-        if (widget) {
-            widget.appendChild(container);
-            this.suggestionContainer = container;
+        if (!widget) {
+            return;
         }
+
+        widget.appendChild(container);
+        this.suggestionContainer = container;
     }
 
     clearSuggestions() {
@@ -233,14 +329,20 @@ class CodeXSearch {
     }
 
     performSearch() {
-        const query = document.getElementById('searchInput').value.trim().toLowerCase();
+        const input = document.getElementById('searchInput');
+        if (!input) {
+            return;
+        }
+
+        const query = input.value.trim();
+        this.currentQuery = query;
+
         if (!query) {
             this.clearSearchResults();
             this.clearSuggestions();
             return;
         }
 
-        // Quick direct match to a known section title or id
         const directSection = this.findDirectSection(query);
         if (directSection) {
             this.navigateToSection(directSection);
@@ -249,212 +351,87 @@ class CodeXSearch {
             return;
         }
 
-        this.currentQuery = query;
-        this.searchResults = [];
-
-        const queryWords = query
-            .split(/\s+/)
-            .map(word => this.normalizeToken(word))
-            .filter(word => word.length > 2);
-        const resultMap = new Map();
-
-        queryWords.forEach(word => {
-            const candidates = this.getCandidateKeys(word);
-            candidates.forEach(candidate => {
-                const weight = candidate === word ? 2 : 1;
-                if (this.searchIndex[candidate]) {
-                    this.searchIndex[candidate].forEach(result => {
-                        const key = `${result.sectionId}-${result.sentenceIndex}`;
-                        if (!resultMap.has(key)) {
-                            resultMap.set(key, {
-                                ...result,
-                                score: 0,
-                                matchedWords: new Set()
-                            });
-                        }
-                        const existing = resultMap.get(key);
-                        existing.score += (result.isTitle ? 12 : 1) * weight; // Title matches get higher score
-                        existing.matchedWords.add(word);
-                    });
-                }
-            });
-        });
-
-        const queryPhrase = queryWords.join(' ');
-
-        resultMap.forEach(result => {
-            const uniqueMatches = result.matchedWords.size;
-            result.score += uniqueMatches * 2;
-            const sentenceLower = (result.sentence || '').toLowerCase();
-            if (queryPhrase && sentenceLower.includes(queryPhrase)) {
-                result.score += 5;
-            }
-            result.matchedWords = Array.from(result.matchedWords);
-        });
-
-        // Convert map to array and sort by score
-        this.searchResults = Array.from(resultMap.values())
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 50); // Limit to top 50 results
-
-        if (this.searchResults.length === 0) {
-            this.showNoResults();
-            return;
-        }
-
-        // Redirect to the best-matching section immediately
-        const topResult = this.searchResults[0];
-        this.navigateToSection(topResult.sectionId);
-
-        // Clear any prior search UI without changing the active section
-        this.clearSearchResults(true);
+        this.searchResults = this.getMatches(query);
+        this.displaySearchResults();
     }
 
-    findDirectSection(query) {
-        const normalized = query.toLowerCase();
+    highlightMatches(text, query) {
+        const tokens = this.tokenize(query);
+        let highlighted = text;
 
-        // Try contentData titles/ids
-        for (const [sectionId, section] of Object.entries(contentData)) {
-            if (!this.validSectionIds.has(sectionId)) {
-                continue;
-            }
-            const titleMatch = section.title && section.title.toLowerCase().includes(normalized);
-            const idMatch = sectionId.toLowerCase().includes(normalized);
-            if (titleMatch || idMatch) return sectionId;
-        }
+        tokens.forEach(token => {
+            const regex = new RegExp(`\\b(${token})\\b`, 'ig');
+            highlighted = highlighted.replace(regex, '<span class="search-result-highlight">$1</span>');
+        });
 
-        // Try nav link labels
-        const navLinks = document.querySelectorAll('.nav-link');
-        for (const link of navLinks) {
-            const text = link.textContent.trim().toLowerCase();
-            if (text.includes(normalized)) {
-                const href = link.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    return href.substring(1);
-                }
-            }
-        }
-        return null;
+        return highlighted;
     }
 
     displaySearchResults() {
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
-
-        // Show overview section with search results
         const overviewSection = document.getElementById('overview');
-        overviewSection.classList.add('active');
+        if (overviewSection) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            overviewSection.classList.add('active');
+        }
 
-        // Remove existing search results
         const existingResults = document.querySelector('.search-results');
         if (existingResults) {
             existingResults.remove();
         }
 
-        if (this.searchResults.length === 0) {
-            this.showNoResults();
-            return;
-        }
-
-        // Create search results container
         const resultsContainer = document.createElement('div');
         resultsContainer.className = 'search-results';
 
-        const resultsTitle = document.createElement('h3');
-        resultsTitle.textContent = `Search Results for "${this.currentQuery}" (${this.searchResults.length} results)`;
-        resultsContainer.appendChild(resultsTitle);
+        const title = document.createElement('h3');
+        title.textContent = `Search results for "${this.currentQuery}"`;
+        resultsContainer.appendChild(title);
+
+        if (!this.searchResults.length) {
+            const empty = document.createElement('div');
+            empty.className = 'search-result-item';
+            empty.innerHTML = `
+                <div class="search-result-title">No specific matches found</div>
+                <div class="search-result-snippet">Try exact product names, tags, or issue keywords.</div>
+            `;
+            resultsContainer.appendChild(empty);
+            this.mountResults(resultsContainer);
+            return;
+        }
 
         this.searchResults.forEach(result => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'search-result-item';
+            const item = document.createElement('div');
+            item.className = 'search-result-item';
 
-            const title = document.createElement('div');
-            title.className = 'search-result-title';
-            title.textContent = result.sectionTitle;
-            title.addEventListener('click', () => this.navigateToSection(result.sectionId));
+            const resultTitle = document.createElement('div');
+            resultTitle.className = 'search-result-title';
+            resultTitle.textContent = result.sectionTitle;
+            resultTitle.addEventListener('click', () => this.navigateToSection(result.sectionId));
+
+            const resultMeta = document.createElement('span');
+            resultMeta.className = 'search-result-meta';
+            resultMeta.textContent = `Location: ${result.location}`;
 
             const snippet = document.createElement('div');
             snippet.className = 'search-result-snippet';
-            snippet.innerHTML = this.highlightMatches(result.sentence, result.matchedWords);
+            snippet.innerHTML = this.highlightMatches(result.text, this.currentQuery);
 
-            resultItem.appendChild(title);
-            resultItem.appendChild(snippet);
-            resultsContainer.appendChild(resultItem);
+            item.appendChild(resultTitle);
+            item.appendChild(resultMeta);
+            item.appendChild(snippet);
+            resultsContainer.appendChild(item);
         });
 
-        // Insert after overview grid
+        this.mountResults(resultsContainer);
+    }
+
+    mountResults(resultsContainer) {
         const overviewGrid = document.querySelector('.overview-grid');
-        overviewGrid.parentNode.insertBefore(resultsContainer, overviewGrid.nextSibling);
-    }
-
-    highlightMatches(text, matchedWords) {
-        let highlightedText = text;
-        matchedWords.forEach(word => {
-            const regex = new RegExp(`(${word})`, 'gi');
-            highlightedText = highlightedText.replace(regex, '<span class="search-result-highlight">$1</span>');
-        });
-        return highlightedText;
-    }
-
-    navigateToSection(sectionId) {
-        const sectionRouteMap = {
-            'blood-vision': 'blood-vision.html',
-            'm1-sensor': 'm1-sensor.html',
-            'ring-air': 'ring-air.html',
-            'powerplug': 'powerplug.html',
-            'ultrahumanx': 'ultrahumanx.html',
-            'ultrahuman-home': 'ultrahuman-home.html',
-            'chat-email-handling': 'chat-email-handling.html',
-            'misc': 'misc.html'
-        };
-
-        const route = sectionRouteMap[sectionId];
-        if (route) {
-            window.location.href = route;
+        if (!overviewGrid || !overviewGrid.parentNode) {
             return;
         }
 
-        const targetSection = document.getElementById(sectionId);
-        if (!targetSection) {
-            return;
-        }
-
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
-
-        targetSection.classList.add('active');
-
-        // Update navigation
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        const navLink = document.querySelector(`[href="#${sectionId}"]`);
-        if (navLink) {
-            navLink.classList.add('active');
-        }
-
-        // Scroll to top of section
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    showNoResults() {
-        const resultsContainer = document.createElement('div');
-        resultsContainer.className = 'search-results';
-
-        const noResults = document.createElement('div');
-        noResults.className = 'search-result-item';
-        noResults.innerHTML = `
-            <div class="search-result-title">No results found</div>
-            <div class="search-result-snippet">Try different keywords or check your spelling.</div>
-        `;
-
-        resultsContainer.appendChild(noResults);
-
-        const overviewGrid = document.querySelector('.overview-grid');
         overviewGrid.parentNode.insertBefore(resultsContainer, overviewGrid.nextSibling);
     }
 
@@ -465,27 +442,52 @@ class CodeXSearch {
         }
 
         if (!keepSectionActive) {
-            // Show overview section
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('overview').classList.add('active');
+            const overview = document.getElementById('overview');
+            if (overview) {
+                document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+                overview.classList.add('active');
+            }
         }
+    }
+
+    navigateToSection(sectionId) {
+        const route = this.sectionRouteMap[sectionId];
+        if (route) {
+            window.location.href = route;
+            return;
+        }
+
+        const targetSection = document.getElementById(sectionId);
+        if (!targetSection) {
+            return;
+        }
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        targetSection.classList.add('active');
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        if (navLink) {
+            navLink.classList.add('active');
+        }
+
+        targetSection.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
-// Initialize search after content is loaded
 function initializeSearch() {
     new CodeXSearch();
 }
 
-// Wait for content to be loaded before initializing search
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if content is already loaded
     if (typeof contentData !== 'undefined') {
         initializeSearch();
     } else {
-        // Wait for content to load
         const checkContent = setInterval(() => {
             if (typeof contentData !== 'undefined') {
                 clearInterval(checkContent);

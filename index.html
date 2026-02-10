@@ -11,9 +11,12 @@
 
 
 </head>
-<body>
+<body data-version="v1.0.0">
     <header class="header">
         <div class="header-content">
+            <div class="kb-home-header">
+                <h1 class="kb-home-title">Knowledge Base</h1>
+            </div>
             <div class="search-container">
                 <div class="search-widget">
                     <div class="search-bar" role="search">
@@ -38,6 +41,12 @@
                     </div>
                 </div>
                 <button id="searchToggle" class="search-toggle" aria-label="Toggle search panel">🔍</button>
+            </div>
+            <div class="theme-toggle-container">
+                <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle light and dark mode">
+                    <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+                    <span class="theme-toggle__label">Dark Mode</span>
+                </button>
             </div>
 
         </div>

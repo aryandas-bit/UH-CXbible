@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     overridePowerplugContent();
     initializeNavigation();
+    initializeOverviewCardLinks();
     initializeMobileMenu();
     initializeSearchToggle();
     initializeScrollEffects();
@@ -18,11 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
         window.initializeContent();
     }
 
+    pruneUnavailableOverviewTabs();
     initializeTabs();
     initializeBloodVisionSubtabs();
     initializeRegionTabs();
     initializeTroubleshootingBlocks();
     initializeCircadianModule();
+    normalizePageReturnState();
 });
 
 function initializeNavigation() {
@@ -108,6 +111,9 @@ function initializeSearchToggle() {
 
 function initializeScrollEffects() {
     const header = document.querySelector('.header');
+    if (!header) {
+        return;
+    }
     let lastScrollTop = 0;
 
     window.addEventListener('scroll', function() {
@@ -122,6 +128,111 @@ function initializeScrollEffects() {
         }
 
         lastScrollTop = scrollTop;
+    });
+}
+
+function initializeOverviewCardLinks() {
+    const cards = document.querySelectorAll('.overview-card');
+    if (!cards.length) {
+        return;
+    }
+
+    cards.forEach(card => {
+        const link = card.querySelector('.card-link[href]');
+        if (!link) {
+            return;
+        }
+
+        card.setAttribute('role', 'link');
+        card.setAttribute('tabindex', '0');
+        const cardTitle = card.querySelector('h3');
+        const ariaTitle = cardTitle ? cardTitle.textContent.trim() : link.textContent.trim();
+        card.setAttribute('aria-label', ariaTitle ? `Open ${ariaTitle}` : 'Open section');
+
+        const openCardLink = () => {
+            const href = link.getAttribute('href');
+            if (href) {
+                window.location.href = href;
+            }
+        };
+
+        card.addEventListener('click', event => {
+            if (event.target.closest('a, button, input, textarea, select')) {
+                return;
+            }
+            openCardLink();
+        });
+
+        card.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openCardLink();
+            }
+        });
+    });
+}
+
+function pruneUnavailableOverviewTabs() {
+    const tabGroups = document.querySelectorAll('.tab-buttons');
+    if (!tabGroups.length) {
+        return;
+    }
+
+    tabGroups.forEach(group => {
+        const overviewButton = Array.from(group.querySelectorAll('.tab-button')).find(button => {
+            return /overview/i.test((button.textContent || '').trim());
+        });
+
+        if (!overviewButton) {
+            return;
+        }
+
+        const tabId = overviewButton.getAttribute('data-tab') || overviewButton.getAttribute('data-target');
+        if (!tabId) {
+            return;
+        }
+
+        const container = group.closest('.document-content') || group.parentElement;
+        if (!container) {
+            return;
+        }
+
+        const overviewPanel = container.querySelector(`#${tabId}-tab`) || container.querySelector(`#${tabId}`);
+        if (!overviewPanel) {
+            return;
+        }
+
+        const panelText = (overviewPanel.textContent || '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toLowerCase();
+        const shouldHideOverview = panelText === 'content coming soon.' || panelText === 'content coming soon';
+        if (!shouldHideOverview) {
+            return;
+        }
+
+        overviewButton.remove();
+        overviewPanel.remove();
+
+        const firstButton = group.querySelector('.tab-button');
+        if (!firstButton) {
+            return;
+        }
+        firstButton.classList.add('active');
+        firstButton.setAttribute('aria-selected', 'true');
+    });
+}
+
+function normalizePageReturnState() {
+    window.addEventListener('pageshow', () => {
+        const activeEl = document.activeElement;
+        if (activeEl && typeof activeEl.blur === 'function') {
+            activeEl.blur();
+        }
+
+        document.querySelectorAll('.hero-target-active').forEach(el => {
+            el.classList.remove('hero-target-active');
+        });
     });
 }
 
@@ -860,7 +971,7 @@ function initializeTroubleshootingBlocks() {
 }
 
 function initializeThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
+    const themeToggle = ensureThemeToggle();
     if (!themeToggle) return;
 
     const label = themeToggle.querySelector('.theme-toggle__label');
@@ -893,6 +1004,24 @@ function initializeThemeToggle() {
         localStorage.setItem('cx-theme', isDark ? 'dark' : 'light');
         applyState(isDark);
     });
+}
+
+function ensureThemeToggle() {
+    const existing = document.getElementById('themeToggle');
+    if (existing) {
+        return existing;
+    }
+
+    const container = document.createElement('div');
+    container.className = 'theme-toggle-container theme-toggle-container--floating';
+    container.innerHTML = `
+        <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Toggle light and dark mode">
+            <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+            <span class="theme-toggle__label">Dark Mode</span>
+        </button>
+    `;
+    document.body.appendChild(container);
+    return container.querySelector('#themeToggle');
 }
 
 // Blood Vision sub-tabs (Overview / Troubleshooting)
