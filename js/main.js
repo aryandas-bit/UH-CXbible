@@ -152,7 +152,10 @@ function initializeOverviewCardLinks() {
         const openCardLink = () => {
             const href = link.getAttribute('href');
             if (href) {
-                window.location.href = href;
+                if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                    document.activeElement.blur();
+                }
+                window.location.assign(href);
             }
         };
 
@@ -229,6 +232,12 @@ function normalizePageReturnState() {
         if (activeEl && typeof activeEl.blur === 'function') {
             activeEl.blur();
         }
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('tabs-collapsed');
+            section.classList.remove('ts-collapsed');
+            setBackVisibility(section);
+        });
 
         document.querySelectorAll('.hero-target-active').forEach(el => {
             el.classList.remove('hero-target-active');

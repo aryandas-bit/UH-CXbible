@@ -2,6 +2,7 @@
 class CodeXSearch {
     constructor() {
         this.searchEntries = [];
+        this.entryTokenFrequency = new Map();
         this.currentQuery = '';
         this.searchResults = [];
         this.suggestionContainer = null;
@@ -38,6 +39,67 @@ class CodeXSearch {
             .filter(word => word.length >= 2);
     }
 
+    escapeHtml(value) {
+        return (value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    levenshteinDistanceWithinLimit(a, b, limit = 1) {
+        if (a === b) {
+            return 0;
+        }
+
+        const lenA = a.length;
+        const lenB = b.length;
+        if (Math.abs(lenA - lenB) > limit) {
+            return limit + 1;
+        }
+
+        const prev = new Array(lenB + 1);
+        const next = new Array(lenB + 1);
+
+        for (let j = 0; j <= lenB; j += 1) {
+            prev[j] = j;
+        }
+
+        for (let i = 1; i <= lenA; i += 1) {
+            next[0] = i;
+            let minInRow = next[0];
+
+            for (let j = 1; j <= lenB; j += 1) {
+                const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+                next[j] = Math.min(
+                    prev[j] + 1,
+                    next[j - 1] + 1,
+                    prev[j - 1] + cost
+                );
+                if (next[j] < minInRow) {
+                    minInRow = next[j];
+                }
+            }
+
+            if (minInRow > limit) {
+                return limit + 1;
+            }
+
+            for (let j = 0; j <= lenB; j += 1) {
+                prev[j] = next[j];
+            }
+        }
+
+        return prev[lenB];
+    }
+
+    getTokenIdf(token) {
+        const df = this.entryTokenFrequency.get(token) || 0;
+        const total = Math.max(this.searchEntries.length, 1);
+        return Math.log(1 + (total / (1 + df)));
+    }
+
     getSectionTitle(section) {
         const heading = section.querySelector('h1, h2');
         if (heading && heading.textContent.trim()) {
@@ -53,6 +115,7 @@ class CodeXSearch {
 
     buildSearchIndex() {
         this.searchEntries = [];
+        this.entryTokenFrequency = new Map();
 
         const sections = Array.from(document.querySelectorAll('.section[id]'))
             .filter(section => section.id !== 'overview');
@@ -87,14 +150,24 @@ class CodeXSearch {
                     ...sectionTitleTokens
                 ]);
 
-                this.searchEntries.push({
+                const entry = {
                     sectionId,
                     sectionTitle,
+                    sectionTitleNormalized: this.normalizeText(sectionTitle),
                     location: currentLocation,
                     text,
                     normalizedText: this.normalizeText(text),
                     normalizedLocation: this.normalizeText(currentLocation),
+                    sectionTitleTokens: Array.from(sectionTitleTokens),
+                    locationTokens: Array.from(locationTokens),
+                    textTokens: Array.from(textTokens),
                     combinedTokens
+                };
+
+                this.searchEntries.push(entry);
+
+                combinedTokens.forEach(token => {
+                    this.entryTokenFrequency.set(token, (this.entryTokenFrequency.get(token) || 0) + 1);
                 });
             });
         });
@@ -171,6 +244,113 @@ class CodeXSearch {
         return null;
     }
 
+    getBestFieldTokenMatch(queryToken, fieldTokens, fieldName) {
+        if (!fieldTokens.length) {
+            return null;
+        }
+
+        if (fieldTokens.includes(queryToken)) {
+            return {
+                matchedToken: queryToken,
+                quality: 'exact',
+                field: fieldName
+            };
+        }
+
+        for (const token of fieldTokens) {
+            if (token.startsWith(queryToken)) {
+                return {
+                    matchedToken: token,
+                    quality: 'prefix',
+                    field: fieldName
+                };
+            }
+        }
+
+        if (queryToken.length < 4) {
+            return null;
+        }
+
+        for (const token of fieldTokens) {
+            if (token.length < 4) {
+                continue;
+            }
+            if (Math.abs(token.length - queryToken.length) > 1) {
+                continue;
+            }
+            if (this.levenshteinDistanceWithinLimit(queryToken, token, 1) <= 1) {
+                return {
+                    matchedToken: token,
+                    quality: 'fuzzy',
+                    field: fieldName
+                };
+            }
+        }
+
+        return null;
+    }
+
+    getBestTokenMatch(queryToken, entry) {
+        const candidates = [
+            this.getBestFieldTokenMatch(queryToken, entry.sectionTitleTokens, 'section'),
+            this.getBestFieldTokenMatch(queryToken, entry.locationTokens, 'location'),
+            this.getBestFieldTokenMatch(queryToken, entry.textTokens, 'text')
+        ].filter(Boolean);
+
+        if (!candidates.length) {
+            return null;
+        }
+
+        const qualityWeight = { exact: 3, prefix: 2, fuzzy: 1 };
+        const fieldWeight = { section: 3, location: 2, text: 1 };
+
+        candidates.sort((a, b) => {
+            const qa = qualityWeight[a.quality] * 10 + fieldWeight[a.field];
+            const qb = qualityWeight[b.quality] * 10 + fieldWeight[b.field];
+            return qb - qa;
+        });
+
+        return candidates[0];
+    }
+
+    getTokenMatchScore(match, token) {
+        const qualityWeight = { exact: 20, prefix: 12, fuzzy: 6 };
+        const fieldWeight = { section: 2.2, location: 1.7, text: 1.2 };
+        const base = qualityWeight[match.quality] || 0;
+        return base * (fieldWeight[match.field] || 1) * this.getTokenIdf(token);
+    }
+
+    getOrderBonus(entry, queryTokens) {
+        if (queryTokens.length < 2) {
+            return 0;
+        }
+
+        const findOrderedHitCount = haystack => {
+            let from = 0;
+            let count = 0;
+            for (const token of queryTokens) {
+                const idx = haystack.indexOf(token, from);
+                if (idx === -1) {
+                    break;
+                }
+                count += 1;
+                from = idx + token.length;
+            }
+            return count;
+        };
+
+        const locationCount = findOrderedHitCount(entry.normalizedLocation);
+        const textCount = findOrderedHitCount(entry.normalizedText);
+        const best = Math.max(locationCount, textCount);
+
+        if (best <= 1) {
+            return 0;
+        }
+
+        const coverage = best / queryTokens.length;
+        return Math.round(coverage * 30);
+    }
+
     getMatches(query) {
         const normalizedQuery = this.normalizeText(query);
         const queryTokens = this.tokenize(query);
@@ -182,32 +362,69 @@ class CodeXSearch {
         const matches = [];
 
         this.searchEntries.forEach(entry => {
-            const hasAllTokens = queryTokens.every(token => entry.combinedTokens.has(token));
             const hasExactPhrase = normalizedQuery.length >= 3 && (
+                entry.sectionTitleNormalized.includes(normalizedQuery) ||
                 entry.normalizedText.includes(normalizedQuery) ||
                 entry.normalizedLocation.includes(normalizedQuery)
             );
 
-            if (!hasAllTokens && !hasExactPhrase) {
+            const matchedTokens = [];
+            let tokenScore = 0;
+
+            queryTokens.forEach(token => {
+                const match = this.getBestTokenMatch(token, entry);
+                if (!match) {
+                    return;
+                }
+
+                matchedTokens.push({ token, match });
+                tokenScore += this.getTokenMatchScore(match, token);
+            });
+
+            if (!matchedTokens.length && !hasExactPhrase) {
                 return;
             }
 
-            let score = 0;
+            let score = tokenScore;
+            const coverage = matchedTokens.length / queryTokens.length;
+            score += coverage * 80;
+
             if (hasExactPhrase) {
-                score += 8;
+                if (entry.sectionTitleNormalized.includes(normalizedQuery)) {
+                    score += 120;
+                }
+                if (entry.normalizedLocation.includes(normalizedQuery)) {
+                    score += 90;
+                }
+                if (entry.normalizedText.includes(normalizedQuery)) {
+                    score += 60;
+                }
             }
 
-            queryTokens.forEach(token => {
-                if (entry.normalizedLocation.includes(token)) {
-                    score += 3;
-                }
-                if (entry.normalizedText.includes(token)) {
-                    score += 2;
-                }
-                if (this.normalizeText(entry.sectionTitle).includes(token)) {
-                    score += 4;
-                }
-            });
+            if (matchedTokens.length === queryTokens.length && queryTokens.length > 1) {
+                score += 50;
+            }
+
+            score += this.getOrderBonus(entry, queryTokens);
+
+            if (entry.sectionTitleNormalized.startsWith(normalizedQuery)) {
+                score += 120;
+            } else if (entry.normalizedLocation.startsWith(normalizedQuery)) {
+                score += 70;
+            } else if (entry.normalizedText.startsWith(normalizedQuery)) {
+                score += 40;
+            }
+
+            const allFuzzy = matchedTokens.length > 0 && matchedTokens.every(item => item.match.quality === 'fuzzy');
+            if (allFuzzy && !hasExactPhrase) {
+                score *= 0.65;
+            }
+
+            if (matchedTokens.length === 1 && queryTokens.length >= 3 && !hasExactPhrase) {
+                score *= 0.6;
+            }
+
+            score -= Math.min(entry.text.length / 280, 4);
 
             matches.push({
                 ...entry,
@@ -215,7 +432,16 @@ class CodeXSearch {
             });
         });
 
-        return matches
+        const deduped = new Map();
+        matches.forEach(match => {
+            const key = `${match.sectionId}|${match.location}`;
+            const existing = deduped.get(key);
+            if (!existing || match.score > existing.score) {
+                deduped.set(key, match);
+            }
+        });
+
+        return Array.from(deduped.values())
             .sort((a, b) => b.score - a.score)
             .slice(0, 30);
     }
@@ -228,31 +454,41 @@ class CodeXSearch {
             return;
         }
 
-        const sectionSuggestions = [];
+        const queryTokens = this.tokenize(query);
 
-        Array.from(document.querySelectorAll('.section[id]'))
+        const sectionSuggestions = Array.from(document.querySelectorAll('.section[id]'))
             .filter(section => section.id !== 'overview')
-            .forEach(section => {
+            .map(section => {
                 const title = this.getSectionTitle(section);
                 const normalizedTitle = this.normalizeText(title);
-                if (!normalizedTitle.includes(normalizedQuery)) {
-                    return;
+                const titleTokens = this.tokenize(title);
+
+                let score = 0;
+                if (normalizedTitle.startsWith(normalizedQuery)) {
+                    score += 80;
+                } else if (normalizedTitle.includes(normalizedQuery)) {
+                    score += 50;
                 }
 
-                sectionSuggestions.push({
+                queryTokens.forEach(token => {
+                    if (titleTokens.includes(token)) {
+                        score += 30;
+                    } else if (titleTokens.some(candidate => candidate.startsWith(token))) {
+                        score += 15;
+                    }
+                });
+
+                return {
                     type: 'section',
                     title,
                     meta: 'Main topic',
                     sectionId: section.id,
-                    score: normalizedTitle.indexOf(normalizedQuery)
-                });
-            });
+                    score
+                };
+            })
+            .filter(item => item.score > 0);
 
-        const contentSuggestions = this.searchEntries
-            .filter(entry => (
-                entry.normalizedText.includes(normalizedQuery) ||
-                entry.normalizedLocation.includes(normalizedQuery)
-            ))
+        const contentSuggestions = this.getMatches(query)
             .slice(0, 18)
             .map(entry => ({
                 type: 'content',
@@ -260,13 +496,11 @@ class CodeXSearch {
                 meta: entry.location,
                 sectionId: entry.sectionId,
                 preview: entry.text,
-                score: entry.normalizedLocation.indexOf(normalizedQuery) !== -1
-                    ? entry.normalizedLocation.indexOf(normalizedQuery)
-                    : entry.normalizedText.indexOf(normalizedQuery)
+                score: entry.score
             }));
 
         const suggestions = [...sectionSuggestions, ...contentSuggestions]
-            .sort((a, b) => a.score - b.score)
+            .sort((a, b) => b.score - a.score)
             .filter((item, index, items) => {
                 const key = `${item.sectionId}|${item.meta}`;
                 return items.findIndex(candidate => `${candidate.sectionId}|${candidate.meta}` === key) === index;
@@ -356,15 +590,44 @@ class CodeXSearch {
     }
 
     highlightMatches(text, query) {
-        const tokens = this.tokenize(query);
-        let highlighted = text;
+        const safeText = this.escapeHtml(text);
+        const tokens = this.tokenize(query).sort((a, b) => b.length - a.length);
 
+        if (!tokens.length) {
+            return safeText;
+        }
+
+        let highlighted = safeText;
         tokens.forEach(token => {
-            const regex = new RegExp(`\\b(${token})\\b`, 'ig');
+            const escapedToken = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedToken}\\w*)`, 'ig');
             highlighted = highlighted.replace(regex, '<span class="search-result-highlight">$1</span>');
         });
 
         return highlighted;
+    }
+
+    getSnippet(text, query) {
+        const normalizedText = this.normalizeText(text);
+        const tokens = this.tokenize(query);
+
+        let firstIndex = -1;
+        tokens.forEach(token => {
+            const idx = normalizedText.indexOf(token);
+            if (idx !== -1 && (firstIndex === -1 || idx < firstIndex)) {
+                firstIndex = idx;
+            }
+        });
+
+        if (firstIndex === -1) {
+            return text.length > 220 ? `${text.slice(0, 220).trim()}...` : text;
+        }
+
+        const start = Math.max(0, firstIndex - 70);
+        const end = Math.min(text.length, start + 240);
+        const prefix = start > 0 ? '... ' : '';
+        const suffix = end < text.length ? ' ...' : '';
+        return `${prefix}${text.slice(start, end).trim()}${suffix}`;
     }
 
     displaySearchResults() {
@@ -415,7 +678,7 @@ class CodeXSearch {
 
             const snippet = document.createElement('div');
             snippet.className = 'search-result-snippet';
-            snippet.innerHTML = this.highlightMatches(result.text, this.currentQuery);
+            snippet.innerHTML = this.highlightMatches(this.getSnippet(result.text, this.currentQuery), this.currentQuery);
 
             item.appendChild(resultTitle);
             item.appendChild(resultMeta);

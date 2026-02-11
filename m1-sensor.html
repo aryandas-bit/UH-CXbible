@@ -122,19 +122,175 @@
 
                     <div class="tab-content" id="m1-lite-tab" hidden>
                         <h3>M1 Lite</h3>
-                        <h4>Key Features</h4>
+                        <p><strong>Applicable Regions:</strong> Global</p>
+                        <p><strong>Related Tags:</strong></p>
                         <ul>
-                            <li>Bring Your Own Sensor: Utilize your existing compatible Abbott sensors</li>
-                            <li>Advanced Metabolic Insights: Metabolic Score, Food Score, Glucose Trends</li>
-                            <li>Integration with Ultrahuman Ring AIR</li>
+                            <li><code>m1_lite_enquiry</code> - Users who get the M1 Lite pop-up and enquire, also for all general queries around externally procured sensors.</li>
+                            <li><code>m1_lite_activation</code> - When activating M1 Lite.</li>
+                            <li><code>m1_lite_refund</code> - When refunding or cancelling M1 Lite.</li>
+                            <li><code>m1_lite_3p_whitelist_stint</code> - Third-party sensor and whitelisted stint-wise (but not marked internal).</li>
+                            <li><code>m1_lite_3p_whitelist_user</code> - Third-party sensor and whitelisted user-wise (use with caution).</li>
+                            <li><code>m1_lite_3p_no_action</code> - Third-party sensor, but no whitelisting action taken.</li>
+                            <li><code>m1_lite_internal_whitelist_stint</code> - Internal sensor, whitelisted stint-wise (once marked internal).</li>
+                            <li><code>m1_lite_unsure_source</code> - User claims internal sensor but source could not be confirmed; flag to relevant POC (very rare usage).</li>
                         </ul>
 
-                        <h4>Regional Compatibility</h4>
+                        <h4>Overview</h4>
+                        <p><strong>Ultrahuman M1 Lite</strong> is a subscription plan that allows users to integrate their own compatible Abbott FreeStyle Libre CGM sensors with the Ultrahuman app.</p>
+                        <p>This is useful for people who already have access to Abbott sensors and want Ultrahuman's metabolic tracking without purchasing the full M1 package.</p>
+
+                        <h4>Key Features of M1 Lite</h4>
                         <ul>
-                            <li>India: FreeStyle Libre and Libre Pro sensors</li>
-                            <li>Europe: FreeStyle Libre 2 sensors</li>
-                            <li>USA: FreeStyle Libre 3 Plus sensors</li>
+                            <li><strong>Bring Your Own Sensor:</strong> Use compatible Abbott FreeStyle Libre sensors with Ultrahuman.</li>
+                            <li><strong>Advanced metabolic insights:</strong> Metabolic Score, Food Score, glucose trends, and personalized nudges.</li>
+                            <li><strong>Ring AIR integration:</strong> Combine glucose with sleep, HRV, and recovery data for a holistic view.</li>
                         </ul>
+                        <p><strong>Note:</strong> Users getting Lite to use external sensors do not get access to Performance Coaches through chat support.</p>
+
+                        <h4>Regional Compatibility</h4>
+                        <p>Ultrahuman Lite is live in all regions. Compatibility depends on regional regulatory and product differences:</p>
+                        <ul>
+                            <li><strong>India:</strong> FreeStyle Libre and Libre Pro sensors.</li>
+                            <li><strong>Europe:</strong> FreeStyle Libre 2 sensors. Libre 3 Plus is not currently supported in this region.</li>
+                            <li><strong>USA:</strong> FreeStyle Libre 3 Plus sensors.</li>
+                        </ul>
+                        <p>Users in some regions may face pairing limits with unsupported sensors. Example: in Germany, Libre 3 Plus may fail because Europe currently supports only Libre 2.</p>
+                        <p>Link to all M1 Lite subscriptions: <a href="https://ops.ultrahuman.com/admin/uh_lite_subscriptions" target="_blank" rel="noopener noreferrer">https://ops.ultrahuman.com/admin/uh_lite_subscriptions</a></p>
+
+                        <h4>Ideal For</h4>
+                        <ul>
+                            <li><strong>Existing CGM users:</strong> People already using compatible CGM hardware.</li>
+                            <li><strong>Cost-conscious users:</strong> Users seeking UH insights without buying extra hardware.</li>
+                            <li><strong>Data-focused users:</strong> Users who want deeper metabolic analytics.</li>
+                        </ul>
+
+                        <h4>Activation</h4>
+                        <ol>
+                            <li>
+                                When a user scans an external sensor on the Metabolism tab, they see a pop-up:
+                                <figure class="ts-figure">
+                                    <img src="l1.png" alt="M1 Lite prompt shown after scanning an external sensor" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>If the user is using an external sensor for the first time, they get a 14-day free trial. If they do not have this option, we can activate it for them. After trial, they must subscribe to M1 Lite to continue using external sensors.</li>
+                            <li>
+                                M1 Lite users can access:
+                                <ul>
+                                    <li>App-related support.</li>
+                                    <li>Digital subscription and app content access.</li>
+                                    <li>No glucometers, Ultrahuman patches, or M1 replacements are to be issued.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h4>Subscriptions</h4>
+                        <ol>
+                            <li>
+                                To cross-check active Lite subscription:
+                                <ul>
+                                    <li>Ask for purchase email ID.</li>
+                                    <li>Go to Internal → <a href="https://ops.ultrahuman.com/admin/uh_lite_subscriptions" target="_blank" rel="noopener noreferrer">UH Lite subscriptions</a> → search by email.</li>
+                                    <li>Confirm subscription status and validity.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="l2.png" alt="UH Lite subscription lookup by purchase email" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>
+                                To activate an M1 Lite subscription after payment:
+                                <ul>
+                                    <li>Click <strong>New Uh Lite subscription</strong> and enter details.</li>
+                                    <li>Add payment reference in <strong>Remarks</strong>.</li>
+                                    <li>Mark <strong>Active</strong>. If this is missed, subscription will not activate.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="l3.png" alt="Create new UH Lite subscription flow" loading="lazy">
+                                </figure>
+                                <figure class="ts-figure">
+                                    <img src="l4.png" alt="UH Lite activation form with Active toggle and remarks" loading="lazy">
+                                </figure>
+                            </li>
+                        </ol>
+
+                        <h4>Identification</h4>
+                        <ol>
+                            <li>
+                                To identify external vs internal sensor:
+                                <ul>
+                                    <li>Go to Ops Dashboard → Internal → <a href="https://ops.ultrahuman.com/admin/cgm_sensor_inventories?order=created_at_desc" target="_blank" rel="noopener noreferrer">CGM Sensor Inventories</a>.</li>
+                                    <li>If <strong>Internal Sensor = YES</strong>, user is on Ultrahuman M1 sensor.</li>
+                                    <li>If <strong>Internal Sensor = NO</strong>, user is on third-party or external sensor.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="l5.png" alt="CGM sensor inventory showing internal sensor yes or no" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>
+                                If user is on third-party sensor and free trial is active, <code>user_access type</code> shows <strong>FREE Trial</strong> in <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.
+                                <figure class="ts-figure">
+                                    <img src="l6.png" alt="CGM stints showing FREE Trial user access type" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>
+                                After 14-day trial, <code>user_access type</code> shows <strong>Locked</strong> in <a href="https://ops.ultrahuman.com/admin/cgm_stints" target="_blank" rel="noopener noreferrer">CGM Stints</a>.
+                                <figure class="ts-figure">
+                                    <img src="l7.png" alt="CGM stints showing Locked user access type post trial" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>
+                                If user insists sensor was purchased from Ultrahuman:
+                                <ul>
+                                    <li>Ask for purchase details and validate with CX team members who have payment gateway access.</li>
+                                    <li>Validation can also be requested on Slack <code>#cx-team-internal</code>.</li>
+                                    <li>If confirmed internal, mark sensor as <strong>M1 live</strong> (whitelist stint) under CGM Stints → Edit.</li>
+                                    <li>Apply this only to the current stint or sensor being used.</li>
+                                </ul>
+                                <figure class="ts-figure">
+                                    <img src="l8.png" alt="Whitelisting a stint after marking sensor as M1 Live" loading="lazy">
+                                </figure>
+                            </li>
+                            <li>For UK/EU in-app purchases where internal/external cannot be directly verified, collect purchase email or number, validate via payment gateway, then whitelist the stint accordingly.</li>
+                        </ol>
+
+                        <h4>Pricing</h4>
+                        <figure class="ts-figure">
+                            <img src="l9.png" alt="M1 Lite pricing reference" loading="lazy">
+                        </figure>
+
+                        <h4>Refund or Cancellation Process</h4>
+                        <h5>iOS</h5>
+                        <ul>
+                            <li>Open Settings → tap your name → Subscriptions.</li>
+                            <li>Select Lite Subscription and tap <strong>Cancel Subscription</strong>.</li>
+                            <li>Refunds are handled by Apple via <a href="https://support.apple.com/en-in/HT204084" target="_blank" rel="noopener noreferrer">https://support.apple.com/en-in/HT204084</a>.</li>
+                            <li>Refund is typically prorated based on remaining months in the current cycle.</li>
+                        </ul>
+
+                        <h5>Android</h5>
+                        <ol>
+                            <li>Go to <strong>play.google.com</strong>.</li>
+                            <li>Click profile picture (top-right).</li>
+                            <li>Open <strong>Payments &amp; subscriptions</strong>.</li>
+                            <li>Locate the order and click <strong>Report a problem</strong>.</li>
+                            <li>Select the closest reason.</li>
+                            <li>Complete form requesting refund.</li>
+                            <li>Submit.</li>
+                        </ol>
+                        <p><strong>Important:</strong> If refunding M1 Lite via bank transfer or PayPal, ask user to cancel Lite first from App Store or Play Store, then process offline refund.</p>
+
+                        <h4>Common Queries and Cases</h4>
+                        <h5>Your purchase is in progress warning persists</h5>
+                        <p>If users cannot purchase and app shows a long-running <strong>Your purchase is in progress</strong> error, follow this flow:</p>
+                        <ul>
+                            <li>Ask CX team to create a monthly or yearly payment link.</li>
+                            <li>Share link with user and collect successful payment screenshot.</li>
+                            <li>Collect the email ID where Lite should be activated.</li>
+                            <li>Activate Lite using the subscription activation flow above.</li>
+                        </ul>
+                        <figure class="ts-figure">
+                            <img src="l10.png" alt="M1 Lite purchase in progress error screen" loading="lazy">
+                        </figure>
+                        <p><strong>Do not whitelist the user</strong> in this case. Whitelisting benefits and M1 Lite subscription benefits are different.</p>
                     </div>
 
                     <div class="tab-content" id="m1-integrations-tab" hidden>
